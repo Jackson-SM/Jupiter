@@ -1,6 +1,23 @@
 {
   "name": "jupiter-api",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "src/server.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon -e ts --watch src --exec ts-node src/server.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.1.1",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.3.2"
+  }
 }
