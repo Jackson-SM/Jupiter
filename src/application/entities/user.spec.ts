@@ -1,12 +1,9 @@
-import { User } from "./User";
+import { makeUser } from "../../../tests/factories/makeUser";
 
 describe("User", () => {
   it("should create a new user instance", () => {
-    const user = new User({
-      email: "user@example.com",
-      password: "password",
-      firstName: "first",
-      lastName: "last",
-    });
+    const user = makeUser();
+
+    expect(user).toBeTruthy();
   });
 });

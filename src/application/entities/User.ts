@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { Replace } from "src/helpers/Replace";
+import { Replace } from "../../helpers/Replace";
 
 interface UserProps {
   firstName: string;
