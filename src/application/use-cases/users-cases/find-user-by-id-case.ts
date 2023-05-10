@@ -1,5 +1,6 @@
-import { User } from "@application/entities/User";
-import { UserRepository } from "@application/repositories/UserRepository";
+import { UserRepository } from "~/application/repositories/UserRepository";
+import { UserNotFound } from "../errors/UserNotFound";
+import { User } from "~/application/entities/User";
 
 interface FindUserByIdRequest {
   id: string;
@@ -18,7 +19,7 @@ export class FindUserByIdCase {
     const user = await this.userRepository.findById(id);
 
     if (!user) {
-      throw new Error("Notification Not Found");
+      throw new UserNotFound();
     }
 
     return {
