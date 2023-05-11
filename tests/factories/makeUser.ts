@@ -1,4 +1,4 @@
-import { User } from "../../src/application/entities/User";
+import { User } from "../../src/domain/entities/User";
 
 type Override = Partial<User>;
 

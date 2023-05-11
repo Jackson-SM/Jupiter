@@ -8,6 +8,17 @@ const usersRoutes = {
       {
         method: "GET",
         path: "/v1/users",
+        handler: async (request, h) => {
+          const { prisma } = request.server.app;
+
+          const users = await prisma.user.findMany();
+
+          return users;
+        },
+      },
+      {
+        method: "POST",
+        path: "/v1/users",
         handler: async function (request: Request, h: ResponseToolkit) {
           const { prisma } = request.server.app;
 

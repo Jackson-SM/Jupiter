@@ -11,11 +11,61 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
   firstName String
   lastName  String
-  email     String   @unique
+  email     String      @unique
   password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now()) @updatedAt
+  Workspace Workspace[]
+  Project   Project[]
+  Task      Task[]
+}
+
+model Workspace {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  creator     User      @relation(fields: [creatorId], references: [id])
+  creatorId   String    @db.ObjectId
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  Project     Project[]
+}
+
+model Project {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  lead        User      @relation(fields: [leadId], references: [id])
+  leadId      String    @db.ObjectId
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  workspaceId String    @db.ObjectId
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  Task        Task[]
+}
+
+model Task {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  userTask    User      @relation(fields: [taskUser], references: [id])
+  taskUser    String    @db.ObjectId
+  project     Project   @relation(fields: [projectId], references: [id])
+  projectId   String    @db.ObjectId
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  Comment     Comment[]
+}
+
+model Comment {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  task        Task     @relation(fields: [taskId], references: [id])
+  taskId      String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 }

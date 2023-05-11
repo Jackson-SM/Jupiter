@@ -2,7 +2,7 @@ import { InMemoryUserRepository } from "tests/repositories/in-memory-user-reposi
 import { CreateUserCase } from "./create-user-case";
 import { FindUserByIdCase } from "./find-user-by-id-case";
 import { makeUser } from "tests/factories/makeUser";
-import { UserNotFound } from "../errors/UserNotFound";
+import { UserNotFound } from "./errors/UserNotFound";
 
 describe("Find By Id User Case", () => {
   it("should create a new user", async () => {
