@@ -1,7 +1,8 @@
 import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
 
 const commentsRoutes = {
-  name: "v1/comments",
+  name: "comments",
+  dependencies: ["prisma"],
   register: async function (server: Hapi.Server) {
     server.route([
       {

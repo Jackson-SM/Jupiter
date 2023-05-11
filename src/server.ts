@@ -6,6 +6,7 @@ import {
   tasks,
   comments,
 } from "./infra/http/routes/routes";
+import prisma from "./infra/http/plugins/prisma";
 
 const server: Hapi.Server = Hapi.server({
   port: 3000,
@@ -13,7 +14,7 @@ const server: Hapi.Server = Hapi.server({
 });
 
 export async function start(): Promise<Hapi.Server> {
-  await server.register([users, workspaces, projects, tasks, comments]);
+  await server.register([prisma, users, workspaces, projects, tasks, comments]);
   await server.start();
   return server;
 }

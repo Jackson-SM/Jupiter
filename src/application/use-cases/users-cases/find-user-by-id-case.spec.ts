@@ -23,7 +23,7 @@ describe("Find By Id User Case", () => {
 
     await createUserCase.execute(makeUser());
 
-    await expect(findUserById.execute({ id: "asfsafasf" })).rejects.toThrow(
+    await expect(findUserById.execute({ id: "a".repeat(20) })).rejects.toThrow(
       UserNotFound,
     );
   });

@@ -1,7 +1,8 @@
 import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
 
 const workspacesRoutes = {
-  name: "v1/workspaces",
+  name: "workspaces",
+  dependencies: ["prisma"],
   register: async function (server: Hapi.Server) {
     server.route([
       {
