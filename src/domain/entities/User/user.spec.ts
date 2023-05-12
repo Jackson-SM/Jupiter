@@ -1,4 +1,4 @@
-import { makeUser } from "../../../tests/factories/makeUser";
+import { makeUser } from "../../../../tests/factories/makeUser";
 
 describe("User", () => {
   it("should create a new user instance", () => {

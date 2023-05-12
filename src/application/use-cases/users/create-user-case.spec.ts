@@ -1,5 +1,6 @@
 import { InMemoryUserRepository } from "tests/repositories/in-memory-user-repository";
 import { CreateUserCase } from "./create-user-case";
+import { Password } from "~/domain/entities/User/Password";
 
 describe("Create User Case", () => {
   it("should create a new user", async () => {
@@ -10,7 +11,7 @@ describe("Create User Case", () => {
       firstName: "testfirstname",
       lastName: "testlatname",
       email: "test@example.com",
-      password: "testpassword",
+      password: new Password("123456"),
     });
 
     expect(inMemoryRepository.users[0]).toEqual(user);

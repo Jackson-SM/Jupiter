@@ -1,4 +1,4 @@
-import { User } from "~/domain/entities/User";
+import { User } from "../../../domain/entities/User/User";
 
 export class UserViewModel {
   static toHttp(user: User) {

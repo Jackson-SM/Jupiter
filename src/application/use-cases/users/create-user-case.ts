@@ -1,11 +1,12 @@
-import { User } from "~/domain/entities/User";
+import { User } from "~/domain/entities/User/User";
+import { Password } from "~/domain/entities/User/Password";
 import { UserRepository } from "~/domain/repositories/UserRepository";
 
 interface CreateUserRequest {
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
+  password: Password;
 }
 
 interface CreateUserResponse {

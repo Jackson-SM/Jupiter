@@ -1,12 +1,13 @@
 import { randomUUID } from "crypto";
-import { Replace } from "../../helpers/Replace";
+import { Replace } from "~/helpers/Replace";
 import ObjectID from "bson-objectid";
+import { Password } from "./Password";
 
 interface UserProps {
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
+  password: Password;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -52,10 +53,10 @@ export class User {
     this.props.email = email;
   }
 
-  get password(): string {
+  get password(): Password {
     return this.props.password;
   }
-  set password(password: string) {
+  set password(password: Password) {
     this.props.password = password;
   }
 

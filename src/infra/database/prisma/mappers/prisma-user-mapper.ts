@@ -1,5 +1,6 @@
 import { User as RawUser } from "@prisma/client";
-import { User } from "../../../../domain/entities/User";
+import { User } from "../../../../domain/entities/User/User";
+import { Password } from "../../../../domain/entities/User/Password";
 
 export class PrismaUserMapper {
   static toDomain(user: RawUser) {
@@ -8,7 +9,7 @@ export class PrismaUserMapper {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        password: user.password,
+        password: new Password(user.password),
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },
@@ -22,7 +23,7 @@ export class PrismaUserMapper {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      password: user.password,
+      password: user.password.value,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };

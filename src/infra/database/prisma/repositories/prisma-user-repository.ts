@@ -1,7 +1,7 @@
 import { UserRepository } from "~/domain/repositories/UserRepository";
 import { PrismaUserMapper } from "../mappers/prisma-user-mapper";
-import { User } from "../../../../domain/entities/User";
 import { PrismaClient } from "@prisma/client";
+import { User } from "../../../../domain/entities/User/User";
 
 const prisma = new PrismaClient();
 

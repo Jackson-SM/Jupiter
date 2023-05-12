@@ -1,6 +1,6 @@
 import { UserRepository } from "~/domain/repositories/UserRepository";
 import { UserNotFound } from "./errors/UserNotFound";
-import { User } from "~/domain/entities/User";
+import { User } from "~/domain/entities/User/User";
 
 interface FindUserByIdRequest {
   id: string;

@@ -2,8 +2,9 @@ import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
 import { PrismaClient } from "@prisma/client";
 import { PrismaUserRepository } from "../../database/prisma/repositories/prisma-user-repository";
 import { UserViewModel } from "../view-models/user-view-model";
-import { User } from "../../../domain/entities/User";
 import Joi from "@hapi/joi";
+import { User } from "../../../domain/entities/User/User";
+import { Password } from "../../../domain/entities/User/Password";
 
 const usersRoutes = {
   name: "users",
@@ -56,7 +57,7 @@ const usersRoutes = {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            password: password,
+            password: new Password("123456"),
           });
 
           try {
