@@ -3,17 +3,14 @@ import { CreateUserCase } from "../../../../application/use-cases/users/create-u
 import { PrismaUserRepository } from "../../../database/prisma/repositories/prisma-user-repository";
 import bcrypt from "bcrypt";
 import { Password } from "../../../../domain/entities/User/Password";
+import { CreateUserBody } from "../../dtos/create-user-body";
 
 class CreateUserController {
   constructor(private createUserCase: CreateUserCase) {}
 
   public async handle(request: Request, h: ResponseToolkit) {
-    const { firstName, lastName, email, password } = request.payload as {
-      firstName: string;
-      lastName: string;
-      email: string;
-      password: string;
-    };
+    const { firstName, lastName, email, password } =
+      request.payload as CreateUserBody;
 
     try {
       const passwordHash = await bcrypt.hash(password, 10);

@@ -10,10 +10,10 @@ describe("Find By Id User Case", () => {
     const findUserByEmail = new FindUserByEmail(inMemoryRepository);
     const createUserCase = new CreateUserCase(inMemoryRepository);
 
-    const userCreated = await createUserCase.execute(makeUser());
+    const { user: userCreated } = await createUserCase.execute(makeUser());
 
     const { user } = await findUserByEmail.execute({
-      email: userCreated.user.email,
+      email: userCreated.email,
     });
 
     expect(inMemoryRepository.users[0]).toEqual(user);

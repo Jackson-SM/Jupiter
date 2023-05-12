@@ -10,6 +10,6 @@ describe("User", () => {
     expect(() => new Password("12")).toThrow();
   });
   it("should throw an error if the password is great than 80", () => {
-    expect(() => new Password("1".repeat(51))).toThrow();
+    expect(() => new Password("1".repeat(81))).toThrow();
   });
 });

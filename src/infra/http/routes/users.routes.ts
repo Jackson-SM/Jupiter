@@ -1,7 +1,7 @@
 import Hapi from "@hapi/hapi";
-import Joi from "@hapi/joi";
 import findUserByIdController from "../controllers/User/FindUserByIdController";
 import createUserController from "../controllers/User/CreateUserController";
+import createUserPayload from "../payloads/createUserPayload";
 
 const usersRoutes = {
   name: "users",
@@ -19,12 +19,7 @@ const usersRoutes = {
         handler: createUserController.handle,
         options: {
           validate: {
-            payload: Joi.object({
-              firstName: Joi.string().required(),
-              lastName: Joi.string().required(),
-              email: Joi.string().required(),
-              password: Joi.string().required(),
-            }),
+            payload: createUserPayload,
           },
         },
       },
