@@ -7,8 +7,10 @@ class FindUserByIdController {
   constructor(private findUserByIdCase: FindUserByIdCase) {}
 
   public async handle(request: Request, h: ResponseToolkit) {
+    const { id } = request.params;
+
     const { user } = await findUserByIdCase.execute({
-      id: "645d22c31c03050e898f8125",
+      id: id,
     });
 
     if (!user) {

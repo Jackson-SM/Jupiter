@@ -10,12 +10,12 @@ const usersRoutes = {
     server.route([
       {
         method: "GET",
-        path: "/v1/users",
+        path: "/v1/users/{id}",
         handler: findUserByIdController.handle,
       },
       {
         method: "POST",
-        path: "/v1/users",
+        path: "/v1/users/",
         handler: createUserController.handle,
         options: {
           validate: {
