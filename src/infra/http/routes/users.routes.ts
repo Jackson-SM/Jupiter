@@ -1,4 +1,6 @@
 import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
+import { PrismaClient } from "@prisma/client";
+import { PrismaUserRepository } from "~/infra/database/prisma/repositories/PrismaUserRepository";
 
 const usersRoutes = {
   name: "users",
@@ -9,18 +11,16 @@ const usersRoutes = {
         method: "GET",
         path: "/v1/users",
         handler: async (request, h) => {
-          const { prisma } = request.server.app;
-
-          const users = await prisma.user.findMany();
-
-          return users;
+          const prismaRepository = new PrismaUserRepository(
+            request.server.app.prisma,
+          );
         },
       },
       {
         method: "POST",
         path: "/v1/users",
         handler: async function (request: Request, h: ResponseToolkit) {
-          const { prisma } = request.server.app;
+          const prisma = new PrismaClient();
 
           try {
             const user = await prisma.user.create({

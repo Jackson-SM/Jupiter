@@ -8,7 +8,7 @@ import {
 } from "./infra/http/routes/routes";
 import prisma from "./infra/http/plugins/prisma";
 
-const server: Hapi.Server = Hapi.server({
+export const server: Hapi.Server = Hapi.server({
   port: 3000,
   host: "localhost",
 });
