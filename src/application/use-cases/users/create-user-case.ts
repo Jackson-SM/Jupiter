@@ -1,13 +1,12 @@
 import { User } from "../../../domain/entities/User/User";
 import { Password } from "../../../domain/entities/User/Password";
 import { UserRepository } from "~/domain/repositories/UserRepository";
-import bcrypt from "bcrypt";
 
 interface CreateUserRequest {
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
+  password: Password;
 }
 
 interface CreateUserResponse {
@@ -22,13 +21,11 @@ export class CreateUserCase {
   ): Promise<CreateUserResponse> {
     const { firstName, lastName, email, password } = createUserRequest;
 
-    const passwordHash = await bcrypt.hash(password, 10);
-
     const user = new User({
       firstName,
       lastName,
       email,
-      password: new Password(passwordHash),
+      password: password,
     });
 
     await this.userRepository.create(user);

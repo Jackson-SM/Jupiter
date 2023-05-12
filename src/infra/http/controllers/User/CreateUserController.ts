@@ -1,6 +1,8 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { CreateUserCase } from "../../../../application/use-cases/users/create-user-case";
 import { PrismaUserRepository } from "../../../database/prisma/repositories/prisma-user-repository";
+import bcrypt from "bcrypt";
+import { Password } from "../../../../domain/entities/User/Password";
 
 class CreateUserController {
   constructor(private createUserCase: CreateUserCase) {}
@@ -14,11 +16,13 @@ class CreateUserController {
     };
 
     try {
+      const passwordHash = await bcrypt.hash(password, 10);
+
       await createUserCase.execute({
         firstName,
         lastName,
         email,
-        password: password,
+        password: new Password(passwordHash),
       });
       return h.response().code(201);
     } catch (err: any) {
