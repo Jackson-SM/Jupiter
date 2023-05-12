@@ -10,7 +10,7 @@ interface FindUserByEmailResponse {
   user: User;
 }
 
-export class FindUserByIdCase {
+export class FindUserByEmail {
   constructor(private userRepository: UserRepository) {}
 
   async execute(
