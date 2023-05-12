@@ -1,13 +1,14 @@
 import { randomUUID } from "crypto";
 import { Replace } from "../../helpers/Replace";
+import ObjectID from "bson-objectid";
 
 interface UserProps {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  createdAt?: Date | null;
-  updatedAt?: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export class User {
@@ -15,10 +16,10 @@ export class User {
   private props: UserProps;
 
   constructor(
-    props: Replace<UserProps, { createdAt?: Date | null }>,
+    props: Replace<UserProps, { createdAt?: Date; updatedAt?: Date }>,
     _id?: string,
   ) {
-    this._id = _id ?? randomUUID();
+    this._id = _id ?? new ObjectID().toHexString();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
@@ -58,14 +59,14 @@ export class User {
     this.props.password = password;
   }
 
-  get createdAt(): Date | null | undefined {
+  get createdAt(): Date {
     return this.props.createdAt;
   }
 
-  get updatedAt(): Date | null | undefined {
+  get updatedAt(): Date {
     return this.props.updatedAt;
   }
-  set updatedAt(updatedAt: Date | null | undefined) {
+  set updatedAt(updatedAt: Date) {
     this.props.updatedAt = updatedAt;
   }
 }

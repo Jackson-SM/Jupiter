@@ -346,6 +346,13 @@
     "@hapi/boom" "^10.0.1"
     "@hapi/hoek" "^11.0.2"
 
+"@hapi/address@^4.0.1":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@hapi/address/-/address-4.1.0.tgz#d60c5c0d930e77456fdcde2598e77302e2955e1d"
+  integrity sha512-SkszZf13HVgGmChdHo/PxchnSaCJ6cetVqLzyciudzZRT0jcOouIF/Q93mgjw8cce+D+4F4C1Z/WrfFN+O3VHQ==
+  dependencies:
+    "@hapi/hoek" "^9.0.0"
+
 "@hapi/ammo@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@hapi/ammo/-/ammo-6.0.1.tgz#1bc9f7102724ff288ca03b721854fc5393ad123a"
@@ -425,6 +432,11 @@
   resolved "https://registry.yarnpkg.com/@hapi/file/-/file-3.0.0.tgz#f1fd824493ac89a6fceaf89c824afc5ae2121c09"
   integrity sha512-w+lKW+yRrLhJu620jT3y+5g2mHqnKfepreykvdOcl9/6up8GrQQn+l3FRTsjHTKbkbfQFkuksHpdv2EcpKcJ4Q==
 
+"@hapi/formula@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/formula/-/formula-2.0.0.tgz#edade0619ed58c8e4f164f233cda70211e787128"
+  integrity sha512-V87P8fv7PI0LH7LiVi8Lkf3x+KCO7pQozXRssAHNXXL9L1K+uyu4XypLXwxqVDKgyQai6qj3/KteNlrqDx4W5A==
+
 "@hapi/hapi@^21.3.2":
   version "21.3.2"
   resolved "https://registry.yarnpkg.com/@hapi/hapi/-/hapi-21.3.2.tgz#f9f94c1c28ccad1444c838d04070fa1cd0409b33"
@@ -463,6 +475,11 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-11.0.2.tgz#cb3ea547daac7de5c9cf1d960c3f35c34f065427"
   integrity sha512-aKmlCO57XFZ26wso4rJsW4oTUnrgTFw2jh3io7CAtO9w4UltBNwRXvXIVzzyfkaaLRo3nluP/19msA8vDUUuKw==
 
+"@hapi/hoek@^9.0.0":
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
+  integrity sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==
+
 "@hapi/iron@^7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@hapi/iron/-/iron-7.0.1.tgz#f74bace8dad9340c7c012c27c078504f070f14b5"
@@ -473,6 +490,17 @@
     "@hapi/bourne" "^3.0.0"
     "@hapi/cryptiles" "^6.0.1"
     "@hapi/hoek" "^11.0.2"
+
+"@hapi/joi@^17.1.1":
+  version "17.1.1"
+  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-17.1.1.tgz#9cc8d7e2c2213d1e46708c6260184b447c661350"
+  integrity sha512-p4DKeZAoeZW4g3u7ZeRo+vCDuSDgSvtsB/NpfjXEHTUjSeINAi/RrVOWiVQ1isaoLzMvFEhe8n5065mQq1AdQg==
+  dependencies:
+    "@hapi/address" "^4.0.1"
+    "@hapi/formula" "^2.0.0"
+    "@hapi/hoek" "^9.0.0"
+    "@hapi/pinpoint" "^2.0.0"
+    "@hapi/topo" "^5.0.0"
 
 "@hapi/mimos@^7.0.1":
   version "7.0.1"
@@ -500,6 +528,11 @@
     "@hapi/content" "^6.0.0"
     "@hapi/hoek" "^11.0.2"
     "@hapi/nigel" "^5.0.1"
+
+"@hapi/pinpoint@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@hapi/pinpoint/-/pinpoint-2.0.1.tgz#32077e715655fc00ab8df74b6b416114287d6513"
+  integrity sha512-EKQmr16tM8s16vTT3cA5L0kZZcTMU5DUOZTuvpnY738m+jyP3JIUj+Mm1xc1rsLkGBQ/gVnfKYPwOmPg1tUR4Q==
 
 "@hapi/podium@^5.0.0", "@hapi/podium@^5.0.1":
   version "5.0.1"
@@ -556,6 +589,13 @@
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@hapi/teamwork/-/teamwork-6.0.0.tgz#b3a173cf811ba59fc6ee22318a1b51f4561f06e0"
   integrity sha512-05HumSy3LWfXpmJ9cr6HzwhAavrHkJ1ZRCmNE2qJMihdM5YcWreWPfyN0yKT2ZjCM92au3ZkuodjBxOibxM67A==
+
+"@hapi/topo@^5.0.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-5.1.0.tgz#dc448e332c6c6e37a4dc02fd84ba8d44b9afb012"
+  integrity sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==
+  dependencies:
+    "@hapi/hoek" "^9.0.0"
 
 "@hapi/topo@^6.0.1":
   version "6.0.2"
@@ -997,6 +1037,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/hapi__joi@^17.1.9":
+  version "17.1.9"
+  resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-17.1.9.tgz#fb4001df38aba1cd2406ce4b17d4e6fc3b0bd036"
+  integrity sha512-oOMFT8vmCTFncsF1engrs04jatz8/Anwx3De9uxnOK4chgSEgWBvFtpSoJo8u3784JNO+ql5tzRR6phHoRnscQ==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
@@ -1372,6 +1417,11 @@ bser@2.1.1:
   integrity sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==
   dependencies:
     node-int64 "^0.4.0"
+
+bson-objectid@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/bson-objectid/-/bson-objectid-2.0.4.tgz#339211572ef97dc98f2d68eaee7b99b7be59a089"
+  integrity sha512-vgnKAUzcDoa+AeyYwXCoHyF2q6u/8H46dxu5JN+4/TZeq/Dlinn0K6GvxsCLb3LHUJl0m/TLiEK31kUwtgocMQ==
 
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"

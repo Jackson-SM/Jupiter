@@ -2,6 +2,8 @@ import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
 import { PrismaClient } from "@prisma/client";
 import { PrismaUserRepository } from "../../database/prisma/repositories/prisma-user-repository";
 import { UserViewModel } from "../view-models/user-view-model";
+import { User } from "../../../domain/entities/User";
+import Joi from "@hapi/joi";
 
 const usersRoutes = {
   name: "users",
@@ -30,22 +32,39 @@ const usersRoutes = {
       {
         method: "POST",
         path: "/v1/users",
+        options: {
+          validate: {
+            payload: Joi.object({
+              firstName: Joi.string().required(),
+              lastName: Joi.string().required(),
+              email: Joi.string().required(),
+              password: Joi.string().required(),
+            }),
+          },
+        },
         handler: async function (request: Request, h: ResponseToolkit) {
-          const prisma = new PrismaClient();
+          const prismaRepository = new PrismaUserRepository();
+
+          const { firstName, lastName, email, password } = request.payload as {
+            firstName: string;
+            lastName: string;
+            email: string;
+            password: string;
+          };
+
+          const user = new User({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+          });
 
           try {
-            const user = await prisma.user.create({
-              data: {
-                email: "email@prisma.com",
-                firstName: "John",
-                lastName: "Senna",
-                password: "password",
-              },
-            });
-
-            return user;
+            await prismaRepository.create(user);
+            return h.response().code(201);
           } catch (err) {
             console.log(err);
+            return h.response().code(400);
           }
         },
       },

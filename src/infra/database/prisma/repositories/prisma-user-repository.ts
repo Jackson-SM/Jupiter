@@ -7,17 +7,19 @@ const prisma = new PrismaClient();
 
 export class PrismaUserRepository implements UserRepository {
   async findById(id: string): Promise<User | null> {
-    const data = await prisma.user.findUnique({ where: { id: id } });
+    const user = await prisma.user.findUnique({ where: { id: id } });
 
-    if (!data) {
+    if (!user) {
       return null;
     }
 
-    const user = PrismaUserMapper.toDomain(data);
-
-    return user;
+    return PrismaUserMapper.toDomain(user);
   }
   async create(user: User): Promise<void> {
-    throw new Error("Method not implemented.");
+    const raw = PrismaUserMapper.toPrisma(user);
+
+    await prisma.user.create({
+      data: raw,
+    });
   }
 }
