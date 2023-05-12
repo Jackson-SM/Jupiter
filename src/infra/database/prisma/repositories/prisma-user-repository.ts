@@ -15,6 +15,11 @@ export class PrismaUserRepository implements UserRepository {
 
     return PrismaUserMapper.toDomain(user);
   }
+
+  async findByEmail(email: string): Promise<User | null> {
+    throw new Error("Method not implemented.");
+  }
+
   async create(user: User): Promise<void> {
     const raw = PrismaUserMapper.toPrisma(user);
 

@@ -6,7 +6,7 @@ export class Password {
   }
 
   private validateContentLength(password: string): boolean {
-    return password.length >= 3 && password.length <= 50;
+    return password.length >= 3 && password.length <= 80;
   }
 
   constructor(password: string) {
