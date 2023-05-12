@@ -1,6 +1,7 @@
 import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
 import { PrismaClient } from "@prisma/client";
-import { PrismaUserRepository } from "~/infra/database/prisma/repositories/PrismaUserRepository";
+import { PrismaUserRepository } from "../../database/prisma/repositories/prisma-user-repository";
+import { UserViewModel } from "../view-models/user-view-model";
 
 const usersRoutes = {
   name: "users",
@@ -11,9 +12,19 @@ const usersRoutes = {
         method: "GET",
         path: "/v1/users",
         handler: async (request, h) => {
-          const prismaRepository = new PrismaUserRepository(
-            request.server.app.prisma,
+          const prismaRepository = new PrismaUserRepository();
+
+          const user = await prismaRepository.findById(
+            "645d22c31c03050e898f8125",
           );
+
+          if (!user) {
+            return [];
+          }
+
+          const userToHttp = UserViewModel.toHttp(user);
+
+          return userToHttp;
         },
       },
       {
