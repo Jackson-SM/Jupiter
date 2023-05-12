@@ -1,4 +1,3 @@
-import { makeUser } from "../../../../tests/factories/makeUser";
 import { Password } from "./Password";
 
 describe("User", () => {
