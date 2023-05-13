@@ -6,6 +6,7 @@ import {
   tasks,
   comments,
 } from "./infra/http/routes/routes";
+import prisma from "./infra/database/prisma/client/prisma";
 
 export const server: Hapi.Server = Hapi.server({
   port: 3000,
@@ -19,6 +20,7 @@ export async function start(): Promise<Hapi.Server> {
 }
 
 process.on("unhandledRejection", (err) => {
+  prisma.$disconnect();
   console.log(err);
   process.exit(1);
 });

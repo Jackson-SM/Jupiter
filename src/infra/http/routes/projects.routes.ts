@@ -2,7 +2,6 @@ import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
 
 const projectsRoutes = {
   name: "projects",
-  dependencies: ["prisma"],
   register: async function (server: Hapi.Server) {
     server.route([
       {

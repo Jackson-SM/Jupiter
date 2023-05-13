@@ -5,7 +5,6 @@ import createUserPayload from "../payloads/createUserPayload";
 
 const usersRoutes = {
   name: "users",
-  dependencies: ["prisma"],
   register: async function (server: Hapi.Server) {
     server.route([
       {
