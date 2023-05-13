@@ -1,6 +1,5 @@
 import { UserRepository } from "~/domain/repositories/UserRepository";
 import { PrismaUserMapper } from "../mappers/prisma-user-mapper";
-import { PrismaClient } from "@prisma/client";
 import { User } from "../../../../domain/entities/User/User";
 import prisma from "../client/prisma";
 
@@ -13,10 +12,6 @@ export class PrismaUserRepository implements UserRepository {
     }
 
     return PrismaUserMapper.toDomain(user);
-  }
-
-  async findByEmail(email: string): Promise<User | null> {
-    throw new Error("Method not implemented.");
   }
 
   async create(user: User): Promise<void> {
