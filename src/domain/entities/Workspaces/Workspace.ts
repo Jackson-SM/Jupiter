@@ -1,7 +1,7 @@
 import { Replace } from "../../../helpers/Replace";
 import ObjectID from "bson-objectid";
 
-interface WorkspacesProps {
+interface WorkspaceProps {
   title: string;
   description: string;
   creatorId: string;
@@ -9,12 +9,12 @@ interface WorkspacesProps {
   updatedAt: Date;
 }
 
-export class Workspaces {
+export class Workspace {
   private _id: string;
-  private props: WorkspacesProps;
+  private props: WorkspaceProps;
 
   constructor(
-    props: Replace<WorkspacesProps, { createdAt?: Date; updatedAt?: Date }>,
+    props: Replace<WorkspaceProps, { createdAt?: Date; updatedAt?: Date }>,
     _id?: string,
   ) {
     this._id = _id ?? new ObjectID().toHexString();
