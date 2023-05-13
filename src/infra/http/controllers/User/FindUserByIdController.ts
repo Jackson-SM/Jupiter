@@ -10,11 +10,20 @@ class FindUserByIdController {
   public async handle(request: Request, h: ResponseToolkit) {
     const { id } = request.params;
 
-    const { user } = await findUserByIdCase.execute({
-      id: id,
-    });
+    try {
+      const { user } = await findUserByIdCase.execute({
+        id: id,
+      });
 
-    return UserViewModel.toHttp(user);
+      return UserViewModel.toHttp(user);
+    } catch (error: any) {
+      return h
+        .response({
+          statusCode: error.statusCode,
+          message: error.message,
+        })
+        .code(error.statusCode);
+    }
   }
 }
 
