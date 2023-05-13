@@ -25,8 +25,8 @@ export class Workspace {
     };
   }
 
-  get id() {
-    return this.id;
+  get id(): string {
+    return this._id;
   }
 
   get title(): string {
