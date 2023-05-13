@@ -2,6 +2,7 @@ import { Request, ResponseToolkit } from "@hapi/hapi";
 import { FindUserByIdCase } from "../../../../application/use-cases/users/find-user-by-id-case";
 import { PrismaUserRepository } from "../../../database/prisma/repositories/prisma-user-repository";
 import { UserViewModel } from "../../view-models/user-view-model";
+import { UserNotFound } from "../../../../application/use-cases/users/errors/UserNotFound";
 
 class FindUserByIdController {
   constructor(private findUserByIdCase: FindUserByIdCase) {}
@@ -12,10 +13,6 @@ class FindUserByIdController {
     const { user } = await findUserByIdCase.execute({
       id: id,
     });
-
-    if (!user) {
-      return null;
-    }
 
     return UserViewModel.toHttp(user);
   }
