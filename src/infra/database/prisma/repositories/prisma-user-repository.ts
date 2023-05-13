@@ -2,8 +2,7 @@ import { UserRepository } from "~/domain/repositories/UserRepository";
 import { PrismaUserMapper } from "../mappers/prisma-user-mapper";
 import { PrismaClient } from "@prisma/client";
 import { User } from "../../../../domain/entities/User/User";
-
-const prisma = new PrismaClient();
+import prisma from "../client/prisma";
 
 export class PrismaUserRepository implements UserRepository {
   async findById(id: string): Promise<User | null> {
