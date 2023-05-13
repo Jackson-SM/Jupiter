@@ -25,6 +25,10 @@ export class Workspace {
     };
   }
 
+  get id() {
+    return this.id;
+  }
+
   get title(): string {
     return this.props.title;
   }
