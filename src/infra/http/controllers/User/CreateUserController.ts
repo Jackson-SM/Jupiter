@@ -32,7 +32,9 @@ class CreateUserController {
       const token = jwt.sign(payload, secretKey!, { expiresIn: 60 * 60 * 24 }); // 24 hours
       return h.response({ user: user, token: token }).code(201);
     } catch (err: any) {
-      return h.response({ message: err.message }).code(400);
+      return h
+        .response({ statusCode: err.statusCode, message: err.message })
+        .code(err.statusCode);
     }
   }
 }
