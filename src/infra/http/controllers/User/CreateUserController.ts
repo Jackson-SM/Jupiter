@@ -4,6 +4,8 @@ import { PrismaUserRepository } from "../../../database/prisma/repositories/pris
 import bcrypt from "bcrypt";
 import { Password } from "../../../../domain/entities/User/Password";
 import { CreateUserBody } from "../../dtos/create-user-body";
+import jwt from "jsonwebtoken";
+import { UserViewModel } from "../../view-models/user-view-model";
 
 class CreateUserController {
   constructor(private createUserCase: CreateUserCase) {}
@@ -15,13 +17,20 @@ class CreateUserController {
     try {
       const passwordHash = await bcrypt.hash(password, 10);
 
-      await createUserCase.execute({
+      const { user: userCreated } = await createUserCase.execute({
         firstName,
         lastName,
         email,
         password: new Password(passwordHash),
       });
-      return h.response().code(201);
+
+      const payload = { id: userCreated.id, email: userCreated.email };
+      const secretKey = process.env.SECRET_KEY;
+
+      const user = UserViewModel.toHttp(userCreated);
+
+      const token = jwt.sign(payload, secretKey!, { expiresIn: 60 * 60 * 24 }); // 24 hours
+      return h.response({ user: user, token: token }).code(201);
     } catch (err: any) {
       return h.response({ message: err.message }).code(400);
     }
