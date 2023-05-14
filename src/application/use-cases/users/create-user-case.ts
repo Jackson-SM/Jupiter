@@ -1,6 +1,7 @@
 import { User } from "../../../domain/entities/User/User";
 import { Password } from "../../../domain/entities/User/Password";
 import { UserRepository } from "~/domain/repositories/UserRepository";
+import { UserAlreadyExists } from "./errors/UserAlreadyExists";
 
 interface CreateUserRequest {
   firstName: string;
@@ -27,6 +28,12 @@ export class CreateUserCase {
       email,
       password: password,
     });
+
+    const userExists = await this.userRepository.findByEmail(email);
+
+    if (userExists) {
+      throw new UserAlreadyExists();
+    }
 
     await this.userRepository.create(user);
 
