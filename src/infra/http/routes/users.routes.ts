@@ -11,6 +11,9 @@ const usersRoutes = {
         method: "GET",
         path: "/v1/users/{id}",
         handler: findUserByIdController.handle,
+        options: {
+          auth: false,
+        },
       },
       {
         method: "POST",
@@ -20,6 +23,7 @@ const usersRoutes = {
           validate: {
             payload: createUserPayload,
           },
+          auth: false,
         },
       },
     ]);
