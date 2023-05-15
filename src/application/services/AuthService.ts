@@ -1,7 +1,7 @@
 import { User } from "../../domain/entities/User/User";
 import { sign, verify } from "jsonwebtoken";
 
-interface JwtPayload {
+export interface JwtPayload {
   id: string;
   email: string;
 }
@@ -15,14 +15,14 @@ class AuthService {
 
   async generateToken(user: User): Promise<string> {
     const payload: JwtPayload = { id: user.id, email: user.email };
-    const token = await sign(payload, this.jwtSecret, {
-      expiresIn: (60 * 60) & 24, // expire in 25 hours
+    const token = sign(payload, this.jwtSecret, {
+      expiresIn: 60 * 60 * 24, // expire in 25 hours
     });
     return token;
   }
 
   async verifyToken(token: string): Promise<JwtPayload> {
-    const payload = (await verify(token, this.jwtSecret)) as JwtPayload;
+    const payload = verify(token, this.jwtSecret) as JwtPayload;
     return payload;
   }
 }
