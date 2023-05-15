@@ -1,15 +1,15 @@
-import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
+import Hapi from "@hapi/hapi";
+import { authMiddleware } from "../middlewares/authMiddleware";
+import { createWorkspaceController } from "../controllers/Workspace/CreateWorkspaceController";
 
 const workspacesRoutes = {
   name: "workspaces",
   register: async function (server: Hapi.Server) {
     server.route([
       {
-        method: "GET",
+        method: "POST",
         path: "/v1/workspaces",
-        handler: function (request: Request, h: ResponseToolkit) {
-          return "Hello World";
-        },
+        handler: createWorkspaceController.handler,
       },
     ]);
   },
