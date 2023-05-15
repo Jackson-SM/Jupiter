@@ -7,6 +7,7 @@ import {
   comments,
 } from "./infra/http/routes/routes";
 import prisma from "./infra/database/prisma/client/prisma";
+import { authMiddleware } from "./infra/http/middlewares/authMiddleware";
 
 export const server: Hapi.Server = Hapi.server({
   port: 3000,
@@ -14,6 +15,9 @@ export const server: Hapi.Server = Hapi.server({
 });
 
 export async function start(): Promise<Hapi.Server> {
+  server.auth.scheme("bearer", authMiddleware);
+  server.auth.strategy("default", "bearer");
+  server.auth.default("default");
   await server.register([users, workspaces, projects, tasks, comments]);
   await server.start();
   return server;
