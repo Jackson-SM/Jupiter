@@ -1037,6 +1037,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/boom@^7.3.2":
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/@types/boom/-/boom-7.3.2.tgz#6269480d11098c26cfbfca5059403902a530847a"
+  integrity sha512-W8+6CANZz/BmgzATboKXvEDtO3SHSj86omcU/2pMCkUQhqhgucB8sgcmdRadXDEvXFRiRhME0rcyj1GIj3LC9w==
+
 "@types/graceful-fs@^4.1.3":
   version "4.1.6"
   resolved "https://registry.yarnpkg.com/@types/graceful-fs/-/graceful-fs-4.1.6.tgz#e14b2576a1c25026b7f02ede1de3b84c3a1efeae"
