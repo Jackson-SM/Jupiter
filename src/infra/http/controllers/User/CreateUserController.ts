@@ -6,6 +6,7 @@ import { Password } from "../../../../domain/entities/User/Password";
 import { CreateUserBody } from "../../dtos/create-user-body";
 import jwt from "jsonwebtoken";
 import { UserViewModel } from "../../view-models/user-view-model";
+import authService from "../../../../application/services/AuthService";
 
 class CreateUserController {
   constructor(private createUserCase: CreateUserCase) {}
@@ -24,12 +25,8 @@ class CreateUserController {
         password: new Password(passwordHash),
       });
 
-      const payload = { id: userCreated.id, email: userCreated.email };
-      const secretKey = process.env.SECRET_KEY;
-
+      const token = await authService.generateToken(userCreated);
       const user = UserViewModel.toHttp(userCreated);
-
-      const token = jwt.sign(payload, secretKey!, { expiresIn: 60 * 60 * 24 }); // 24 hours
       return h.response({ user: user, token: token }).code(201);
     } catch (err: any) {
       return h
