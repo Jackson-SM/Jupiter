@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 import { UserViewModel } from "../../view-models/user-view-model";
 import authService from "../../../../application/services/AuthService";
 
-class CreateUserController {
+export class CreateUserController {
   constructor(private createUserCase: CreateUserCase) {}
 
   public async handle(request: Request, h: ResponseToolkit) {
@@ -18,7 +18,7 @@ class CreateUserController {
     try {
       const passwordHash = await bcrypt.hash(password, 10);
 
-      const { user: userCreated } = await createUserCase.execute({
+      const { user: userCreated } = await this.createUserCase.execute({
         firstName,
         lastName,
         email,
@@ -35,9 +35,3 @@ class CreateUserController {
     }
   }
 }
-
-const prismaRepository = new PrismaUserRepository();
-const createUserCase = new CreateUserCase(prismaRepository);
-const createUserController = new CreateUserController(createUserCase);
-
-export default createUserController;
