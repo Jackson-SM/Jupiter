@@ -21,7 +21,7 @@ describe("Workspace", () => {
   });
 
   it("should return an user by id", async () => {
-    const workspace = await findWorkspaceByIdCase.execute({
+    const { workspace } = await findWorkspaceByIdCase.execute({
       id: workspaceTesting.id,
     });
 
