@@ -5,7 +5,7 @@ import { UserViewModel } from "../../view-models/user-view-model";
 export class FindUserByIdController {
   constructor(private findUserByIdCase: FindUserByIdCase) {}
 
-  public async handle(request: Request, h: ResponseToolkit) {
+  public handle = async (request: Request, h: ResponseToolkit) => {
     const { id } = request.params;
 
     try {
@@ -22,5 +22,5 @@ export class FindUserByIdController {
         })
         .code(error.statusCode);
     }
-  }
+  };
 }

@@ -6,7 +6,7 @@ import { WorkspaceViewModel } from "../../view-models/workspace-view-model";
 export class CreateWorkspaceController {
   constructor(private createWorkspaceCase: CreateWorkspaceCase) {}
 
-  async handler(request: Request, h: ResponseToolkit) {
+  public handler = async (request: Request, h: ResponseToolkit) => {
     const { title, description } = request.payload as ICreateWorkspaceBody;
     const { id } = request.auth.credentials;
 
@@ -21,5 +21,5 @@ export class CreateWorkspaceController {
     } catch (err: any) {
       h.response({ message: err.message }).code(err.statusCode);
     }
-  }
+  };
 }

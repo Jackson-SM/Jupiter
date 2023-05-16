@@ -11,7 +11,7 @@ import authService from "../../../../application/services/AuthService";
 export class CreateUserController {
   constructor(private createUserCase: CreateUserCase) {}
 
-  public async handle(request: Request, h: ResponseToolkit) {
+  public handle = async (request: Request, h: ResponseToolkit) => {
     const { firstName, lastName, email, password } =
       request.payload as CreateUserBody;
 
@@ -33,5 +33,5 @@ export class CreateUserController {
         .response({ statusCode: err.statusCode, message: err.message })
         .code(err.statusCode);
     }
-  }
+  };
 }

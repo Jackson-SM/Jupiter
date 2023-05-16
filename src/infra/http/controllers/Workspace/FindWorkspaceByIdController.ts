@@ -6,7 +6,7 @@ import { WorkspaceViewModel } from "../../view-models/workspace-view-model";
 export class FindWorkspaceByIdController {
   constructor(private findWorkspaceByIdCase: FindWorkspaceByIdCase) {}
 
-  async handler(request: Request, h: ResponseToolkit) {
+  public handler = async (request: Request, h: ResponseToolkit) => {
     const { id } = request.params as { id: string };
 
     try {
@@ -18,5 +18,5 @@ export class FindWorkspaceByIdController {
     } catch (err: any) {
       return h.response({ message: err.message }).code(err.statusCode);
     }
-  }
+  };
 }
