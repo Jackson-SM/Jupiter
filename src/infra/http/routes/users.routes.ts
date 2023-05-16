@@ -1,7 +1,9 @@
 import Hapi from "@hapi/hapi";
-import findUserByIdController from "../controllers/User/FindUserByIdController";
-import createUserController from "../controllers/User/CreateUserController";
 import createUserPayload from "../payloads/createUserPayload";
+import {
+  createUserController,
+  findUserByIdController,
+} from "../controllers/User";
 
 const usersRoutes = {
   name: "users",

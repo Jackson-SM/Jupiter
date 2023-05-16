@@ -1,5 +1,4 @@
 import Hapi from "@hapi/hapi";
-import { authMiddleware } from "../middlewares/authMiddleware";
 import { createWorkspaceController } from "../controllers/Workspace";
 
 const workspacesRoutes = {
