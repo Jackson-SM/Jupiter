@@ -21,7 +21,9 @@ describe("Workspace", () => {
   });
 
   it("should return an user by id", async () => {
-    const workspace = await findWorkspaceByIdCase.execute(workspaceTesting.id);
+    const workspace = await findWorkspaceByIdCase.execute({
+      id: workspaceTesting.id,
+    });
 
     expect(inMemoryWorkspaceRepository.workspaces[0]).toEqual(workspace);
     expect(inMemoryWorkspaceRepository.workspaces).toEqual(
@@ -30,7 +32,7 @@ describe("Workspace", () => {
   });
   it("should throw error if not exists an user with that id", async () => {
     await expect(
-      findWorkspaceByIdCase.execute("aaaaaaaaaaaaaa"),
+      findWorkspaceByIdCase.execute({ id: "aaaaaaaaaaaaaa" }),
     ).rejects.toThrow();
   });
 });
