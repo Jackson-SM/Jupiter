@@ -1,3 +1,4 @@
+import { AuthRepository } from "~/domain/repositories/AuthRepository";
 import { User } from "../../domain/entities/User/User";
 import { sign, verify } from "jsonwebtoken";
 
@@ -6,7 +7,7 @@ export interface JwtPayload {
   email: string;
 }
 
-class AuthService {
+class AuthService implements AuthRepository {
   private readonly jwtSecret: string;
 
   constructor(jwtSecret: string) {
