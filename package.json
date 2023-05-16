@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn build && node ./dist/src/server.js",
-    "dev": "nodemon -e ts --watch src --exec ts-node src/server.ts",
+    "dev": "nodemon -e ts --watch src --exec ts-node -r tsconfig-paths/register src/server.ts",
     "build": "npx tsc",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -28,6 +28,7 @@
     "prisma": "^4.14.0",
     "ts-jest": "29.0.3",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {
