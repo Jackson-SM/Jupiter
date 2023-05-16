@@ -10,7 +10,7 @@ const workspacesRoutes = {
     server.route([
       {
         method: "GET",
-        path: "/v1/workspaces",
+        path: "/v1/workspaces/{id}",
         handler: findWorkspaceByIdController.handler,
       },
       {
