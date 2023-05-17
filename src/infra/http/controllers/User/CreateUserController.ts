@@ -30,10 +30,10 @@ export class CreateUserController {
       });
       const user = UserViewModel.toHttp(userCreated);
       return h.response({ user: user, token: token }).code(201);
-    } catch (err: any) {
+    } catch (error: any) {
       return h
-        .response({ statusCode: err.statusCode, message: err.message })
-        .code(err.statusCode || 500);
+        .response({ statusCode: error.statusCode, message: error.message })
+        .code(error.statusCode || error.output.statusCode || 500);
     }
   };
 }

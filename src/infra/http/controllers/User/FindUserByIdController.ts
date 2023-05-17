@@ -17,10 +17,10 @@ export class FindUserByIdController {
     } catch (error: any) {
       return h
         .response({
-          statusCode: error.statusCode,
+          statusCode: error.statusCode || error.output.statusCode || 500,
           message: error.message,
         })
-        .code(error.statusCode);
+        .code(error.statusCode || error.output.statusCode || 500);
     }
   };
 }
