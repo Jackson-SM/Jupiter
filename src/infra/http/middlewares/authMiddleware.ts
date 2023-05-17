@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { Request, ResponseToolkit, ServerExtType } from "@hapi/hapi";
-import authService from "../../../application/services/AuthService";
 import Boom from "@hapi/boom";
+import jwt from "jsonwebtoken";
+import { JwtPayload } from "~/application/services/AuthenticationService";
 
 export const authMiddleware = (server, options) => {
   return {
@@ -12,13 +15,16 @@ export const authMiddleware = (server, options) => {
         }
 
         const token = authorization.split(" ")[1];
-        const decoded = await authService.verifyToken(token);
+        const decoded = jwt.verify(
+          token,
+          process.env.SECRET_KEY!,
+        ) as JwtPayload;
 
         return h.authenticated({
           credentials: { id: decoded.id, email: decoded.email },
         });
       } catch (err) {
-        console.log(err);
+        throw Boom.unauthorized("Erro de autenticação inesperado");
       }
     },
   };
