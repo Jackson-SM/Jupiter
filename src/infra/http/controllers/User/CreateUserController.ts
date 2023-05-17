@@ -17,13 +17,11 @@ export class CreateUserController {
       request.payload as CreateUserBody;
 
     try {
-      const passwordHash = await bcrypt.hash(password, 10);
-
       const { user: userCreated } = await this.createUserCase.execute({
         firstName,
         lastName,
         email,
-        password: new Password(passwordHash),
+        password: new Password(password),
       });
 
       const token = await this.jwtTokenProvider.generateToken({
