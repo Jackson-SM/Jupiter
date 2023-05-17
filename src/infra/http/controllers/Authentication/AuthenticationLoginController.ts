@@ -14,9 +14,14 @@ export class AuthenticationLoginController {
         password,
       );
 
-      return token;
+      return h.response({ token: token }).code(200);
     } catch (err: any) {
-      h.response(err).code(err.statusCode || 500);
+      return h
+        .response({
+          message: err.message,
+          statusCode: err.statusCode || err.output.statusCode,
+        })
+        .code(err.statusCode || err.output.statusCode || 500);
     }
   };
 }
