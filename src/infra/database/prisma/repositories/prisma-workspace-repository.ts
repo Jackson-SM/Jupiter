@@ -25,6 +25,24 @@ export class PrismaWorkspaceRepository implements WorkspaceRepository {
       throw Boom.badRequest(err.message);
     }
   }
+  async getAllByCreatorId(creatorId: string): Promise<Workspace[]> {
+    try {
+      const raw = await prisma.workspace.findMany({
+        where: { creatorId: creatorId },
+      });
+
+      const workspaces = raw.map((workspace) =>
+        PrismaWorkspaceMapper.toDomain(workspace),
+      );
+
+      return workspaces;
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("Formato de ID Inválido");
+      }
+      throw Boom.badRequest(err.message);
+    }
+  }
   async create(workspace: Workspace): Promise<void> {
     try {
       const raw = PrismaWorkspaceMapper.toPrisma(workspace);
