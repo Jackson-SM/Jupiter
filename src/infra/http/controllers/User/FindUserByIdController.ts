@@ -1,6 +1,7 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { FindUserByIdCase } from "../../../../application/use-cases/users/find-user-by-id-case";
 import { UserViewModel } from "../../view-models/user-view-model";
+import Boom from "@hapi/boom";
 
 export class FindUserByIdController {
   constructor(private findUserByIdCase: FindUserByIdCase) {}
@@ -14,13 +15,10 @@ export class FindUserByIdController {
       });
 
       return UserViewModel.toHttp(user);
-    } catch (error: any) {
+    } catch (err: any) {
       return h
-        .response({
-          statusCode: error.statusCode || error.output.statusCode || 500,
-          message: error.message,
-        })
-        .code(error.statusCode || error.output.statusCode || 500);
+        .response({ message: err.message, statusCode: err.output.statusCode })
+        .code(err.output.statusCode);
     }
   };
 }

@@ -3,6 +3,7 @@ import { Password } from "../../../domain/entities/User/Password";
 import { UserRepository } from "~/domain/repositories/UserRepository";
 import { UserAlreadyExists } from "./errors/UserAlreadyExists";
 import bcrypt from "bcrypt";
+import Boom from "@hapi/boom";
 
 interface CreateUserRequest {
   firstName: string;
@@ -35,7 +36,7 @@ export class CreateUserCase {
     const userExists = await this.userRepository.findByEmail(email);
 
     if (userExists) {
-      throw new UserAlreadyExists();
+      throw Boom.conflict("User already exists");
     }
 
     await this.userRepository.create(user);

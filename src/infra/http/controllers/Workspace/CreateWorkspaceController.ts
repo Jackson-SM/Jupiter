@@ -20,8 +20,8 @@ export class CreateWorkspaceController {
       return h.response(await WorkspaceViewModel.toHttp(workspace)).code(201);
     } catch (err: any) {
       return h
-        .response({ message: err.message })
-        .code(err.statusCode || err.output.statusCode || 500);
+        .response({ message: err.message, statusCode: err.output.statusCode })
+        .code(err.output.statusCode);
     }
   };
 }

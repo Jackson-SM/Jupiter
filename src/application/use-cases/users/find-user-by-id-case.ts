@@ -1,6 +1,6 @@
 import { UserRepository } from "~/domain/repositories/UserRepository";
-import { UserNotFound } from "./errors/UserNotFound";
 import { User } from "~/domain/entities/User/User";
+import Boom from "@hapi/boom";
 
 interface FindUserByIdRequest {
   id: string;
@@ -19,7 +19,7 @@ export class FindUserByIdCase {
     const user = await this.userRepository.findById(id);
 
     if (!user) {
-      throw new UserNotFound();
+      throw Boom.notFound("User not found");
     }
 
     return {

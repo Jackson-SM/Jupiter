@@ -3,7 +3,7 @@ import { CreateUserCase } from "./create-user-case";
 import { makeUser } from "tests/factories/makeUser";
 import { User } from "~/domain/entities/User/User";
 import { FindUserByEmailCase } from "./find-user-by-email-case";
-import { UserNotFound } from "./errors/UserNotFound";
+import Boom from "@hapi/boom";
 
 describe("Find By Id User Case", () => {
   let inMemoryRepository: InMemoryUserRepository;
@@ -29,6 +29,6 @@ describe("Find By Id User Case", () => {
   it("should return new error case user not exists", async () => {
     await expect(
       findUserByEmail.execute({ email: "emailtest@testing.com" }),
-    ).rejects.toThrow(UserNotFound);
+    ).rejects.toThrow(Boom.notFound("User not found"));
   });
 });

@@ -17,11 +17,8 @@ export class AuthenticationLoginController {
       return h.response({ token: token }).code(200);
     } catch (err: any) {
       return h
-        .response({
-          message: err.message,
-          statusCode: err.statusCode || err.output.statusCode,
-        })
-        .code(err.statusCode || err.output.statusCode || 500);
+        .response({ message: err.message, statusCode: err.output.statusCode })
+        .code(err.output.statusCode);
     }
   };
 }

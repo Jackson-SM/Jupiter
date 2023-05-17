@@ -17,8 +17,8 @@ export class FindWorkspaceByIdController {
       return WorkspaceViewModel.toHttp(workspace);
     } catch (err: any) {
       return h
-        .response({ message: err.message })
-        .code(err.statusCode || err.output.statusCode || 500);
+        .response({ message: err.message, statusCode: err.output.statusCode })
+        .code(err.output.statusCode);
     }
   };
 }

@@ -1,7 +1,6 @@
+import Boom from "@hapi/boom";
 import { User } from "../../../domain/entities/User/User";
 import { UserRepository } from "../../../domain/repositories/UserRepository";
-import { UserAlreadyExists } from "./errors/UserAlreadyExists";
-import { UserNotFound } from "./errors/UserNotFound";
 
 interface FindUserByEmailRequest {
   email: string;
@@ -22,7 +21,7 @@ export class FindUserByEmailCase {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
-      throw new UserNotFound();
+      throw Boom.notFound("User not found");
     }
 
     return { user };

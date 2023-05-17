@@ -4,6 +4,7 @@ import { FindUserByIdCase } from "./find-user-by-id-case";
 import { makeUser } from "tests/factories/makeUser";
 import { UserNotFound } from "./errors/UserNotFound";
 import { User } from "~/domain/entities/User/User";
+import Boom from "@hapi/boom";
 
 describe("Find By Id User Case", () => {
   let inMemoryRepository: InMemoryUserRepository;
@@ -28,7 +29,7 @@ describe("Find By Id User Case", () => {
   });
   it("should return new error case user not exists", async () => {
     await expect(findUserById.execute({ id: "a".repeat(20) })).rejects.toThrow(
-      UserNotFound,
+      Boom.notFound("User not found"),
     );
   });
 });

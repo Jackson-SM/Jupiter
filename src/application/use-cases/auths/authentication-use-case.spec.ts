@@ -22,7 +22,6 @@ describe("Authentication", () => {
     );
     const { user } = await createUserCase.execute(makeUser());
     userTesting = user;
-    console.log(user.password);
   });
   it("should create a new token JWT if user is correct", async () => {
     const token = await authenticationUseCase.authenticate(
