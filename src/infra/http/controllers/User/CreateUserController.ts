@@ -1,15 +1,16 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { CreateUserCase } from "../../../../application/use-cases/users/create-user-case";
-import { PrismaUserRepository } from "../../../database/prisma/repositories/prisma-user-repository";
 import bcrypt from "bcrypt";
 import { Password } from "../../../../domain/entities/User/Password";
 import { CreateUserBody } from "../../dtos/create-user-body";
-import jwt from "jsonwebtoken";
 import { UserViewModel } from "../../view-models/user-view-model";
-import authService from "../../../../application/services/AuthService";
+import { JwtTokenProvider } from "~/application/services/JwtTokenProvider";
 
 export class CreateUserController {
-  constructor(private createUserCase: CreateUserCase) {}
+  constructor(
+    private createUserCase: CreateUserCase,
+    private jwtTokenProvider: JwtTokenProvider,
+  ) {}
 
   public handle = async (request: Request, h: ResponseToolkit) => {
     const { firstName, lastName, email, password } =
@@ -25,13 +26,16 @@ export class CreateUserController {
         password: new Password(passwordHash),
       });
 
-      const token = await authService.generateToken(userCreated);
+      const token = await this.jwtTokenProvider.generateToken({
+        id: userCreated.id,
+        email: userCreated.email,
+      });
       const user = UserViewModel.toHttp(userCreated);
       return h.response({ user: user, token: token }).code(201);
     } catch (err: any) {
       return h
         .response({ statusCode: err.statusCode, message: err.message })
-        .code(err.statusCode);
+        .code(err.statusCode || 500);
     }
   };
 }
