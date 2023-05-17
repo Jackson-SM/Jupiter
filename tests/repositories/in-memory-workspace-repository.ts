@@ -13,6 +13,13 @@ export class InMemoryWorkspaceRepository implements WorkspaceRepository {
 
     return user;
   }
+  async getAllByCreatorId(creatorId: string): Promise<Workspace[]> {
+    const workspace = this.workspaces.filter(
+      (workspace) => workspace.creatorId === creatorId,
+    );
+
+    return workspace;
+  }
   async create(workspace: Workspace): Promise<void> {
     this.workspaces.push(workspace);
   }
