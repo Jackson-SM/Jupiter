@@ -2,7 +2,7 @@ import { Request, ResponseToolkit } from "@hapi/hapi";
 import { AuthenticationUseCase } from "~/application/use-cases/auths/authentication-use-case";
 import { IAuthenticateBody } from "../../dtos/authenticate-body";
 
-export class AuthenticationController {
+export class AuthenticationLoginController {
   constructor(private authencationUseCase: AuthenticationUseCase) {}
 
   public handler = async (request: Request, h: ResponseToolkit) => {
