@@ -17,9 +17,9 @@ export class CreateWorkspaceController {
         creatorId: String(id),
       });
 
-      return h.response(WorkspaceViewModel.toHttp(workspace)).code(201);
+      return h.response(await WorkspaceViewModel.toHttp(workspace)).code(201);
     } catch (err: any) {
-      h.response({ message: err.message }).code(err.statusCode);
+      return h.response({ message: err.message }).code(err.statusCode);
     }
   };
 }
