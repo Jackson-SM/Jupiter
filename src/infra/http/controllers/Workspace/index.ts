@@ -3,6 +3,8 @@ import { FindWorkspaceByIdCase } from "~/application/use-cases/workspaces/find-w
 import { PrismaWorkspaceRepository } from "~/infra/database/prisma/repositories/prisma-workspace-repository";
 import { CreateWorkspaceController } from "./CreateWorkspaceController";
 import { FindWorkspaceByIdController } from "./FindWorkspaceByIdController";
+import { GetAllWorkspacesByCreatorIdCase } from "~/application/use-cases/workspaces/get-workspaces-by-creator-id-case";
+import { GetAllWorkspaceByCreatorIdController } from "./GetAllWorkspaceByCreatorIdController";
 
 const repository = new PrismaWorkspaceRepository();
 
@@ -10,6 +12,9 @@ const repository = new PrismaWorkspaceRepository();
 
 const createWorkspaceCase = new CreateWorkspaceCase(repository);
 const findWorkspaceByIdCase = new FindWorkspaceByIdCase(repository);
+const getAllWorkspacesByCreatorIdCase = new GetAllWorkspacesByCreatorIdCase(
+  repository,
+);
 
 //Controllers
 
@@ -19,5 +24,11 @@ const createWorkspaceController = new CreateWorkspaceController(
 const findWorkspaceByIdController = new FindWorkspaceByIdController(
   findWorkspaceByIdCase,
 );
+const getAllWorkspacecByCretorIdController =
+  new GetAllWorkspaceByCreatorIdController(getAllWorkspacesByCreatorIdCase);
 
-export { createWorkspaceController, findWorkspaceByIdController };
+export {
+  createWorkspaceController,
+  findWorkspaceByIdController,
+  getAllWorkspacecByCretorIdController,
+};
