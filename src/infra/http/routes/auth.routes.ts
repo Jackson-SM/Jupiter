@@ -7,7 +7,7 @@ const authRoutes = {
     server.route([
       {
         method: "POST",
-        path: "/v1/login",
+        path: "/v1/login/",
         handler: authenticationLoginController.handler,
         options: {
           auth: false,

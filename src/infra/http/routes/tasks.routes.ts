@@ -6,7 +6,7 @@ const tasksRoutes = {
     server.route([
       {
         method: "GET",
-        path: "/v1/tasks",
+        path: "/v1/tasks/",
         handler: function (request: Request, h: ResponseToolkit) {
           return "Hello World";
         },

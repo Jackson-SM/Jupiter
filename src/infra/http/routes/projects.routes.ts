@@ -6,7 +6,7 @@ const projectsRoutes = {
     server.route([
       {
         method: "GET",
-        path: "/v1/projects",
+        path: "/v1/projects/",
         handler: function (request: Request, h: ResponseToolkit) {
           return "Hello World";
         },

@@ -6,7 +6,7 @@ const commentsRoutes = {
     server.route([
       {
         method: "GET",
-        path: "/v1/comments",
+        path: "/v1/comments/",
         handler: function (request: Request, h: ResponseToolkit) {
           return "Hello World";
         },
