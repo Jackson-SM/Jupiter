@@ -20,7 +20,6 @@ model User {
   updatedAt             DateTime                @default(now()) @updatedAt
   projectsLead          Project[]               @relation("leadId")
   workspaces            Workspace[]
-  tasks                 Task[]
   comments              Comment[]
   projectsParticipating ProjectParticipanting[]
   tasksResponsibles     TasksResponsible[]
@@ -67,8 +66,6 @@ model Task {
   description      String
   project          Project            @relation(fields: [projectId], references: [id])
   projectId        String             @db.ObjectId
-  responsible      User?              @relation(fields: [responsibleId], references: [id])
-  responsibleId    String?            @db.ObjectId
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @default(now()) @updatedAt
   comments         Comment[]
