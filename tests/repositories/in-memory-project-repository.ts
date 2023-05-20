@@ -5,13 +5,13 @@ export class InMemoryProjectRepository implements ProjectRepository {
   public projects: Project[] = [];
 
   async findByid(id: string): Promise<Project | null> {
-    const user = await this.projects.find((workspace) => workspace.id === id);
+    const project = await this.projects.find((project) => project.id === id);
 
-    if (!user) {
+    if (!project) {
       return null;
     }
 
-    return user;
+    return project;
   }
 
   async findByWorkspaceId(workspaceId: string): Promise<Project | null> {
