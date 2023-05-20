@@ -8,7 +8,7 @@ export function makeProject(override?: Override): Project {
   return new Project({
     title: "new comment",
     description: "description of comment",
-    projectLead: makeUser().id,
+    leadId: makeUser().id,
     workspaceId: makeWorkspace().id,
     ...override,
   });

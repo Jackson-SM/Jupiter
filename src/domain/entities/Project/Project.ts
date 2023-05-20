@@ -5,7 +5,7 @@ interface ProjectProps {
   title: string;
   description: string;
   workspaceId: string;
-  projectLeadId: string;
+  leadId: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -51,11 +51,11 @@ export class Project {
     this.props.workspaceId = workspaceId;
   }
 
-  get projectLeadId(): string {
-    return this.props.projectLeadId;
+  get leadId(): string {
+    return this.props.leadId;
   }
-  set projectLead(projectLead: string) {
-    this.props.projectLeadId = projectLead;
+  set leadId(leadId: string) {
+    this.props.leadId = leadId;
   }
 
   get createdAt(): Date {
