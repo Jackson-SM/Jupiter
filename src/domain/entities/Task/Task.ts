@@ -6,6 +6,7 @@ interface TaskProps {
   description: string;
   projectId: string;
   responsibleId: string;
+  comments: string[];
   createdAt: Date;
   updatedAt: Date;
 }
