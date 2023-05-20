@@ -18,7 +18,7 @@ model User {
   password              String
   createdAt             DateTime                @default(now())
   updatedAt             DateTime                @default(now()) @updatedAt
-  projectsLead          Project[]               @relation("projectLead")
+  projectsLead          Project[]               @relation("leadId")
   workspaces            Workspace[]
   tasks                 Task[]
   comments              Comment[]
@@ -43,8 +43,8 @@ model Project {
   description  String
   workspace    Workspace               @relation(fields: [workspaceId], references: [id])
   workspaceId  String                  @db.ObjectId
-  lead         User                    @relation("projectLead", fields: [projectLead], references: [id])
-  projectLead  String                  @db.ObjectId
+  lead         User                    @relation("leadId", fields: [leadId], references: [id])
+  leadId       String                  @db.ObjectId
   tasks        Task[]
   participants ProjectParticipanting[]
   createdAt    DateTime                @default(now())
