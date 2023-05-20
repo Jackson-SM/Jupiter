@@ -10,7 +10,7 @@ interface TaskProps {
   updatedAt: Date;
 }
 
-export class Project {
+export class Task {
   private _id: string;
   private props: TaskProps;
 

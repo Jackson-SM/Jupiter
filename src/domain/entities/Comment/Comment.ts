@@ -10,7 +10,7 @@ interface CommentProps {
   updatedAt: Date;
 }
 
-export class Project {
+export class Comment {
   private _id: string;
   private props: CommentProps;
 
