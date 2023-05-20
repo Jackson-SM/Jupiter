@@ -19,11 +19,11 @@ model User {
   createdAt             DateTime                @default(now())
   updatedAt             DateTime                @default(now()) @updatedAt
   projectsLead          Project[]               @relation("projectLead")
-  Workspaces            Workspace[]
+  workspaces            Workspace[]
   tasks                 Task[]
   comments              Comment[]
   projectsParticipating ProjectParticipanting[]
-  TasksResponsible      TasksResponsible[]
+  tasksResponsibles     TasksResponsible[]
 }
 
 model Workspace {
@@ -71,8 +71,8 @@ model Task {
   responsibleId    String?            @db.ObjectId
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @default(now()) @updatedAt
-  Comment          Comment[]
-  TasksResponsible TasksResponsible[]
+  comments         Comment[]
+  tasksResponsible TasksResponsible[]
 }
 
 model TasksResponsible {
