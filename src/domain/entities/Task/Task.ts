@@ -5,8 +5,7 @@ interface TaskProps {
   title: string;
   description: string;
   projectId: string;
-  responsibleId: string;
-  comments: string[];
+  responsibleId: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -52,10 +51,10 @@ export class Task {
     this.props.projectId = projectId;
   }
 
-  get responsibleId(): string {
+  get responsibleId(): string | null {
     return this.props.responsibleId;
   }
-  set responsibleId(responsibleId: string) {
+  set responsibleId(responsibleId: string | null) {
     this.props.responsibleId = responsibleId;
   }
 
