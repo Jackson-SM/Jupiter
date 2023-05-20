@@ -1,12 +1,14 @@
 import { Replace } from "~/helpers/Replace";
 import ObjectID from "bson-objectid";
 import { Password } from "./Password";
+import { Workspace } from "../Workspaces/Workspace";
 
 interface UserProps {
   firstName: string;
   lastName: string;
   email: string;
   password: Password;
+  workspaces?: Workspace[];
   createdAt: Date;
   updatedAt: Date;
 }
