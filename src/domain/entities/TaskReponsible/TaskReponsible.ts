@@ -8,7 +8,7 @@ interface TaskResponsibleProps {
   updatedAt: Date;
 }
 
-export class TaskResponsable {
+export class TaskResponsible {
   private _id: string;
   private props: TaskResponsibleProps;
 
