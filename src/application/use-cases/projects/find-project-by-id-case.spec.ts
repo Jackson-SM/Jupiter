@@ -4,7 +4,7 @@ import { FindProjectByIdCase } from "./find-project-by-id-case";
 import { Project } from "~/domain/entities/Project/Project";
 import { makeProject } from "tests/factories/makeProject";
 
-describe("Create Project Case", () => {
+describe("Find Project By Id Case", () => {
   let inMemoryProjectRepository: InMemoryProjectRepository;
   let createProjectCase: CreateProjectCase;
   let findProjectByIdCase: FindProjectByIdCase;
