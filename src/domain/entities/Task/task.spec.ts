@@ -1,6 +1,6 @@
 import { Task } from "./Task";
 
-describe("User", () => {
+describe("Task", () => {
   it("should create a new user instance", () => {
     const task = new Task({
       title: "title",
