@@ -2,8 +2,7 @@ import ObjectID from "bson-objectid";
 import { Replace } from "~/helpers/Replace";
 
 interface CommentProps {
-  title: string;
-  description: string;
+  content: string;
   userId: string;
   taskId: string;
   createdAt: Date;
@@ -30,18 +29,11 @@ export class Comment {
     return this._id;
   }
 
-  get title(): string {
-    return this.props.title;
+  get content(): string {
+    return this.props.content;
   }
-  set title(title: string) {
-    this.props.title = title;
-  }
-
-  get description(): string {
-    return this.props.description;
-  }
-  set description(description: string) {
-    this.props.description = description;
+  set content(content: string) {
+    this.props.content = content;
   }
 
   get userId(): string {
