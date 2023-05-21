@@ -1,6 +1,5 @@
 import { Task } from "../../src/domain/entities/Task/Task";
 import { makeUser } from "./makeUser";
-import { makeProject } from "./makeProject";
 
 type Override = Partial<Task>;
 
