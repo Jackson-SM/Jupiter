@@ -1,8 +1,10 @@
 import { Task } from "../entities/Task/Task";
+import { TaskResponsible } from "../entities/TaskReponsible/TaskReponsible";
 
 export interface TaskRepository {
   create(task: Task): Promise<void>;
-  findByid(id: string): Promise<Task | null>;
+  findById(id: string): Promise<Task | null>;
   findByProjectId(projectId: string): Promise<Task[]>;
   findByResponsibleId(responsibleId: string): Promise<Task[]>;
+  addResponsible(userId: string, taskId: string): Promise<void>;
 }

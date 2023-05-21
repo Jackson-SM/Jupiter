@@ -1,13 +1,12 @@
-import { Project } from "~/domain/entities/Project/Project";
 import { Task } from "~/domain/entities/Task/Task";
 import { TaskResponsible } from "~/domain/entities/TaskReponsible/TaskReponsible";
 import { TaskRepository } from "~/domain/repositories/TaskRepository";
 
 export class InMemoryTaskRepository implements TaskRepository {
   public tasks: Task[] = [];
-  public taskResponsible: TaskResponsible[];
+  public taskResponsible: TaskResponsible[] = [];
 
-  async findByid(id: string): Promise<Task | null> {
+  async findById(id: string): Promise<Task | null> {
     const task = this.tasks.find((task) => task.id === id);
 
     if (!task) {
@@ -32,6 +31,10 @@ export class InMemoryTaskRepository implements TaskRepository {
       taskRelation.includes(task.id),
     );
     return tasksResponsible;
+  }
+  async addResponsible(userId: string, taskId: string): Promise<void> {
+    const task = new TaskResponsible({ userId, taskId });
+    this.taskResponsible.push(task);
   }
   async create(task: Task): Promise<void> {
     this.tasks.push(task);
