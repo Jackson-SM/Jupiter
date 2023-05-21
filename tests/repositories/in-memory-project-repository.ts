@@ -4,7 +4,7 @@ import { ProjectRepository } from "~/domain/repositories/ProjectRepository";
 export class InMemoryProjectRepository implements ProjectRepository {
   public projects: Project[] = [];
 
-  async findByid(id: string): Promise<Project | null> {
+  async findById(id: string): Promise<Project | null> {
     const project = await this.projects.find((project) => project.id === id);
 
     if (!project) {
@@ -14,26 +14,18 @@ export class InMemoryProjectRepository implements ProjectRepository {
     return project;
   }
 
-  async findByWorkspaceId(workspaceId: string): Promise<Project | null> {
-    const project = this.projects.find(
+  async findAllByWorkspaceId(workspaceId: string): Promise<Project[]> {
+    const project = this.projects.filter(
       (project) => project.workspaceId === workspaceId,
     );
-
-    if (!project) {
-      return null;
-    }
 
     return project;
   }
 
-  async findByLeadId(leadId: string): Promise<Project | null> {
-    const project = this.projects.find(
-      (project) => project.projectLeadId === leadId,
+  async findAllByLeadId(leadId: string): Promise<Project[]> {
+    const project = this.projects.filter(
+      (project) => project.leadId === leadId,
     );
-
-    if (!project) {
-      return null;
-    }
 
     return project;
   }
