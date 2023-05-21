@@ -8,14 +8,24 @@ interface CreateProjectCaseRequest {
   leadId: string;
 }
 
+interface CreateProjectCaseResponse {
+  project: Project;
+}
+
 export class CreateProjectCase {
   constructor(private projectRepository: ProjectRepository) {}
 
-  async execute(request: CreateProjectCaseRequest) {
+  async execute(
+    request: CreateProjectCaseRequest,
+  ): Promise<CreateProjectCaseResponse> {
     const { title, description, workspaceId, leadId } = request;
 
     const project = new Project({ title, description, workspaceId, leadId });
 
     await this.projectRepository.create(project);
+
+    return {
+      project,
+    };
   }
 }
