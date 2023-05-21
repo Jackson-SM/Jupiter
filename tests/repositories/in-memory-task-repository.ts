@@ -2,7 +2,7 @@ import { Project } from "~/domain/entities/Project/Project";
 import { Task } from "~/domain/entities/Task/Task";
 import { TaskRepository } from "~/domain/repositories/TaskRepository";
 
-export class InMemoryProjectRepository implements TaskRepository {
+export class InMemoryTaskRepository implements TaskRepository {
   public tasks: Task[] = [];
 
   async findByid(id: string): Promise<Task | null> {
