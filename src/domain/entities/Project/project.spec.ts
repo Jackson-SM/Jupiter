@@ -1,7 +1,7 @@
 import { Project } from "./Project";
 
 describe("Project", () => {
-  it("should create a new user instance", () => {
+  it("should create a new project instance", () => {
     const project = new Project({
       title: "title",
       description: "description",
