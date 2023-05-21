@@ -6,8 +6,7 @@ type Override = Partial<Comment>;
 
 export function makeComment(override?: Override): Comment {
   return new Comment({
-    title: "new Comment",
-    description: "description of the Comment",
+    content: "new Comment",
     userId: makeUser().id,
     taskId: makeTask().id,
     ...override,
