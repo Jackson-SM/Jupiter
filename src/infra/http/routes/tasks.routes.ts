@@ -1,4 +1,4 @@
-import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
+import Hapi from "@hapi/hapi";
 import { createTaskController } from "../controllers/Task";
 
 const tasksRoutes = {
