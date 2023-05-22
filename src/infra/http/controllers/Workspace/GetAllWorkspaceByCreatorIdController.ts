@@ -8,11 +8,11 @@ export class GetAllWorkspaceByCreatorIdController {
   ) {}
 
   public handler = async (request: Request, h: ResponseToolkit) => {
-    const { id } = request.auth.credentials;
+    const { id } = request.params;
 
     try {
       const { workspaces } = await this.getAllWorkspaceByCreatorIdCase.execute({
-        creatorId: String(id),
+        creatorId: id,
       });
 
       const workspacesFormat = await Promise.all(
@@ -21,7 +21,7 @@ export class GetAllWorkspaceByCreatorIdController {
         }),
       );
 
-      return workspacesFormat;
+      return h.response(workspacesFormat);
     } catch (err: any) {
       return h
         .response({ message: err.message, statusCode: err.output.statusCode })
