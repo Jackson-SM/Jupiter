@@ -12,6 +12,11 @@ const workspacesRoutes = {
     server.route([
       {
         method: "GET",
+        path: "/v1/workspaces/",
+        handler: getAllWorkspacecByCretorIdController.handler,
+      },
+      {
+        method: "GET",
         path: "/v1/workspaces/{id}/",
         handler: findWorkspaceByIdController.handler,
       },

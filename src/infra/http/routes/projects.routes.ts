@@ -1,7 +1,8 @@
-import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
+import Hapi from "@hapi/hapi";
 import {
   addParticipantInProjectController,
   createProjectController,
+  findAllParticipantsByProjectIdController,
   findProjectByIdController,
 } from "../controllers/Project";
 
@@ -15,14 +16,19 @@ const projectsRoutes = {
         handler: createProjectController.handler,
       },
       {
+        method: "GET",
+        path: "/v1/projects/{id}/",
+        handler: findProjectByIdController.handler,
+      },
+      {
         method: "POST",
         path: "/v1/projects/participants/",
         handler: addParticipantInProjectController.handler,
       },
       {
         method: "GET",
-        path: "/v1/projects/{id}",
-        handler: findProjectByIdController.handler,
+        path: "/v1/projects/{id}/participants/",
+        handler: findAllParticipantsByProjectIdController.handler,
       },
     ]);
   },

@@ -4,10 +4,7 @@ import {
   createUserController,
   findUserByIdController,
 } from "../controllers/User";
-import {
-  findAllParticipantsByProjectIdController,
-  findProjectByLeadIdController,
-} from "../controllers/Project";
+import { findProjectByLeadIdController } from "../controllers/Project";
 import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
 
 const usersRoutes = {
@@ -21,11 +18,6 @@ const usersRoutes = {
         options: {
           auth: false,
         },
-      },
-      {
-        method: "GET",
-        path: "/v1/users/{id}/projects/",
-        handler: findAllParticipantsByProjectIdController.handler,
       },
       {
         method: "GET",
