@@ -24,6 +24,14 @@ export class InMemoryCommentRepository implements CommentRepository {
     return comment;
   }
 
+  async findAllByUserId(userId: string): Promise<Comment[]> {
+    const comments = await this.comments.filter(
+      (comment) => comment.userId === userId,
+    );
+
+    return comments;
+  }
+
   async findAllCommentsByTaskId(taskId: string): Promise<Comment[]> {
     const comment = this.comments.filter(
       (comment) => comment.taskId === taskId,
