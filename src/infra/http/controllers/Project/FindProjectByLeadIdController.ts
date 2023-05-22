@@ -1,5 +1,6 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { FindProjectByLeadIdCase } from "~/application/use-cases/projects/find-project-by-lead-id-case";
+import { ProjectViewModel } from "../../view-models/project-view-model";
 
 export class FindProjectByLeadIdController {
   constructor(private findProjectByLeadIdCase: FindProjectByLeadIdCase) {}
@@ -12,7 +13,11 @@ export class FindProjectByLeadIdController {
         id: id,
       });
 
-      return h.response(projects);
+      const formatProjectsToHttp = projects.map((project) =>
+        ProjectViewModel.toHttp(project),
+      );
+
+      return h.response(formatProjectsToHttp);
     } catch (err: any) {
       console.log(err);
     }
