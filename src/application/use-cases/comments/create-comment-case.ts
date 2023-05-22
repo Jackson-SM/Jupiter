@@ -17,7 +17,10 @@ export class CreateCommentCase {
     request: CreateCommentCaseRequest,
   ): Promise<CreateCommentCaseResponse> {
     const { content, taskId, userId } = request;
+
     const comment = new Comment({ content, taskId, userId });
+
+    await this.commentRepository.create(comment);
 
     return {
       comment,
