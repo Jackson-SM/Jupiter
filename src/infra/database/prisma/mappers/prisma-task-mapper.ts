@@ -8,7 +8,6 @@ export class PrismaTaskMapper {
         title: task.title,
         description: task.description,
         projectId: task.projectId,
-        responsibleId: task.responsibleId,
         createdAt: task.createdAt,
         updatedAt: task.updatedAt,
       },
@@ -22,7 +21,6 @@ export class PrismaTaskMapper {
       title: task.title,
       description: task.description,
       projectId: task.projectId,
-      responsibleId: task.responsibleId,
       createdAt: task.createdAt,
       updatedAt: task.createdAt,
     };
