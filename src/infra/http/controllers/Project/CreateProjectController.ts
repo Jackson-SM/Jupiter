@@ -17,7 +17,7 @@ export class CreateProjectController {
         workspaceId,
       });
 
-      h.response(project).code(201);
+      return h.response(project).code(201);
     } catch (err: any) {
       return h
         .response({ message: err.message, statusCode: err.output.statusCode })
