@@ -5,7 +5,7 @@ import { TaskRepository } from "~/domain/repositories/TaskRepository";
 import { PrismaTaskMapper } from "../mappers/prisma-task-mapper";
 
 export class PrismaTaskRepository implements TaskRepository {
-  async findByid(id: string): Promise<Task | null> {
+  async findById(id: string): Promise<Task | null> {
     try {
       const task = await prisma.task.findUnique({ where: { id: id } });
 
@@ -50,6 +50,18 @@ export class PrismaTaskRepository implements TaskRepository {
     } catch (err: any) {
       if (err.code === "P2023") {
         throw Boom.badRequest("ID Invalid");
+      }
+      throw Boom.badRequest(err.message);
+    }
+  }
+  async addResponsible(userId: string, taskId: string): Promise<void> {
+    try {
+      await prisma.tasksResponsible.create({
+        data: { userId, taskId },
+      });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Inválido");
       }
       throw Boom.badRequest(err.message);
     }
