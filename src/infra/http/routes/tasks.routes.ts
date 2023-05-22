@@ -1,15 +1,14 @@
 import Hapi, { Request, ResponseToolkit } from "@hapi/hapi";
+import { createTaskController } from "../controllers/Task";
 
 const tasksRoutes = {
   name: "tasks",
   register: async function (server: Hapi.Server) {
     server.route([
       {
-        method: "GET",
+        method: "POST",
         path: "/v1/tasks/",
-        handler: function (request: Request, h: ResponseToolkit) {
-          return "Hello World";
-        },
+        handler: createTaskController.handler,
       },
     ]);
   },
