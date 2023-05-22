@@ -1,5 +1,6 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { FindProjectByIdCase } from "~/application/use-cases/projects/find-project-by-id-case";
+import { ProjectViewModel } from "../../view-models/project-view-model";
 
 export class FindProjectByIdController {
   constructor(private findProjectByIdCase: FindProjectByIdCase) {}
@@ -12,7 +13,9 @@ export class FindProjectByIdController {
         id: id,
       });
 
-      return h.response(project);
+      const projectFormatToHttp = ProjectViewModel.toHttp(project);
+
+      return h.response(projectFormatToHttp);
     } catch (err: any) {
       return h
         .response({ message: err.message, statusCode: err.output.statusCode })
