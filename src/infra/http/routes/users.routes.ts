@@ -4,6 +4,10 @@ import {
   createUserController,
   findUserByIdController,
 } from "../controllers/User";
+import {
+  findAllParticipantsByProjectIdController,
+  findProjectByLeadIdController,
+} from "../controllers/Project";
 
 const usersRoutes = {
   name: "users",
@@ -16,6 +20,16 @@ const usersRoutes = {
         options: {
           auth: false,
         },
+      },
+      {
+        method: "GET",
+        path: "/v1/users/{id}/projects/",
+        handler: findAllParticipantsByProjectIdController.handler,
+      },
+      {
+        method: "GET",
+        path: "/v1/users/{id}/projects-lead/",
+        handler: findProjectByLeadIdController.handler,
       },
       {
         method: "POST",

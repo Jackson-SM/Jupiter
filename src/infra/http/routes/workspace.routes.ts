@@ -4,6 +4,7 @@ import {
   findWorkspaceByIdController,
   getAllWorkspacecByCretorIdController,
 } from "../controllers/Workspace";
+import { findProjectByWorkspaceIdIdController } from "../controllers/Project";
 
 const workspacesRoutes = {
   name: "workspaces",
@@ -16,8 +17,13 @@ const workspacesRoutes = {
       },
       {
         method: "GET",
-        path: "/v1/workspaces/{id}",
+        path: "/v1/workspaces/{id}/",
         handler: findWorkspaceByIdController.handler,
+      },
+      {
+        method: "GET",
+        path: "/v1/workspaces/{id}/projects/",
+        handler: findProjectByWorkspaceIdIdController.handler,
       },
       {
         method: "POST",
