@@ -8,6 +8,7 @@ import {
   findAllParticipantsByProjectIdController,
   findProjectByLeadIdController,
 } from "../controllers/Project";
+import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
 
 const usersRoutes = {
   name: "users",
@@ -30,6 +31,11 @@ const usersRoutes = {
         method: "GET",
         path: "/v1/users/{id}/projects-lead/",
         handler: findProjectByLeadIdController.handler,
+      },
+      {
+        method: "GET",
+        path: "/v1/users/{id}/workspaces/",
+        handler: getAllWorkspacecByCretorIdController.handler,
       },
       {
         method: "POST",
