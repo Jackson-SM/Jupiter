@@ -1,5 +1,6 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { FindTaskByResponsibleIdCase } from "~/application/use-cases/tasks/find-task-by-responsible-id-case";
+import { TaskViewModel } from "../../view-models/task-view-model";
 
 export class FindTaskByResponsibleIdController {
   constructor(
@@ -13,6 +14,8 @@ export class FindTaskByResponsibleIdController {
       id: String(id),
     });
 
-    return h.response(tasks);
+    const tasksFormatHttp = tasks.map((task) => TaskViewModel.toHttp(task));
+
+    return h.response(tasksFormatHttp);
   };
 }
