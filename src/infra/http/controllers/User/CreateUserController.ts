@@ -16,24 +16,18 @@ export class CreateUserController {
     const { firstName, lastName, email, password } =
       request.payload as CreateUserBody;
 
-    try {
-      const { user: userCreated } = await this.createUserCase.execute({
-        firstName,
-        lastName,
-        email,
-        password: new Password(password),
-      });
+    const { user: userCreated } = await this.createUserCase.execute({
+      firstName,
+      lastName,
+      email,
+      password: new Password(password),
+    });
 
-      const token = await this.jwtTokenProvider.generateToken({
-        id: userCreated.id,
-        email: userCreated.email,
-      });
-      const user = UserViewModel.toHttp(userCreated);
-      return h.response({ user: user, token: token }).code(201);
-    } catch (err: any) {
-      return h
-        .response({ message: err.message, statusCode: err.output.statusCode })
-        .code(err.output.statusCode);
-    }
+    const token = await this.jwtTokenProvider.generateToken({
+      id: userCreated.id,
+      email: userCreated.email,
+    });
+    const user = UserViewModel.toHttp(userCreated);
+    return h.response({ user: user, token: token }).code(201);
   };
 }

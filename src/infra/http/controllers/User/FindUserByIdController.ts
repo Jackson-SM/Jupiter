@@ -9,16 +9,10 @@ export class FindUserByIdController {
   public handle = async (request: Request, h: ResponseToolkit) => {
     const { id } = request.params;
 
-    try {
-      const { user } = await this.findUserByIdCase.execute({
-        id: id,
-      });
+    const { user } = await this.findUserByIdCase.execute({
+      id: id,
+    });
 
-      return UserViewModel.toHttp(user);
-    } catch (err: any) {
-      return h
-        .response({ message: err.message, statusCode: err.output.statusCode })
-        .code(err.output.statusCode);
-    }
+    return UserViewModel.toHttp(user);
   };
 }

@@ -67,10 +67,17 @@ export class PrismaTaskRepository implements TaskRepository {
     }
   }
   async create(task: Task): Promise<void> {
-    const rawTask = PrismaTaskMapper.toPrisma(task);
+    try {
+      const rawTask = PrismaTaskMapper.toPrisma(task);
 
-    await prisma.task.create({
-      data: rawTask,
-    });
+      await prisma.task.create({
+        data: rawTask,
+      });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Inválido");
+      }
+      throw Boom.badRequest(err.message);
+    }
   }
 }
