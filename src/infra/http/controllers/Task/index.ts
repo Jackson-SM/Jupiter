@@ -5,6 +5,10 @@ import { AddTaskResponsibleController } from "./AddTaskResponsibleController";
 import { AddTaskResponsibleCase } from "~/application/use-cases/tasks/add-task-responsible-case";
 import { FindTaskByResponsibleIdController } from "./FindTaskByResponsibleIdController";
 import { FindTaskByResponsibleIdCase } from "~/application/use-cases/tasks/find-task-by-responsible-id-case";
+import { FindTaskByIdController } from "./FindTaskByIdController";
+import { FindTaskByIdCase } from "~/application/use-cases/tasks/find-task-by-id-case";
+import { FindTaskByProjectIdCase } from "~/application/use-cases/tasks/find-task-by-project-id-case";
+import { FindTaskByProjectIdController } from "./FindTaskByProjectIdController";
 
 const prismaTaskRepository = new PrismaTaskRepository();
 
@@ -12,6 +16,10 @@ const prismaTaskRepository = new PrismaTaskRepository();
 const createTaskCase = new CreateTaskCase(prismaTaskRepository);
 const addTaskResponsibleCase = new AddTaskResponsibleCase(prismaTaskRepository);
 const findTaskByResponsibleIdCase = new FindTaskByResponsibleIdCase(
+  prismaTaskRepository,
+);
+const findTaskByIdCase = new FindTaskByIdCase(prismaTaskRepository);
+const findTaskByProejctIdCase = new FindTaskByProjectIdCase(
   prismaTaskRepository,
 );
 
@@ -23,9 +31,15 @@ const addTaskResponsibleController = new AddTaskResponsibleController(
 const findTaskByResponsibleIdController = new FindTaskByResponsibleIdController(
   findTaskByResponsibleIdCase,
 );
+const findTaskByIdController = new FindTaskByIdController(findTaskByIdCase);
+const findTaskByProjectIdController = new FindTaskByProjectIdController(
+  findTaskByProejctIdCase,
+);
 
 export {
   createTaskController,
   addTaskResponsibleController,
   findTaskByResponsibleIdController,
+  findTaskByIdController,
+  findTaskByProjectIdController,
 };
