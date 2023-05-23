@@ -6,6 +6,7 @@ import {
 } from "../controllers/User";
 import { findProjectByLeadIdController } from "../controllers/Project";
 import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
+import { findTaskByResponsibleIdController } from "../controllers/Task";
 
 const usersRoutes = {
   name: "users",
@@ -18,6 +19,11 @@ const usersRoutes = {
         options: {
           auth: false,
         },
+      },
+      {
+        method: "GET",
+        path: "/v1/users/{id}/tasks/",
+        handler: findTaskByResponsibleIdController.handler,
       },
       {
         method: "GET",
