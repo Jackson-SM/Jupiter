@@ -15,7 +15,6 @@ const findWorkspaceByIdCase = new FindWorkspaceByIdCase(repository);
 const getAllWorkspacesByCreatorIdCase = new GetAllWorkspacesByCreatorIdCase(
   repository,
 );
-
 //Controllers
 
 const createWorkspaceController = new CreateWorkspaceController(
