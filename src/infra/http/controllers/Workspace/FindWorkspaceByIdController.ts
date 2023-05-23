@@ -9,16 +9,10 @@ export class FindWorkspaceByIdController {
   public handler = async (request: Request, h: ResponseToolkit) => {
     const { id } = request.params as { id: string };
 
-    try {
-      const { workspace } = await this.findWorkspaceByIdCase.execute({
-        id: id,
-      });
+    const { workspace } = await this.findWorkspaceByIdCase.execute({
+      id: id,
+    });
 
-      return WorkspaceViewModel.toHttp(workspace);
-    } catch (err: any) {
-      return h
-        .response({ message: err.message, statusCode: err.output.statusCode })
-        .code(err.output.statusCode);
-    }
+    return WorkspaceViewModel.toHttp(workspace);
   };
 }

@@ -10,18 +10,12 @@ export class CreateWorkspaceController {
     const { title, description } = request.payload as ICreateWorkspaceBody;
     const { id } = request.auth.credentials;
 
-    try {
-      const { workspace } = await this.createWorkspaceCase.execute({
-        title,
-        description,
-        creatorId: String(id),
-      });
+    const { workspace } = await this.createWorkspaceCase.execute({
+      title,
+      description,
+      creatorId: String(id),
+    });
 
-      return h.response(await WorkspaceViewModel.toHttp(workspace)).code(201);
-    } catch (err: any) {
-      return h
-        .response({ message: err.message, statusCode: err.output.statusCode })
-        .code(err.output.statusCode);
-    }
+    return h.response(await WorkspaceViewModel.toHttp(workspace)).code(201);
   };
 }
