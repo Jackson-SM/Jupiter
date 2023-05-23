@@ -1,5 +1,8 @@
 import Hapi from "@hapi/hapi";
-import { createTaskController } from "../controllers/Task";
+import {
+  addTaskResponsibleController,
+  createTaskController,
+} from "../controllers/Task";
 
 const tasksRoutes = {
   name: "tasks",
@@ -9,6 +12,11 @@ const tasksRoutes = {
         method: "POST",
         path: "/v1/tasks/",
         handler: createTaskController.handler,
+      },
+      {
+        method: "POST",
+        path: "/v1/tasks/responsibles/",
+        handler: addTaskResponsibleController.handler,
       },
     ]);
   },
