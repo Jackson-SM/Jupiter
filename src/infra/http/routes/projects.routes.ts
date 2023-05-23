@@ -5,6 +5,7 @@ import {
   findAllParticipantsByProjectIdController,
   findProjectByIdController,
 } from "../controllers/Project";
+import { findTaskByProjectIdController } from "../controllers/Task";
 
 const projectsRoutes = {
   name: "projects",
@@ -16,14 +17,19 @@ const projectsRoutes = {
         handler: createProjectController.handler,
       },
       {
-        method: "GET",
-        path: "/v1/projects/{id}/",
-        handler: findProjectByIdController.handler,
-      },
-      {
         method: "POST",
         path: "/v1/projects/participants/",
         handler: addParticipantInProjectController.handler,
+      },
+      {
+        method: "GET",
+        path: "/v1/projects/{id}/tasks/",
+        handler: findTaskByProjectIdController.handler,
+      },
+      {
+        method: "GET",
+        path: "/v1/projects/{id}/",
+        handler: findProjectByIdController.handler,
       },
       {
         method: "GET",
