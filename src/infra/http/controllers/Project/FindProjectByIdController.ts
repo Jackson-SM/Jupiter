@@ -8,18 +8,12 @@ export class FindProjectByIdController {
   public handler = async (request: Request, h: ResponseToolkit) => {
     const { id } = request.params;
 
-    try {
-      const { project } = await this.findProjectByIdCase.execute({
-        id: id,
-      });
+    const { project } = await this.findProjectByIdCase.execute({
+      id: id,
+    });
 
-      const projectFormatToHttp = ProjectViewModel.toHttp(project);
+    const projectFormatToHttp = ProjectViewModel.toHttp(project);
 
-      return h.response(projectFormatToHttp);
-    } catch (err: any) {
-      return h
-        .response({ message: err.message, statusCode: err.output.statusCode })
-        .code(err.output.statusCode);
-    }
+    return h.response(projectFormatToHttp);
   };
 }

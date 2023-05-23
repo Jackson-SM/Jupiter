@@ -9,19 +9,13 @@ export class CreateProjectController {
     const { title, description, leadId, workspaceId } =
       request.payload as ICreateProjectBody;
 
-    try {
-      const { project } = await this.createProjectCase.execute({
-        title,
-        description,
-        leadId,
-        workspaceId,
-      });
+    const { project } = await this.createProjectCase.execute({
+      title,
+      description,
+      leadId,
+      workspaceId,
+    });
 
-      return h.response(project).code(201);
-    } catch (err: any) {
-      return h
-        .response({ message: err.message, statusCode: err.output.statusCode })
-        .code(err.output.statusCode);
-    }
+    return h.response(project).code(201);
   };
 }

@@ -8,18 +8,14 @@ export class FindProjectByLeadIdController {
   public handler = async (request: Request, h: ResponseToolkit) => {
     const { id } = request.params;
 
-    try {
-      const { projects } = await this.findProjectByLeadIdCase.execute({
-        id: id,
-      });
+    const { projects } = await this.findProjectByLeadIdCase.execute({
+      id: id,
+    });
 
-      const formatProjectsToHttp = projects.map((project) =>
-        ProjectViewModel.toHttp(project),
-      );
+    const formatProjectsToHttp = projects.map((project) =>
+      ProjectViewModel.toHttp(project),
+    );
 
-      return h.response(formatProjectsToHttp);
-    } catch (err: any) {
-      console.log(err);
-    }
+    return h.response(formatProjectsToHttp);
   };
 }

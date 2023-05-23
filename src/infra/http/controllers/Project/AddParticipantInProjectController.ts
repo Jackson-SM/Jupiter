@@ -11,17 +11,11 @@ export class AddParticipantInProjectController {
     const { projectId, userId } =
       request.payload as AddParticipantInProjectBody;
 
-    try {
-      await this.addParticipantInProjectCase.execute({
-        projectId,
-        userId,
-      });
+    await this.addParticipantInProjectCase.execute({
+      projectId,
+      userId,
+    });
 
-      return h.response().code(201);
-    } catch (err: any) {
-      return h
-        .response({ message: err.message, statusCode: err.output.statusCode })
-        .code(err.output.statusCode);
-    }
+    return h.response().code(201);
   };
 }
