@@ -6,7 +6,7 @@ export class FindCommentByIdController {
   constructor(private findCommentByIdCase: FindCommentByIdCase) {}
 
   public handler = async (request: Request, h: ResponseToolkit) => {
-    const { id } = request.query;
+    const { id } = request.params;
 
     const { comment } = await this.findCommentByIdCase.execute({ id: id });
 
