@@ -4,6 +4,7 @@ import {
   createTaskController,
   findTaskByIdController,
 } from "../controllers/Task";
+import { findAllCommentsByTaskIdController } from "../controllers/Comment";
 
 const tasksRoutes = {
   name: "tasks",
@@ -13,6 +14,11 @@ const tasksRoutes = {
         method: "GET",
         path: "/v1/tasks/{id}/",
         handler: findTaskByIdController.handler,
+      },
+      {
+        method: "GET",
+        path: "/v1/tasks/{id}/comments/",
+        handler: findAllCommentsByTaskIdController.handler,
       },
       {
         method: "POST",
