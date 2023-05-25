@@ -7,6 +7,7 @@ import {
 import { findProjectByLeadIdController } from "../controllers/Project";
 import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
 import { findTaskByResponsibleIdController } from "../controllers/Task";
+import { findAllCommentsByUserIdController } from "../controllers/Comment";
 
 const usersRoutes = {
   name: "users",
@@ -34,6 +35,11 @@ const usersRoutes = {
         method: "GET",
         path: "/v1/users/{id}/workspaces/",
         handler: getAllWorkspacecByCretorIdController.handler,
+      },
+      {
+        method: "GET",
+        path: "/v1/users/{id}/comments/",
+        handler: findAllCommentsByUserIdController.handler,
       },
       {
         method: "POST",
