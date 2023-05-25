@@ -6,6 +6,7 @@ import {
   findProjectByIdController,
 } from "../controllers/Project";
 import { findTaskByProjectIdController } from "../controllers/Task";
+import payloadParamsId from "../payloads/payloadParamsId";
 
 const projectsRoutes = {
   name: "projects",
@@ -25,16 +26,31 @@ const projectsRoutes = {
         method: "GET",
         path: "/v1/projects/{id}/tasks/",
         handler: findTaskByProjectIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "GET",
         path: "/v1/projects/{id}/",
         handler: findProjectByIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "GET",
         path: "/v1/projects/{id}/participants/",
         handler: findAllParticipantsByProjectIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
     ]);
   },

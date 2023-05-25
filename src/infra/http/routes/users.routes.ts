@@ -8,6 +8,7 @@ import { findProjectByLeadIdController } from "../controllers/Project";
 import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
 import { findTaskByResponsibleIdController } from "../controllers/Task";
 import { findAllCommentsByUserIdController } from "../controllers/Comment";
+import payloadParamsId from "../payloads/payloadParamsId";
 
 const usersRoutes = {
   name: "users",
@@ -19,27 +20,50 @@ const usersRoutes = {
         handler: findUserByIdController.handle,
         options: {
           auth: false,
+          validate: {
+            params: payloadParamsId,
+          },
         },
       },
       {
         method: "GET",
         path: "/v1/users/{id}/tasks/",
         handler: findTaskByResponsibleIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "GET",
         path: "/v1/users/{id}/projects-lead/",
         handler: findProjectByLeadIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "GET",
         path: "/v1/users/{id}/workspaces/",
         handler: getAllWorkspacecByCretorIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "GET",
         path: "/v1/users/{id}/comments/",
         handler: findAllCommentsByUserIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "POST",

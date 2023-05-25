@@ -5,6 +5,7 @@ import {
   getAllWorkspacecByCretorIdController,
 } from "../controllers/Workspace";
 import { findProjectByWorkspaceIdIdController } from "../controllers/Project";
+import payloadParamsId from "../payloads/payloadParamsId";
 
 const workspacesRoutes = {
   name: "workspaces",
@@ -19,11 +20,21 @@ const workspacesRoutes = {
         method: "GET",
         path: "/v1/workspaces/{id}/",
         handler: findWorkspaceByIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "GET",
         path: "/v1/workspaces/{id}/projects/",
         handler: findProjectByWorkspaceIdIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
       },
       {
         method: "POST",
