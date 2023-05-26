@@ -29,8 +29,11 @@ describe("Authentication", () => {
       "password",
     );
 
-    expect(typeof token).toBe("string");
+    expect(typeof token).toBe("object");
     expect(token).toBeDefined();
+    expect(token).toEqual(
+      expect.objectContaining({ user: userTesting, token: token.token }),
+    );
   });
   it("should throw a new error if user not exists", async () => {
     await expect(
