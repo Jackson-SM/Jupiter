@@ -7,6 +7,8 @@ import {
 } from "../controllers/Project";
 import { findTaskByProjectIdController } from "../controllers/Task";
 import payloadParamsId from "../payloads/payloadParamsId";
+import addParticipantProjectPayload from "../payloads/addParticipantProjectPayload";
+import createProjectPayload from "../payloads/createProjectPayload";
 
 const projectsRoutes = {
   name: "projects",
@@ -16,11 +18,21 @@ const projectsRoutes = {
         method: "POST",
         path: "/v1/projects/",
         handler: createProjectController.handler,
+        options: {
+          validate: {
+            payload: createProjectPayload,
+          },
+        },
       },
       {
         method: "POST",
         path: "/v1/projects/participants/",
         handler: addParticipantInProjectController.handler,
+        options: {
+          validate: {
+            payload: addParticipantProjectPayload,
+          },
+        },
       },
       {
         method: "GET",
