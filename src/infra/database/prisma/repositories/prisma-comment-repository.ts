@@ -53,6 +53,18 @@ export class PrismaCommentRepository implements CommentRepository {
       throw Boom.badRequest(err.message);
     }
   }
+
+  async removeComment(commentId: string): Promise<void> {
+    try {
+      await prisma.comment.delete({ where: { id: commentId } });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Invalid");
+      }
+      throw Boom.badRequest(err.message);
+    }
+  }
+
   async create(comment: Comment): Promise<void> {
     const raw = PrismaCommentMapper.toPrisma(comment);
 
