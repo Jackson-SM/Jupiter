@@ -59,11 +59,9 @@ export class InMemoryProjectRepository implements ProjectRepository {
     return users.filter((user) => user !== null) as User[];
   }
   async removeProject(projectId: string): Promise<void> {
-    const index = this.projects.findIndex(
-      (project) => project.id === projectId,
+    const arrayRemoves = this.projects.filter(
+      (project) => project.id !== projectId,
     );
-
-    const arrayRemoves = this.projects.slice(index, 1);
 
     this.projects = arrayRemoves;
   }

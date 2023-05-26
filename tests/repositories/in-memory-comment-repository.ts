@@ -47,11 +47,9 @@ export class InMemoryCommentRepository implements CommentRepository {
     return comment;
   }
   async removeComment(commentId: string): Promise<void> {
-    const index = this.comments.findIndex(
-      (comment) => comment.id === commentId,
+    const arrayRemoves = this.comments.filter(
+      (comment) => comment.id !== commentId,
     );
-
-    const arrayRemoves = this.comments.slice(index, 1);
 
     this.comments = arrayRemoves;
   }

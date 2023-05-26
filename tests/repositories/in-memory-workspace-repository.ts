@@ -22,11 +22,9 @@ export class InMemoryWorkspaceRepository implements WorkspaceRepository {
   }
 
   async removeWorkspace(workspaceId: string): Promise<void> {
-    const index = this.workspaces.findIndex(
-      (workspace) => workspace.id === workspaceId,
+    const arrayRemoves = this.workspaces.filter(
+      (workspace) => workspace.id !== workspaceId,
     );
-
-    const arrayRemoves = this.workspaces.slice(index, 1);
 
     this.workspaces = arrayRemoves;
   }
