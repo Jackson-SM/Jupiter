@@ -6,6 +6,7 @@ import {
 } from "../controllers/Workspace";
 import { findProjectByWorkspaceIdIdController } from "../controllers/Project";
 import payloadParamsId from "../payloads/payloadParamsId";
+import createWorkspacePayload from "../payloads/createWorkspacePayload";
 
 const workspacesRoutes = {
   name: "workspaces",
@@ -40,6 +41,11 @@ const workspacesRoutes = {
         method: "POST",
         path: "/v1/workspaces/",
         handler: createWorkspaceController.handler,
+        options: {
+          validate: {
+            payload: createWorkspacePayload,
+          },
+        },
       },
     ]);
   },
