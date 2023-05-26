@@ -83,7 +83,15 @@ export class PrismaProjectRepository implements ProjectRepository {
   }
 
   async removeProject(projectId: string): Promise<void> {
-    throw new Error("Method not implemented.");
+    try {
+      await prisma.project.delete({ where: { id: projectId } });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID's Inválidos");
+      }
+
+      throw Boom.badRequest(err.message);
+    }
   }
 
   async create(project: Project): Promise<void> {
