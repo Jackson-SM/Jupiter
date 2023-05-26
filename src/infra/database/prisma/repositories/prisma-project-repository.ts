@@ -82,6 +82,10 @@ export class PrismaProjectRepository implements ProjectRepository {
     }
   }
 
+  async removeProject(projectId: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+
   async create(project: Project): Promise<void> {
     const raw = PrismaProjectMapper.toPrisma(project);
 
