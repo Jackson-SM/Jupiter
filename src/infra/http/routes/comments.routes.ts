@@ -4,6 +4,7 @@ import {
   findCommentByIdController,
 } from "../controllers/Comment";
 import payloadParamsId from "../payloads/payloadParamsId";
+import createCommentPayload from "../payloads/createCommentPayload";
 
 const commentsRoutes = {
   name: "comments",
@@ -13,6 +14,11 @@ const commentsRoutes = {
         method: "POST",
         path: "/v1/comments/",
         handler: createCommentController.handler,
+        options: {
+          validate: {
+            payload: createCommentPayload,
+          },
+        },
       },
       {
         method: "GET",
