@@ -10,7 +10,7 @@ export class AuthenticationUseCase {
     private tokenProvider: TokenProviderRepository,
   ) {}
 
-  async authenticate(email: string, password: string): Promise<string> {
+  async authenticate(email: string, password: string) {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
@@ -26,6 +26,9 @@ export class AuthenticationUseCase {
     const payload: JwtPayload = { id: user.id, email: user.email };
     const token = await this.tokenProvider.generateToken(payload);
 
-    return token;
+    return {
+      user: user,
+      token: token,
+    };
   }
 }
