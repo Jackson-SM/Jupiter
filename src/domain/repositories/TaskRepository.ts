@@ -1,5 +1,4 @@
 import { Task } from "../entities/Task/Task";
-import { TaskResponsible } from "../entities/TaskReponsible/TaskReponsible";
 
 export interface TaskRepository {
   create(task: Task): Promise<void>;
