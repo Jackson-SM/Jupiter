@@ -1,6 +1,6 @@
 import { WorkspaceRepository } from "~/domain/repositories/WorkspaceRepository";
 
-export class CreateWorkspaceCase {
+export class RemoveWorkspaceCase {
   constructor(private workspaceRepository: WorkspaceRepository) {}
 
   async execute(workspaceId: string): Promise<void> {
