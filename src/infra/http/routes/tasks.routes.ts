@@ -6,6 +6,8 @@ import {
 } from "../controllers/Task";
 import { findAllCommentsByTaskIdController } from "../controllers/Comment";
 import payloadParamsId from "../payloads/payloadParamsId";
+import createTaskPayload from "../payloads/createTaskPayload";
+import addTaskPayload from "../payloads/addTaskPayload";
 
 const tasksRoutes = {
   name: "tasks",
@@ -35,11 +37,21 @@ const tasksRoutes = {
         method: "POST",
         path: "/v1/tasks/",
         handler: createTaskController.handler,
+        options: {
+          validate: {
+            payload: createTaskPayload,
+          },
+        },
       },
       {
         method: "POST",
         path: "/v1/tasks/responsibles/",
         handler: addTaskResponsibleController.handler,
+        options: {
+          validate: {
+            payload: addTaskPayload,
+          },
+        },
       },
     ]);
   },
