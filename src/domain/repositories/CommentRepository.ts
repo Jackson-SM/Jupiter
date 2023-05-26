@@ -5,4 +5,5 @@ export interface CommentRepository {
   findByid(id: string): Promise<Comment | null>;
   findAllByUserId(userId: string): Promise<Comment[]>;
   findAllCommentsByTaskId(taskId: string): Promise<Comment[]>;
+  removeComment(commentId: string): Promise<void>;
 }
