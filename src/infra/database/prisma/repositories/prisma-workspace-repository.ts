@@ -43,6 +43,16 @@ export class PrismaWorkspaceRepository implements WorkspaceRepository {
       throw Boom.badRequest(err.message);
     }
   }
+  async removeWorkspace(workspaceId: string): Promise<void> {
+    try {
+      await prisma.workspace.delete({ where: { id: workspaceId } });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("Formato de ID Inválido");
+      }
+      throw Boom.badRequest(err.message);
+    }
+  }
   async create(workspace: Workspace): Promise<void> {
     try {
       const raw = PrismaWorkspaceMapper.toPrisma(workspace);
