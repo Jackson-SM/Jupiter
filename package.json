@@ -1,0 +1,14 @@
+{
+  "name": "Jupiter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Jackson-SM/Jupiter.git",
+  "author": "Jackson Silva Magalhães <jacksonsilvamagalhaes@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^12.13.0"
+  }
+}
