@@ -1,11 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 :root {
-  --bg-primary: rgba(32, 23, 37, 1);
-  --bg-secondary: rgb(66, 66, 66);
-  --bg-tertiary: rgb(93, 93, 93);
-  --bg-opacity: rgba(32, 23, 37, 0.642);
-  --bg-opacity-2: rgba(32, 23, 37, 0.401);
+  --bg-primary: rgb(24, 24, 24);
+  --bg-secondary: rgb(32, 32, 32);
+  --bg-tertiary: rgb(49, 49, 49);
+
+  --bg-opacity: rgba(255, 255, 255, 0.398);
+  --bg-opacity-2: rgba(255, 255, 255, 0.078);
+
   --color-primary: rgb(179, 0, 255);
+  --color-primary-2: rgb(195, 56, 255);
   --color-tertiary: rgb(255, 238, 0);
+  --color-tertiary-2: rgb(255, 244, 83);
+
+  --text-color-100: #ebebeb;
+  --text-color-200: #bfbfbf;
+  --text-color-200: #7d7d7d;
 }
 
 * {
@@ -16,4 +26,6 @@
 
 body {
   background-color: var(--bg-primary);
+  color: var(--text-color-100);
+  font-family: "Poppins", sans-serif;
 }

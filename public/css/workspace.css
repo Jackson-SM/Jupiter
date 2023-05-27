@@ -1,0 +1,41 @@
+.workspaces {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.workspaces > h2 {
+  font-size: 2rem;
+}
+
+.workspaces-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.workspaces .workspace {
+  width: 220px;
+  height: 100px;
+
+  padding: 10px;
+  border-radius: 2px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background-color: var(--bg-secondary);
+  text-decoration: none;
+
+  color: var(--text-color-200);
+
+  transition: all ease 130ms;
+}
+
+.workspaces .workspace:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--color-primary-2);
+}
