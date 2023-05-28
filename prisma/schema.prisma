@@ -70,6 +70,9 @@ model Task {
   updatedAt        DateTime           @default(now()) @updatedAt
   comments         Comment[]
   tasksResponsible TasksResponsible[]
+  Group            Group              @relation(fields: [groupId], references: [id])
+  groupId          String             @db.ObjectId
+  TasksInGroup     TasksInGroup[]
 }
 
 model TasksResponsible {
@@ -89,6 +92,26 @@ model Comment {
   userId    String   @db.ObjectId
   task      Task     @relation(fields: [taskId], references: [id])
   taskId    String   @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Group {
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now()) @updatedAt
+  TasksInGroup TasksInGroup[]
+  Task         Task[]
+}
+
+model TasksInGroup {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  task      Task     @relation(fields: [taskId], references: [id])
+  taskId    String   @db.ObjectId
+  group     Group    @relation(fields: [groupId], references: [id])
+  groupId   String   @db.ObjectId
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 }
