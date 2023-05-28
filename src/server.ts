@@ -5,10 +5,11 @@ import {
   projects,
   tasks,
   comments,
+  auth,
+  groups,
 } from "./infra/http/routes/routes";
 import prisma from "./infra/database/prisma/client/prisma";
 import { authMiddleware } from "./infra/http/middlewares/authMiddleware";
-import authRoutes from "./infra/http/routes/auth.routes";
 import { errorHandlingExtension } from "./infra/http/middlewares/errorHandlingExtension";
 
 export const server: Hapi.Server = Hapi.server({
@@ -27,7 +28,8 @@ export async function start(): Promise<Hapi.Server> {
     projects,
     tasks,
     comments,
-    authRoutes,
+    groups,
+    auth,
   ]);
   await server.start();
   return server;
