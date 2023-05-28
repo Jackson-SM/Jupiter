@@ -6,6 +6,7 @@ interface TaskProps {
   description: string;
   projectId: string;
   groupId: string;
+  doneDate: Date | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -15,12 +16,16 @@ export class Task {
   private props: TaskProps;
 
   constructor(
-    props: Replace<TaskProps, { createdAt?: Date; updatedAt?: Date }>,
+    props: Replace<
+      TaskProps,
+      { createdAt?: Date; updatedAt?: Date; doneDate?: Date | null }
+    >,
     _id?: string,
   ) {
     this._id = _id ?? new ObjectID().toHexString();
     this.props = {
       ...props,
+      doneDate: props.doneDate ?? null,
       createdAt: props.createdAt ?? new Date(),
       updatedAt: new Date(),
     };
@@ -56,6 +61,13 @@ export class Task {
   }
   set projectId(projectId: string) {
     this.props.projectId = projectId;
+  }
+
+  get doneDate(): Date | null {
+    return this.props.doneDate;
+  }
+  set doneDate(doneDate: Date | null) {
+    this.props.doneDate = doneDate;
   }
 
   get createdAt(): Date {
