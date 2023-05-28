@@ -6,7 +6,8 @@ export class TaskViewModel {
       id: task.id,
       title: task.title,
       description: task.description,
-      projectId: task.projectId,
+      groupId: task.groupId,
+      doneDate: task.doneDate,
       createdAt: task.createdAt,
       updatedAt: task.updatedAt,
     };
