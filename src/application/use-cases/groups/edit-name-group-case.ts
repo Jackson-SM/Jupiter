@@ -5,7 +5,7 @@ interface CreateGroupCaseRequest {
   name: string;
 }
 
-export class EditGroupCase {
+export class EditNameGroupCase {
   constructor(private groupRepository: GroupRepository) {}
 
   async execute(request: CreateGroupCaseRequest): Promise<void> {
