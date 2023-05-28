@@ -10,7 +10,6 @@ describe("Find Task By Group Id Case", () => {
   let inMemoryTaskRepository: InMemoryTaskRepository;
   let createTaskCase: CreateTaskCase;
   let findTaskByGroupIdCase: FindTaskByGroupIdCase;
-  let taskTesting: Task;
   let groupTesting: Group;
 
   beforeEach(async () => {
@@ -18,10 +17,7 @@ describe("Find Task By Group Id Case", () => {
     createTaskCase = new CreateTaskCase(inMemoryTaskRepository);
     findTaskByGroupIdCase = new FindTaskByGroupIdCase(inMemoryTaskRepository);
     groupTesting = makeGroup();
-    const { task } = await createTaskCase.execute(
-      makeTask({ groupId: groupTesting.id }),
-    );
-    taskTesting = task;
+    await createTaskCase.execute(makeTask({ groupId: groupTesting.id }));
   });
 
   it("should to find a Task with group id equal group testing", async () => {
