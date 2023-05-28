@@ -44,10 +44,10 @@ model Project {
   workspaceId  String                  @db.ObjectId
   lead         User                    @relation("leadId", fields: [leadId], references: [id])
   leadId       String                  @db.ObjectId
-  tasks        Task[]
   participants ProjectParticipanting[]
   createdAt    DateTime                @default(now())
   updatedAt    DateTime                @default(now()) @updatedAt
+  Group        Group[]
 }
 
 model ProjectParticipanting {
@@ -64,14 +64,13 @@ model Task {
   id               String             @id @default(auto()) @map("_id") @db.ObjectId
   title            String
   description      String
-  project          Project            @relation(fields: [projectId], references: [id])
-  projectId        String             @db.ObjectId
+  doneDate         DateTime?
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @default(now()) @updatedAt
-  comments         Comment[]
-  tasksResponsible TasksResponsible[]
   Group            Group              @relation(fields: [groupId], references: [id])
   groupId          String             @db.ObjectId
+  comments         Comment[]
+  tasksResponsible TasksResponsible[]
   TasksInGroup     TasksInGroup[]
 }
 
@@ -99,6 +98,8 @@ model Comment {
 model Group {
   id           String         @id @default(auto()) @map("_id") @db.ObjectId
   name         String
+  project      Project        @relation(fields: [projectId], references: [id])
+  projectId    String         @db.ObjectId
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @default(now()) @updatedAt
   TasksInGroup TasksInGroup[]
