@@ -11,6 +11,8 @@ import { RemoveTaskController } from "./RemoveTaskController";
 import { RemoveTaskCase } from "~/application/use-cases/tasks/remove-task-case";
 import { DoneTaskController } from "./DoneTaskController";
 import { DoneTaskCase } from "~/application/use-cases/tasks/done-task-case";
+import { FindTaskByGroupIdController } from "./FindTaskByGroupIdController";
+import { FindTaskByGroupIdCase } from "~/application/use-cases/tasks/find-task-by-group-id";
 
 const prismaTaskRepository = new PrismaTaskRepository();
 
@@ -23,6 +25,7 @@ const findTaskByResponsibleIdCase = new FindTaskByResponsibleIdCase(
 const findTaskByIdCase = new FindTaskByIdCase(prismaTaskRepository);
 const removeTaskCase = new RemoveTaskCase(prismaTaskRepository);
 const doneTaskCase = new DoneTaskCase(prismaTaskRepository);
+const findTaskByGroupIdCase = new FindTaskByGroupIdCase(prismaTaskRepository);
 
 // Controllers
 const createTaskController = new CreateTaskController(createTaskCase);
@@ -35,6 +38,9 @@ const findTaskByResponsibleIdController = new FindTaskByResponsibleIdController(
 const findTaskByIdController = new FindTaskByIdController(findTaskByIdCase);
 const removeTaskController = new RemoveTaskController(removeTaskCase);
 const doneTaskController = new DoneTaskController(doneTaskCase);
+const findTaskByGroupIdController = new FindTaskByGroupIdController(
+  findTaskByGroupIdCase,
+);
 
 export {
   createTaskController,
@@ -43,4 +49,5 @@ export {
   findTaskByIdController,
   removeTaskController,
   doneTaskController,
+  findTaskByGroupIdController,
 };
