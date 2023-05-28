@@ -5,6 +5,7 @@ interface TaskProps {
   title: string;
   description: string;
   projectId: string;
+  groupId: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -41,6 +42,13 @@ export class Task {
   }
   set description(description: string) {
     this.props.description = description;
+  }
+
+  get groupId(): string {
+    return this.props.groupId;
+  }
+  set groupId(groupId: string) {
+    this.props.groupId = groupId;
   }
 
   get projectId(): string {

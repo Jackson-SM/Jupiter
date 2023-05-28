@@ -6,6 +6,7 @@ describe("Task", () => {
       title: "title",
       description: "description",
       projectId: "aaaaaaaaaaaaaa",
+      groupId: "aaaaaaaaaaaaaaaa",
     });
 
     expect(task).toBeTruthy();
