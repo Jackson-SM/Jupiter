@@ -4,7 +4,6 @@ import { Replace } from "~/helpers/Replace";
 interface TaskProps {
   title: string;
   description: string;
-  projectId: string;
   groupId: string;
   doneDate: Date | null;
   createdAt: Date;
@@ -54,13 +53,6 @@ export class Task {
   }
   set groupId(groupId: string) {
     this.props.groupId = groupId;
-  }
-
-  get projectId(): string {
-    return this.props.projectId;
-  }
-  set projectId(projectId: string) {
-    this.props.projectId = projectId;
   }
 
   get doneDate(): Date | null {
