@@ -2,6 +2,7 @@ import Hapi from "@hapi/hapi";
 import {
   addTaskResponsibleController,
   createTaskController,
+  doneTaskController,
   findTaskByIdController,
   removeTaskController,
 } from "../controllers/Task";
@@ -48,6 +49,16 @@ const tasksRoutes = {
         method: "DELETE",
         path: "/v1/tasks/{id}",
         handler: removeTaskController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
+      },
+      {
+        method: "PATCH",
+        path: "/v1/tasks/{id}/done",
+        handler: doneTaskController.handler,
         options: {
           validate: {
             params: payloadParamsId,
