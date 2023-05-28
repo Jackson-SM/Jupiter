@@ -36,16 +36,6 @@ const projectsRoutes = {
       },
       {
         method: "GET",
-        path: "/v1/projects/{id}/tasks/",
-        handler: findTaskByProjectIdController.handler,
-        options: {
-          validate: {
-            params: payloadParamsId,
-          },
-        },
-      },
-      {
-        method: "GET",
         path: "/v1/projects/{id}/",
         handler: findProjectByIdController.handler,
         options: {
