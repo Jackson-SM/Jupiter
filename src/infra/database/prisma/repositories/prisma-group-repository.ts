@@ -29,12 +29,12 @@ export class PrismaGroupRepository implements GroupRepository {
       throw Boom.badRequest(err.message);
     }
   }
-  async editGroup(groupId: string, group: Group): Promise<void> {
+  async editNameGroup(groupId: string, name: string): Promise<void> {
     try {
       await prisma.group.update({
         where: { id: groupId },
         data: {
-          name: group.name,
+          name: name,
         },
       });
     } catch (err: any) {
