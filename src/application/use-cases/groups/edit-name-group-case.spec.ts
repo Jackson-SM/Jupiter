@@ -4,7 +4,7 @@ import { makeGroup } from "tests/factories/makeGroup";
 import { Group } from "~/domain/entities/Group/Group";
 import { EditNameGroupCase } from "./edit-name-group-case";
 
-describe("Delte Group Case", () => {
+describe("Edit Name Group Case", () => {
   let inMemoryGroupRepository: InMemoryGroupRepository;
   let createGroupCase: CreateGroupCase;
   let groupTesting: Group;
@@ -18,7 +18,7 @@ describe("Delte Group Case", () => {
     groupTesting = group;
   });
 
-  it("should to delete a new task", async () => {
+  it("should to edit a group name", async () => {
     await editNameGroupCase.execute({ id: groupTesting.id, name: "new name" });
 
     expect(groupTesting).toBeInstanceOf(Group);

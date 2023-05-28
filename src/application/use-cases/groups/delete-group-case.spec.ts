@@ -4,7 +4,7 @@ import { makeGroup } from "tests/factories/makeGroup";
 import { Group } from "~/domain/entities/Group/Group";
 import { DeleteGroupCase } from "./delete-group-case";
 
-describe("Delte Group Case", () => {
+describe("Delete Group Case", () => {
   let inMemoryGroupRepository: InMemoryGroupRepository;
   let createGroupCase: CreateGroupCase;
   let groupTesting: Group;
@@ -18,7 +18,7 @@ describe("Delte Group Case", () => {
     groupTesting = group;
   });
 
-  it("should to delete a new task", async () => {
+  it("should to delete a group", async () => {
     await deleteGroupCase.execute({ id: groupTesting.id });
 
     expect(groupTesting).toBeInstanceOf(Group);
