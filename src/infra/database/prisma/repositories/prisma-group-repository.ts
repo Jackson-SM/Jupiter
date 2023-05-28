@@ -60,23 +60,44 @@ export class PrismaGroupRepository implements GroupRepository {
     }
   }
   async moveTaskGroup(newGroup: string, taskId: string): Promise<void> {
-    await prisma.tasksInGroup.updateMany({
-      where: { taskId: taskId },
-      data: {
-        groupId: newGroup,
-      },
-    });
+    try {
+      await prisma.tasksInGroup.updateMany({
+        where: { taskId: taskId },
+        data: {
+          groupId: newGroup,
+        },
+      });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Inválido");
+      }
+      throw Boom.badRequest(err.message);
+    }
   }
   async removeTaskInGroup(taskId: string, groupId: string): Promise<void> {
-    await prisma.tasksInGroup.deleteMany({
-      where: { taskId: taskId },
-    });
+    try {
+      await prisma.tasksInGroup.deleteMany({
+        where: { taskId: taskId },
+      });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Inválido");
+      }
+      throw Boom.badRequest(err.message);
+    }
   }
   async findAllGroupsByProject(projectId: string): Promise<Group[]> {
-    const groups = await prisma.group.findMany({
-      where: { projectId: projectId },
-    });
+    try {
+      const groups = await prisma.group.findMany({
+        where: { projectId: projectId },
+      });
 
-    return groups.map((group) => PrismaGroupMapper.toDomain(group));
+      return groups.map((group) => PrismaGroupMapper.toDomain(group));
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Inválido");
+      }
+      throw Boom.badRequest(err.message);
+    }
   }
 }
