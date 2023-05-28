@@ -7,7 +7,7 @@ export interface JwtPayload {
 
 export class AuthenticationService {
   constructor(private authenticationUseCase: AuthenticationUseCase) {}
-  async authenticate(email: string, password: string): Promise<string> {
+  async authenticate(email: string, password: string) {
     return await this.authenticationUseCase.authenticate(email, password);
   }
 }
