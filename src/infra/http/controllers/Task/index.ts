@@ -9,6 +9,8 @@ import { FindTaskByIdController } from "./FindTaskByIdController";
 import { FindTaskByIdCase } from "~/application/use-cases/tasks/find-task-by-id-case";
 import { FindTaskByProjectIdCase } from "~/application/use-cases/tasks/find-task-by-project-id-case";
 import { FindTaskByProjectIdController } from "./FindTaskByProjectIdController";
+import { RemoveTaskController } from "./RemoveTaskController";
+import { RemoveTaskCase } from "~/application/use-cases/tasks/remove-task-case";
 
 const prismaTaskRepository = new PrismaTaskRepository();
 
@@ -22,6 +24,7 @@ const findTaskByIdCase = new FindTaskByIdCase(prismaTaskRepository);
 const findTaskByProejctIdCase = new FindTaskByProjectIdCase(
   prismaTaskRepository,
 );
+const removeTaskCase = new RemoveTaskCase(prismaTaskRepository);
 
 // Controllers
 const createTaskController = new CreateTaskController(createTaskCase);
@@ -35,6 +38,7 @@ const findTaskByIdController = new FindTaskByIdController(findTaskByIdCase);
 const findTaskByProjectIdController = new FindTaskByProjectIdController(
   findTaskByProejctIdCase,
 );
+const removeTaskController = new RemoveTaskController(removeTaskCase);
 
 export {
   createTaskController,
@@ -42,4 +46,5 @@ export {
   findTaskByResponsibleIdController,
   findTaskByIdController,
   findTaskByProjectIdController,
+  removeTaskController,
 };
