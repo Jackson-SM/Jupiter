@@ -6,6 +6,5 @@ export interface GroupRepository {
   editNameGroup(groupId: string, name: string): Promise<void>;
   addTaskInGroup(taskId: string, groupId: string): Promise<void>;
   moveTaskGroup(newGroup: string, taskId: string): Promise<void>;
-  removeTaskInGroup(taskId: string, groupId: string): Promise<void>;
   findAllGroupsByProject(projectId: string): Promise<Group[]>;
 }

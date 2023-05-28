@@ -74,18 +74,6 @@ export class PrismaGroupRepository implements GroupRepository {
       throw Boom.badRequest(err.message);
     }
   }
-  async removeTaskInGroup(taskId: string, groupId: string): Promise<void> {
-    try {
-      await prisma.tasksInGroup.deleteMany({
-        where: { taskId: taskId },
-      });
-    } catch (err: any) {
-      if (err.code === "P2023") {
-        throw Boom.badRequest("ID Inválido");
-      }
-      throw Boom.badRequest(err.message);
-    }
-  }
   async findAllGroupsByProject(projectId: string): Promise<Group[]> {
     try {
       const groups = await prisma.group.findMany({

@@ -37,17 +37,6 @@ export class InMemoryGroupRepository implements GroupRepository {
 
     this.tasksInGroup = editGroup;
   }
-  async removeTaskInGroup(taskId: string, groupId: string): Promise<void> {
-    this.groups.map((group) => {
-      if (group.id === groupId) {
-        const taskInGroupRemove = this.tasksInGroup.filter(
-          (task) => task.id !== taskId,
-        );
-        this.tasksInGroup = taskInGroupRemove;
-      }
-      return group;
-    });
-  }
   async findAllGroupsByProject(projectId: string): Promise<Group[]> {
     const groupsByProject = await this.groups.filter(
       (group) => group.projectId === projectId,
