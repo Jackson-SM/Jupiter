@@ -5,6 +5,14 @@ import { TaskRepository } from "~/domain/repositories/TaskRepository";
 import { PrismaTaskMapper } from "../mappers/prisma-task-mapper";
 
 export class PrismaTaskRepository implements TaskRepository {
+  async doneTask(taskId: string): Promise<void> {
+    await prisma.task.update({
+      where: { id: taskId },
+      data: {
+        doneDate: new Date(),
+      },
+    });
+  }
   async findById(id: string): Promise<Task | null> {
     try {
       const task = await prisma.task.findUnique({ where: { id: id } });
@@ -14,20 +22,6 @@ export class PrismaTaskRepository implements TaskRepository {
       }
 
       return PrismaTaskMapper.toDomain(task);
-    } catch (err: any) {
-      if (err.code === "P2023") {
-        throw Boom.badRequest("ID Invalid");
-      }
-      throw Boom.badRequest(err.message);
-    }
-  }
-  async findByProjectId(projectId: string): Promise<Task[]> {
-    try {
-      const taskByProject = await prisma.task.findMany({
-        where: { projectId: projectId },
-      });
-
-      return taskByProject.map((task) => PrismaTaskMapper.toDomain(task));
     } catch (err: any) {
       if (err.code === "P2023") {
         throw Boom.badRequest("ID Invalid");
@@ -76,6 +70,20 @@ export class PrismaTaskRepository implements TaskRepository {
       throw Boom.badRequest(err.message);
     }
   }
+
+  async findTasksByGroupId(groupId: string): Promise<Task[]> {
+    try {
+      const tasks = await prisma.task.findMany({ where: { groupId: groupId } });
+
+      return tasks.map((task) => PrismaTaskMapper.toDomain(task));
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Inválido");
+      }
+      throw Boom.badRequest(err.message);
+    }
+  }
+
   async create(task: Task): Promise<void> {
     try {
       const rawTask = PrismaTaskMapper.toPrisma(task);
