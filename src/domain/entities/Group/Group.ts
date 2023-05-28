@@ -34,6 +34,12 @@ export class Group {
   set name(name: string) {
     this.props.name = name;
   }
+  get projectId(): string {
+    return this.props.projectId;
+  }
+  set projectId(projectId: string) {
+    this.props.projectId = projectId;
+  }
 
   get createdAt(): Date {
     return this.props.createdAt;
