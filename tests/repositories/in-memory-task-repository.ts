@@ -22,6 +22,12 @@ export class InMemoryTaskRepository implements TaskRepository {
     return task;
   }
 
+  async findTasksByGroupId(groupId: string): Promise<Task[]> {
+    const taskByGroupId = this.tasks.filter((task) => task.groupId === groupId);
+
+    return taskByGroupId;
+  }
+
   async findByResponsibleId(responsibleId: string): Promise<Task[]> {
     const taskRelation = this.taskResponsible
       .filter((task) => task.userId === responsibleId)
