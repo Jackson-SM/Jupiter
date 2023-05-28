@@ -27,11 +27,7 @@ export class InMemoryGroupRepository implements GroupRepository {
     const taskInGroup = new TasksInGroup({ groupId: groupId, taskId: taskId });
     await this.tasksInGroup.push(taskInGroup);
   }
-  async moveTaskGroup(
-    newGroup: string,
-    currentGroup: string,
-    taskId: string,
-  ): Promise<void> {
+  async moveTaskGroup(newGroup: string, taskId: string): Promise<void> {
     const editGroup = await this.tasksInGroup.map((task) => {
       if (task.id === taskId) {
         task.groupId = newGroup;
@@ -52,7 +48,11 @@ export class InMemoryGroupRepository implements GroupRepository {
       return group;
     });
   }
-  async findAllGroupsByProject(): Promise<Group[]> {
-    return await this.groups;
+  async findAllGroupsByProject(projectId: string): Promise<Group[]> {
+    const groupsByProject = await this.groups.filter(
+      (group) => group.projectId === projectId,
+    );
+
+    return groupsByProject;
   }
 }
