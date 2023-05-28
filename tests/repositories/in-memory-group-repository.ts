@@ -23,7 +23,7 @@ export class InMemoryGroupRepository implements GroupRepository {
     });
     this.groups = groupEdit;
   }
-  async addTaskInGroup(groupId: string, taskId: string): Promise<void> {
+  async addTaskInGroup(taskId: string, groupId: string): Promise<void> {
     const taskInGroup = new TasksInGroup({ groupId: groupId, taskId: taskId });
     await this.tasksInGroup.push(taskInGroup);
   }
