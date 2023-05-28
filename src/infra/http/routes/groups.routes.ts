@@ -2,7 +2,7 @@ import Hapi from "@hapi/hapi";
 import payloadParamsId from "../payloads/payloadParamsId";
 import { findTaskByGroupIdController } from "../controllers/Task";
 
-const commentsRoutes = {
+const groupsRoutes = {
   name: "groups",
   register: async function (server: Hapi.Server) {
     server.route([
@@ -20,4 +20,4 @@ const commentsRoutes = {
   },
 };
 
-export default commentsRoutes;
+export default groupsRoutes;
