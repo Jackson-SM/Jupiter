@@ -5,10 +5,10 @@ interface FindTaskByGroupIdCaseRequest {
   id: string;
 }
 interface FindTaskByGroupIdCaseResponse {
-  task: Task[];
+  tasks: Task[];
 }
 
-export class FindTaskByGroupId {
+export class FindTaskByGroupIdCase {
   constructor(private taskRepository: TaskRepository) {}
 
   async execute(
@@ -16,10 +16,10 @@ export class FindTaskByGroupId {
   ): Promise<FindTaskByGroupIdCaseResponse> {
     const { id } = request;
 
-    const task = await this.taskRepository.findTasksByGroupId(id);
+    const tasks = await this.taskRepository.findTasksByGroupId(id);
 
     return {
-      task,
+      tasks,
     };
   }
 }
