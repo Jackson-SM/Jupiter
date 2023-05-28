@@ -5,10 +5,10 @@ import {
   findAllParticipantsByProjectIdController,
   findProjectByIdController,
 } from "../controllers/Project";
-import { findTaskByProjectIdController } from "../controllers/Task";
 import payloadParamsId from "../payloads/payloadParamsId";
 import addParticipantProjectPayload from "../payloads/addParticipantProjectPayload";
 import createProjectPayload from "../payloads/createProjectPayload";
+import { findAllGroupsByProjectController } from "../controllers/Group";
 
 const projectsRoutes = {
   name: "projects",
@@ -31,6 +31,16 @@ const projectsRoutes = {
         options: {
           validate: {
             payload: addParticipantProjectPayload,
+          },
+        },
+      },
+      {
+        method: "POST",
+        path: "/v1/projects/{id}/groups/",
+        handler: findAllGroupsByProjectController.handler,
+        options: {
+          validate: {
+            payload: payloadParamsId,
           },
         },
       },

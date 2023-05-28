@@ -10,6 +10,8 @@ import { findAllCommentsByTaskIdController } from "../controllers/Comment";
 import payloadParamsId from "../payloads/payloadParamsId";
 import createTaskPayload from "../payloads/createTaskPayload";
 import addTaskPayload from "../payloads/addTaskPayload";
+import { moveTaskInGroupController } from "../controllers/Group";
+import moveTaskInGroupPayload from "../payloads/moveTaskInGroupPayload";
 
 const tasksRoutes = {
   name: "tasks",
@@ -42,6 +44,16 @@ const tasksRoutes = {
         options: {
           validate: {
             payload: createTaskPayload,
+          },
+        },
+      },
+      {
+        method: "PATCH",
+        path: "/v1/tasks/",
+        handler: moveTaskInGroupController.handler,
+        options: {
+          validate: {
+            payload: moveTaskInGroupPayload,
           },
         },
       },
