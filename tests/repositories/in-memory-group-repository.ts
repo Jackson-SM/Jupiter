@@ -14,12 +14,12 @@ export class InMemoryGroupRepository implements GroupRepository {
     );
     this.groups = groupDeleted;
   }
-  async editGroup(groupId: string, group: Group): Promise<void> {
+  async editNameGroup(groupId: string, name: string): Promise<void> {
     const groupEdit = await this.groups.map((groupOld) => {
-      if (group.id === groupId) {
-        groupOld.name = group.name;
+      if (groupOld.id === groupId) {
+        groupOld.name = name;
       }
-      return group;
+      return groupOld;
     });
     this.groups = groupEdit;
   }
