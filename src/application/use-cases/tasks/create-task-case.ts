@@ -4,7 +4,6 @@ import { TaskRepository } from "~/domain/repositories/TaskRepository";
 interface CreateTaskCaseRequest {
   title: string;
   description: string;
-  projectId: string;
   groupId: string;
 }
 interface CreateTaskCaseResponse {
@@ -17,9 +16,9 @@ export class CreateTaskCase {
   async execute(
     request: CreateTaskCaseRequest,
   ): Promise<CreateTaskCaseResponse> {
-    const { title, description, projectId, groupId } = request;
+    const { title, description, groupId } = request;
 
-    const task = new Task({ title, description, projectId, groupId });
+    const task = new Task({ title, description, groupId });
 
     await this.taskRepository.create(task);
 

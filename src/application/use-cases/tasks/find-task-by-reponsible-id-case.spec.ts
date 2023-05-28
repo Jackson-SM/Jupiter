@@ -2,9 +2,6 @@ import { CreateTaskCase } from "./create-task-case";
 import { InMemoryTaskRepository } from "tests/repositories/in-memory-task-repository";
 import { makeTask } from "tests/factories/makeTask";
 import { Task } from "~/domain/entities/Task/Task";
-import { FindTaskByProjectIdCase } from "./find-task-by-project-id-case";
-import { Project } from "~/domain/entities/Project/Project";
-import { makeProject } from "tests/factories/makeProject";
 import { User } from "~/domain/entities/User/User";
 import { makeUser } from "tests/factories/makeUser";
 import { AddTaskResponsibleCase } from "./add-task-responsible-case";
@@ -26,9 +23,7 @@ describe("Find Task By Responsible Id Case", () => {
       inMemoryTaskRepository,
     );
     userTesting = makeUser();
-    const { task } = await createTaskCase.execute(
-      makeTask({ projectId: makeProject({ leadId: userTesting.id }).id }),
-    );
+    const { task } = await createTaskCase.execute(makeTask());
     taskTesting = task;
     await addTaskResponsibleCase.execute({
       userId: userTesting.id,

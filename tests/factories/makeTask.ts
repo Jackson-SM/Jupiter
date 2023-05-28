@@ -9,7 +9,6 @@ export function makeTask(override?: Override): Task {
     title: "new task",
     description: "description of the task",
     groupId: makeGroup().id,
-    projectId: makeUser().id,
     ...override,
   });
 }

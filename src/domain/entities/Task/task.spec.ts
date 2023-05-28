@@ -5,7 +5,6 @@ describe("Task", () => {
     const task = new Task({
       title: "title",
       description: "description",
-      projectId: "aaaaaaaaaaaaaa",
       groupId: "aaaaaaaaaaaaaaaa",
     });
 
