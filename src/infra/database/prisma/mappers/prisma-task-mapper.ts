@@ -7,7 +7,8 @@ export class PrismaTaskMapper {
       {
         title: task.title,
         description: task.description,
-        projectId: task.projectId,
+        groupId: task.groupId,
+        doneDate: task.doneDate,
         createdAt: task.createdAt,
         updatedAt: task.updatedAt,
       },
@@ -20,7 +21,8 @@ export class PrismaTaskMapper {
       id: task.id,
       title: task.title,
       description: task.description,
-      projectId: task.projectId,
+      groupId: task.groupId,
+      doneDate: task.doneDate,
       createdAt: task.createdAt,
       updatedAt: task.createdAt,
     };
