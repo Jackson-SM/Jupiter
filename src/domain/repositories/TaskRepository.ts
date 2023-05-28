@@ -7,5 +7,6 @@ export interface TaskRepository {
   findByResponsibleId(responsibleId: string): Promise<Task[]>;
   findTasksByGroupId(groupId: string): Promise<Task[]>;
   addResponsible(userId: string, taskId: string): Promise<void>;
+  doneTask(taskId: string): Promise<void>;
   removeTask(taskId: string): Promise<void>;
 }
