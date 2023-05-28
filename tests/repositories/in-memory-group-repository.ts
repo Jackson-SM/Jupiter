@@ -29,7 +29,7 @@ export class InMemoryGroupRepository implements GroupRepository {
   }
   async moveTaskGroup(newGroup: string, taskId: string): Promise<void> {
     const editGroup = await this.tasksInGroup.map((task) => {
-      if (task.id === taskId) {
+      if (task.taskId === taskId) {
         task.groupId = newGroup;
       }
       return task;
