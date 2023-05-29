@@ -14,8 +14,10 @@
   --color-tertiary-2: rgb(255, 244, 83);
 
   --text-color-100: #ebebeb;
-  --text-color-200: #bfbfbf;
-  --text-color-200: #7d7d7d;
+  --text-color-200: #d9d9d9;
+  --text-color-300: #c8c8c8;
+  --text-color-400: #ababab;
+  --text-color-500: #7d7d7d;
 }
 
 * {
