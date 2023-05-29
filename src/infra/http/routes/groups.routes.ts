@@ -8,6 +8,7 @@ import {
   editNameGroupController,
 } from "../controllers/Group";
 import createGroupPayload from "../payloads/createGroupPayload";
+import addTaskInGroupPayload from "../payloads/addTaskInGroupPayload";
 
 const groupsRoutes = {
   name: "groups",
@@ -29,7 +30,8 @@ const groupsRoutes = {
         handler: addTaskInGroupController.handler,
         options: {
           validate: {
-            payload: payloadParamsId,
+            params: payloadParamsId,
+            payload: addTaskInGroupPayload,
           },
         },
       },
