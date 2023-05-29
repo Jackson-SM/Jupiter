@@ -3,4 +3,85 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: linear-gradient(to top, rgba(132, 0, 255, 0.187), transparent 30%)
+}
+
+.title-form {
+  font-size: 2rem;
+}
+
+.form-container {
+  background-color: var(--bg-opacity-2);
+  padding: 20px;
+  height: 550px;
+  width: 450px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .logo-form {
+  width: 120px;
+  height: 120px;
+  margin-top: calc(-60px - 20px);
+  margin-left: calc(-60px - 20px);
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+}
+
+.form-container .logo-form img {
+  width: 100%;
+  height: 100%;
+}
+
+.form-login { 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.form-login fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+.form-login fieldset input {
+  border: 1px solid var(--bg-opacity);
+  outline: none;
+  padding: 10px;
+  color: var(--text-color-100);
+  font-family: "Poppins", sans-serif;
+  border-radius: 3px;
+  background: none;
+  flex-direction: column;
+
+  transition: all ease 130ms;
+}
+.form-login fieldset input:focus,
+.form-login fieldset input:valid  {
+  border: 1px solid var(--color-primary);
+}
+
+.login-button.button-submit {
+  width: max-content;
+  align-self: center;
+  padding: 10px 30px;
+}
+
+.forgot-password {
+  text-decoration: none;
+  color: var(--text-color-100);
+  font-size: 0.8rem;
+  margin-left: 5px;
+  transition: all ease 130ms;
+}
+.forgot-password:hover {
+  color: var(--text-color-400);
+}
+
+.description-form {
+  font-size: 0.8rem;
 }
