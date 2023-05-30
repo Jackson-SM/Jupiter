@@ -7,12 +7,12 @@ export class CreateTaskController {
   constructor(private createTaskCase: CreateTaskCase) {}
 
   public handler = async (request: Request, h: ResponseToolkit) => {
-    const { title, description, projectId } = request.payload as CreateTaskBody;
+    const { title, description, groupId } = request.payload as CreateTaskBody;
 
     const { task } = await this.createTaskCase.execute({
       title,
       description,
-      projectId,
+      groupId,
     });
 
     const taskFormatHttp = TaskViewModel.toHttp(task);
