@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 55px);
   background: linear-gradient(to top, rgba(132, 0, 255, 0.187), transparent 30%)
 }
 
@@ -65,7 +65,7 @@
   border: 1px solid var(--color-primary);
 }
 
-.login-button.button-submit {
+.button.button-submit {
   width: max-content;
   align-self: center;
   padding: 10px 30px;

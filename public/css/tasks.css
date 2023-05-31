@@ -1,4 +1,4 @@
-.workspaces {
+.tasks {
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -6,24 +6,24 @@
   width: 100%;
 }
 
-.workspaces > h2 {
+.tasks > h2 {
   font-size: 2rem;
 }
 
-.workspaces-card {
+.tasks-card {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
-.workspaces .workspace {
+.tasks .task {
   width: 100%;
   height: 100px;
 
+  font-size: 0.7rem;
+
   padding: 10px;
   border-radius: 2px;
-
-  font-size: 0.7rem;
 
   display: flex;
   gap: 10px;
@@ -36,7 +36,7 @@
   transition: all ease 130ms;
 }
 
-.workspaces .workspace:hover {
+.tasks .task:hover {
   background-color: var(--bg-tertiary);
   color: var(--color-primary-2);
 }

@@ -1,0 +1,12 @@
+.workspace_section {
+  padding: 10px;
+  display: flex;
+  justify-content: end;
+}
+
+.workspace_section button {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
