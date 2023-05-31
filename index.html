@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="public/css/global.css" />
   <link rel="stylesheet" href="public/css/index.css" />
   <link rel="stylesheet" href="public/css/workspace.css" />
+  <link rel="stylesheet" href="public/css/section_workspace_options.css" />
+  <link rel="stylesheet" href="public/css/tasks.css" />
   <link href='https://css.gg/css' rel='stylesheet'>
   <title>Jupiter</title>
 </head>
@@ -18,12 +20,17 @@
       <img src="public/assets/jupiter_logo.png" />
     </div>
     <div class="user-options">
-      <a class="login-button" href="login.html">
+      <a class="button" href="login.html">
         Entre
       </a>
     </div>
   </header>
   <main>
+    <section class="workspace_section">
+      <div>
+        <button class="btn_create_workspace button"><i class="gg-math-plus"></i>Criar Workspace</button>
+      </div>
+    </section>
     <section class="workspaces">
       <h2>Workspaces</h2>
       <div class="workspaces-card">
@@ -45,9 +52,29 @@
         </a>
       </div>
     </section>
-    <aside>
-      <h1>Aside</h1>
-    </aside>
+    <section>
+      <section class="tasks">
+        <h2>Tasks</h2>
+        <div class="tasks-card">
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Criar Rota</h3>
+          </a>
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Criar Pasts</h3>
+          </a>
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Mudar Layout</h3>
+          </a>
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Fazer JWT</h3>
+          </a>
+        </div>
+      </section>
+    </section>
   </main>
 </body>
 
