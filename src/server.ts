@@ -15,6 +15,11 @@ import { errorHandlingExtension } from "./infra/http/middlewares/errorHandlingEx
 export const server: Hapi.Server = Hapi.server({
   port: 3000,
   host: "localhost",
+  routes: {
+    cors: {
+      origin: [`${process.env.URL_CORS_MAIN}`],
+    },
+  },
 });
 
 export async function start(): Promise<Hapi.Server> {
