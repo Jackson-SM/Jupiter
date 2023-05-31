@@ -1,0 +1,16 @@
+.link {
+  text-decoration: none;
+  color: var(--text-color-100);
+  padding: 5px;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  transition: background ease 130ms;
+}
+.link:hover {
+  background: var(--bg-tertiary);
+}
