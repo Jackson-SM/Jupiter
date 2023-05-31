@@ -8,10 +8,15 @@
   <link rel="stylesheet" href="public/css/global.css">
   <link rel="stylesheet" href="public/css/login.css">
   <link rel="stylesheet" href="public/css/index.css">
+  <link rel="stylesheet" href="public/css/link.css">
+  <link href='https://css.gg/css' rel='stylesheet'>
   <title>Login</title>
 </head>
 
 <body>
+  <a href="/" class="link">
+    <i class="gg-arrow-left"></i>Início
+  </a>
   <div class="form-center">
     <div class="form-container">
       <div class="logo-form">
@@ -21,18 +26,22 @@
         <h2 class="title-form">Jupiter Login</h2>
         <p class="description-form">Entre em sua conta.</p>
       </div>
-      <form class="form-login">
+      <form method="POST" action="/" class="form-login">
         <fieldset>
           <input type="email" name="email" id="email" placeholder="Email" required />
         </fieldset>
         <fieldset>
           <input type="password" name="password" id="password" placeholder="Password" required />
         </fieldset>
+        <fieldset>
+          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required />
+        </fieldset>
         <a class="forgot-password" href="register.html">Não possuo uma conta.</a>
-        <button type="submit" class="login-button button-submit">Fazer Login</button>
+        <button type="submit" class="button button-submit">Fazer Login</button>
       </form>
     </div>
   </div>
+  <script src="public/js/api/login.js"></script>
 </body>
 
 </html>
