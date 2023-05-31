@@ -11,7 +11,7 @@ header .user-options {
   display: flex;
   align-items: center;
 }
-.login-button {
+.button {
   padding: 5px 25px;
   border-radius: 3px;
   font-size: 0.9rem;
@@ -30,7 +30,7 @@ header .user-options {
   transition: all ease 130ms;
   
 }
-.login-button:hover {
+.button:hover {
   background-color: var(--color-primary-2); 
   border: 1px solid var(--bg-opacity-2);
 }
@@ -47,6 +47,8 @@ header .user-options {
 main {
   height: calc(100vh - 60px);
   display: flex;
+  flex-direction: column;
+  gap: 50px;
   width: 100%;
   padding: 20px;
 }
