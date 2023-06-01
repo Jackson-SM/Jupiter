@@ -1,10 +1,9 @@
-import { InMemoryUserRepository } from "tests/repositories/in-memory-user-repository";
 import { CreateUserCase } from "./create-user-case";
 import { FindUserByIdCase } from "./find-user-by-id-case";
-import { makeUser } from "tests/factories/makeUser";
-import { UserNotFound } from "./errors/UserNotFound";
 import { User } from "~/domain/entities/User/User";
 import Boom from "@hapi/boom";
+import { InMemoryUserRepository } from "~/../tests/repositories/in-memory-user-repository";
+import { makeUser } from "~/../tests/factories/makeUser";
 
 describe("Find By Id User Case", () => {
   let inMemoryRepository: InMemoryUserRepository;

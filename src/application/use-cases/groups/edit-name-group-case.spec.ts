@@ -1,8 +1,8 @@
 import { CreateGroupCase } from "./create-group-case";
-import { InMemoryGroupRepository } from "tests/repositories/in-memory-group-repository";
-import { makeGroup } from "tests/factories/makeGroup";
 import { Group } from "~/domain/entities/Group/Group";
 import { EditNameGroupCase } from "./edit-name-group-case";
+import { InMemoryGroupRepository } from "~/../tests/repositories/in-memory-group-repository";
+import { makeGroup } from "~/../tests/factories/makeGroup";
 
 describe("Edit Name Group Case", () => {
   let inMemoryGroupRepository: InMemoryGroupRepository;

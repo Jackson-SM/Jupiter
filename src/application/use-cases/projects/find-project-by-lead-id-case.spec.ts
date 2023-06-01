@@ -1,10 +1,10 @@
-import { InMemoryProjectRepository } from "tests/repositories/in-memory-project-repository";
 import { CreateProjectCase } from "./create-project-case";
-import { makeProject } from "tests/factories/makeProject";
 import { Project } from "~/domain/entities/Project/Project";
 import { User } from "~/domain/entities/User/User";
-import { makeUser } from "tests/factories/makeUser";
 import { FindProjectByLeadIdCase } from "./find-project-by-lead-id-case";
+import { InMemoryProjectRepository } from "~/../tests/repositories/in-memory-project-repository";
+import { makeUser } from "~/../tests/factories/makeUser";
+import { makeProject } from "~/../tests/factories/makeProject";
 
 describe("Find Project By LeadId Case", () => {
   let inMemoryProjectRepository: InMemoryProjectRepository;

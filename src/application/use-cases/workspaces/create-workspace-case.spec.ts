@@ -1,6 +1,6 @@
-import { InMemoryWorkspaceRepository } from "tests/repositories/in-memory-workspace-repository";
+import { makeWorkspace } from "~/../tests/factories/makeWorkspace";
 import { CreateWorkspaceCase } from "./create-workspace-case";
-import { makeWorkspace } from "tests/factories/makeWorkspace";
+import { InMemoryWorkspaceRepository } from "~/../tests/repositories/in-memory-workspace-repository";
 
 describe("Workspace", () => {
   it("should create a new workspace", async () => {

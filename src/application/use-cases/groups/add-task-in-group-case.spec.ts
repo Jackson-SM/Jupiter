@@ -1,11 +1,11 @@
 import { CreateGroupCase } from "./create-group-case";
-import { InMemoryGroupRepository } from "tests/repositories/in-memory-group-repository";
-import { makeGroup } from "tests/factories/makeGroup";
 import { Group } from "~/domain/entities/Group/Group";
 import { EditNameGroupCase } from "./edit-name-group-case";
 import { AddTaskInGroupCase } from "./add-task-in-group-case";
 import { Task } from "~/domain/entities/Task/Task";
-import { makeTask } from "tests/factories/makeTask";
+import { InMemoryGroupRepository } from "~/../tests/repositories/in-memory-group-repository";
+import { makeTask } from "~/../tests/factories/makeTask";
+import { makeGroup } from "~/../tests/factories/makeGroup";
 
 describe("Add Task In Group Case", () => {
   let inMemoryGroupRepository: InMemoryGroupRepository;

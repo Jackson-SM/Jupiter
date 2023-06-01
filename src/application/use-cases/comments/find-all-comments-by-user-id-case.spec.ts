@@ -1,10 +1,10 @@
-import { InMemoryCommentRepository } from "tests/repositories/in-memory-comment-repository";
 import { CreateCommentCase } from "./create-comment-case";
-import { makeComment } from "tests/factories/makeComment";
 import { Comment } from "~/domain/entities/Comment/Comment";
 import { FindAllCommentsByUserIdCase } from "./find-all-comments-by-user-id-case";
 import { User } from "~/domain/entities/User/User";
-import { makeUser } from "tests/factories/makeUser";
+import { makeUser } from "~/../tests/factories/makeUser";
+import { InMemoryCommentRepository } from "~/../tests/repositories/in-memory-comment-repository";
+import { makeComment } from "~/../tests/factories/makeComment";
 
 describe("Find All Comments By User Id Case", () => {
   let inMemoryCommentRepository: InMemoryCommentRepository;

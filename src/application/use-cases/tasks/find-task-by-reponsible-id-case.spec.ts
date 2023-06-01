@@ -1,11 +1,11 @@
 import { CreateTaskCase } from "./create-task-case";
-import { InMemoryTaskRepository } from "tests/repositories/in-memory-task-repository";
-import { makeTask } from "tests/factories/makeTask";
 import { Task } from "~/domain/entities/Task/Task";
 import { User } from "~/domain/entities/User/User";
-import { makeUser } from "tests/factories/makeUser";
 import { AddTaskResponsibleCase } from "./add-task-responsible-case";
 import { FindTaskByResponsibleIdCase } from "./find-task-by-responsible-id-case";
+import { InMemoryTaskRepository } from "~/../tests/repositories/in-memory-task-repository";
+import { makeUser } from "~/../tests/factories/makeUser";
+import { makeTask } from "~/../tests/factories/makeTask";
 
 describe("Find Task By Responsible Id Case", () => {
   let inMemoryTaskRepository: InMemoryTaskRepository;

@@ -1,8 +1,8 @@
-import { InMemoryProjectRepository } from "tests/repositories/in-memory-project-repository";
+import { InMemoryProjectRepository } from "~/../tests/repositories/in-memory-project-repository";
 import { CreateProjectCase } from "./create-project-case";
 import { FindProjectByIdCase } from "./find-project-by-id-case";
 import { Project } from "~/domain/entities/Project/Project";
-import { makeProject } from "tests/factories/makeProject";
+import { makeProject } from "~/../tests/factories/makeProject";
 
 describe("Find Project By Id Case", () => {
   let inMemoryProjectRepository: InMemoryProjectRepository;

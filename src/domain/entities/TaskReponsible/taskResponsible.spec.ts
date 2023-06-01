@@ -1,4 +1,3 @@
-import { makeUser } from "tests/factories/makeUser";
 import { TaskResponsible } from "./TaskReponsible";
 
 describe("Task Responsible", () => {

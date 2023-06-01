@@ -1,10 +1,9 @@
+import { InMemoryTaskRepository } from "~/../tests/repositories/in-memory-task-repository";
 import { CreateTaskCase } from "./create-task-case";
-import { InMemoryTaskRepository } from "tests/repositories/in-memory-task-repository";
-import { makeTask } from "tests/factories/makeTask";
-import { Task } from "~/domain/entities/Task/Task";
 import { FindTaskByGroupIdCase } from "./find-task-by-group-id";
 import { Group } from "~/domain/entities/Group/Group";
-import { makeGroup } from "tests/factories/makeGroup";
+import { makeTask } from "~/../tests/factories/makeTask";
+import { makeGroup } from "~/../tests/factories/makeGroup";
 
 describe("Find Task By Group Id Case", () => {
   let inMemoryTaskRepository: InMemoryTaskRepository;

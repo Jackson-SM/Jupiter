@@ -10,6 +10,9 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "_moduleAliases": {
+    "~": "dist/src"
+  },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/boom": "^7.3.2",
@@ -40,6 +43,7 @@
     "bcrypt": "^5.1.0",
     "bson-objectid": "^2.0.4",
     "dotenv": "^16.0.3",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "module-alias": "^2.2.2"
   }
 }

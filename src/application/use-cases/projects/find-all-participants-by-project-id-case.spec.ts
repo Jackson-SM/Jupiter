@@ -1,13 +1,13 @@
-import { InMemoryUserRepository } from "tests/repositories/in-memory-user-repository";
 import { CreateUserCase } from "../users/create-user-case";
 import { User } from "../../../domain/entities/User/User";
-import { makeUser } from "tests/factories/makeUser";
-import { InMemoryProjectRepository } from "tests/repositories/in-memory-project-repository";
 import { CreateProjectCase } from "./create-project-case";
-import { makeProject } from "tests/factories/makeProject";
 import { Project } from "~/domain/entities/Project/Project";
 import { FindAllParticipantsByProjectIdCase } from "./find-all-participants-by-project-id-case";
 import { AddParticipantInProjectCase } from "./add-participant-in-project-case";
+import { InMemoryProjectRepository } from "~/../tests/repositories/in-memory-project-repository";
+import { InMemoryUserRepository } from "~/../tests/repositories/in-memory-user-repository";
+import { makeUser } from "~/../tests/factories/makeUser";
+import { makeProject } from "~/../tests/factories/makeProject";
 
 describe("Find all Participants Project User Case", () => {
   let inMemoryUserRepository: InMemoryUserRepository;

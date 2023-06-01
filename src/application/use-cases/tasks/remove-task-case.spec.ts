@@ -1,9 +1,9 @@
-import { InMemoryTaskRepository } from "tests/repositories/in-memory-task-repository";
 import { CreateTaskCase } from "./create-task-case";
-import { makeTask } from "tests/factories/makeTask";
 import { Task } from "~/domain/entities/Task/Task";
 import { FindTaskByIdCase } from "./find-task-by-id-case";
 import { RemoveTaskCase } from "./remove-task-case";
+import { makeTask } from "~/../tests/factories/makeTask";
+import { InMemoryTaskRepository } from "~/../tests/repositories/in-memory-task-repository";
 
 describe("Remove Task Case", () => {
   let inMemoryTaskRepository: InMemoryTaskRepository;

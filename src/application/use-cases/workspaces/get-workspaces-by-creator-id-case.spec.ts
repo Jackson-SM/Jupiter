@@ -1,8 +1,8 @@
-import { InMemoryWorkspaceRepository } from "tests/repositories/in-memory-workspace-repository";
+import { makeWorkspace } from "~/../tests/factories/makeWorkspace";
 import { CreateWorkspaceCase } from "./create-workspace-case";
-import { makeWorkspace } from "tests/factories/makeWorkspace";
 import { GetAllWorkspacesByCreatorIdCase } from "./get-workspaces-by-creator-id-case";
 import { Workspace } from "~/domain/entities/Workspaces/Workspace";
+import { InMemoryWorkspaceRepository } from "~/../tests/repositories/in-memory-workspace-repository";
 
 describe("Workspace", () => {
   let inMemoryWorkspaceRepository: InMemoryWorkspaceRepository;

@@ -1,8 +1,8 @@
-import { InMemoryCommentRepository } from "tests/repositories/in-memory-comment-repository";
+import { makeComment } from "~/../tests/factories/makeComment";
 import { CreateCommentCase } from "./create-comment-case";
-import { makeComment } from "tests/factories/makeComment";
 import { FindCommentByIdCase } from "./find-comment-by-id-case";
 import { Comment } from "~/domain/entities/Comment/Comment";
+import { InMemoryCommentRepository } from "~/../tests/repositories/in-memory-comment-repository";
 
 describe("Find Comment  Case", () => {
   let inMemoryCommentRepository: InMemoryCommentRepository;

@@ -1,3 +1,4 @@
+import "module-alias";
 import Hapi from "@hapi/hapi";
 import {
   users,

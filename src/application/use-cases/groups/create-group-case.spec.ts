@@ -1,7 +1,7 @@
+import { InMemoryGroupRepository } from "~/../tests/repositories/in-memory-group-repository";
 import { CreateGroupCase } from "./create-group-case";
-import { InMemoryGroupRepository } from "tests/repositories/in-memory-group-repository";
-import { makeGroup } from "tests/factories/makeGroup";
 import { Group } from "~/domain/entities/Group/Group";
+import { makeGroup } from "~/../tests/factories/makeGroup";
 
 describe("Create Group Case", () => {
   let inMemoryGroupRepository: InMemoryGroupRepository;

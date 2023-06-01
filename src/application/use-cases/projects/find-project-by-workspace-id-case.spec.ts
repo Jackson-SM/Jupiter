@@ -1,10 +1,10 @@
-import { InMemoryProjectRepository } from "tests/repositories/in-memory-project-repository";
 import { CreateProjectCase } from "./create-project-case";
-import { makeProject } from "tests/factories/makeProject";
 import { Project } from "~/domain/entities/Project/Project";
 import { FindProjectByWorkspaceIdCase } from "./find-project-by-workspace-id-case";
 import { Workspace } from "~/domain/entities/Workspaces/Workspace";
-import { makeWorkspace } from "tests/factories/makeWorkspace";
+import { InMemoryProjectRepository } from "~/../tests/repositories/in-memory-project-repository";
+import { makeWorkspace } from "~/../tests/factories/makeWorkspace";
+import { makeProject } from "~/../tests/factories/makeProject";
 
 describe("Find Project By WorkspaceId Case", () => {
   let inMemoryProjectRepository: InMemoryProjectRepository;

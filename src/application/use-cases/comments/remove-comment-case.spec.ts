@@ -1,8 +1,8 @@
-import { InMemoryCommentRepository } from "tests/repositories/in-memory-comment-repository";
+import { makeComment } from "~/../tests/factories/makeComment";
 import { CreateCommentCase } from "./create-comment-case";
-import { makeComment } from "tests/factories/makeComment";
 import { FindCommentByIdCase } from "./find-comment-by-id-case";
 import { RemoveCommentCase } from "./remove-comment-case";
+import { InMemoryCommentRepository } from "~/../tests/repositories/in-memory-comment-repository";
 
 describe("Remove Comment  Case", () => {
   it("should remove a comment by id", async () => {

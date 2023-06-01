@@ -1,10 +1,10 @@
-import { InMemoryUserRepository } from "tests/repositories/in-memory-user-repository";
 import { AuthenticationUseCase } from "./authentication-use-case";
 import { JwtTokenProvider } from "~/application/services/JwtTokenProvider";
 import { CreateUserCase } from "../users/create-user-case";
 import { User } from "~/domain/entities/User/User";
-import { makeUser } from "tests/factories/makeUser";
 import Boom from "@hapi/boom";
+import { InMemoryUserRepository } from "~/../tests/repositories/in-memory-user-repository";
+import { makeUser } from "~/../tests/factories/makeUser";
 
 describe("Authentication", () => {
   let userRepository: InMemoryUserRepository;

@@ -1,8 +1,8 @@
-import { InMemoryWorkspaceRepository } from "tests/repositories/in-memory-workspace-repository";
 import { CreateWorkspaceCase } from "./create-workspace-case";
-import { makeWorkspace } from "tests/factories/makeWorkspace";
 import { RemoveWorkspaceCase } from "./remove-workspace-case";
 import { FindWorkspaceByIdCase } from "./find-workspace-by-id-case";
+import { InMemoryWorkspaceRepository } from "~/../tests/repositories/in-memory-workspace-repository";
+import { makeWorkspace } from "~/../tests/factories/makeWorkspace";
 
 describe("Remove Workspace", () => {
   it("should remove a workspace by id", async () => {
