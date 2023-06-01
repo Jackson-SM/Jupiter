@@ -1,6 +1,7 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { ICreateProjectBody } from "../../dtos/create-project-body";
 import { CreateProjectCase } from "~/application/use-cases/projects/create-project-case";
+import { ProjectViewModel } from "../../view-models/project-view-model";
 
 export class CreateProjectController {
   constructor(private createProjectCase: CreateProjectCase) {}
@@ -16,6 +17,8 @@ export class CreateProjectController {
       workspaceId,
     });
 
-    return h.response(project).code(201);
+    const projectFormatToHttp = ProjectViewModel.toHttp(project);
+
+    return h.response(projectFormatToHttp).code(201);
   };
 }
