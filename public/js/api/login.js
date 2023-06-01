@@ -1,32 +1,5 @@
 const formLogin = document.querySelector('.form-login')
 
-function setCookie(name, value, days) {
-  let expires = '';
-  if (days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    expires = '; expires=' + date.toUTCString();
-  }
-  document.cookie = name + '=' + (value || '') + expires + '; Secure; path=/';
-}
-
-function getCookie(name) {
-  const cookieName = name + '=';
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const cookieArray = decodedCookie.split(';');
-  
-  for (let i = 0; i < cookieArray.length; i++) {
-    let cookie = cookieArray[i];
-    while (cookie.charAt(0) === ' ') {
-      cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(cookieName) === 0) {
-      return cookie.substring(cookieName.length, cookie.length);
-    }
-  }
-  return '';
-}
-
 async function handleSubmit(event) {
   event.preventDefault();
 
@@ -39,8 +12,6 @@ async function handleSubmit(event) {
   }
 
   const data = login({email: formObject.email, password: formObject.password})
-
-  return console.log(data);
 }
 
 const login = async (data) => {
@@ -55,12 +26,12 @@ const login = async (data) => {
   const responseData = await response.json()
 
   if(responseData.statusCode) {
-    return createNotification("Conta não encontrada.")
+    return createNotification("Os dados estão incorretos ou o usuário não existe.")
   }
 
   setCookie('token', responseData.token, 2);
-
-  sessionStorage.setItem('user', JSON.stringify(responseData.user))
+  sessionStorage.setItem('user', JSON.stringify(responseData.user));
+  window.location.href = "/";
 
   return responseData.user;
 }
