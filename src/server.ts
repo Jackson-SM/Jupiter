@@ -18,7 +18,7 @@ export const server: Hapi.Server = Hapi.server({
   host: "localhost",
   routes: {
     cors: {
-      origin: ["*"],
+      origin: [`${process.env.URL_CORS_MAIN}`],
     },
   },
 });
