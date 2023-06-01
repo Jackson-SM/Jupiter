@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="public/css/section_workspace_options.css" />
   <link rel="stylesheet" href="public/css/tasks.css" />
   <link rel="stylesheet" href="public/css/notification.css" />
+  <link rel="stylesheet" href="public/css/user_dropdown.css" />
   <link href='https://css.gg/css' rel='stylesheet'>
   <title>Jupiter</title>
 </head>
@@ -20,11 +21,7 @@
     <div class="logo">
       <img src="public/assets/jupiter_logo.png" />
     </div>
-    <div class="user-options">
-      <a class="button" href="login.html">
-        Entre
-      </a>
-    </div>
+    <div class="user-options"></div>
   </header>
   <main>
     <section class="workspace_section">
@@ -78,6 +75,10 @@
     </section>
   </main>
   <script src="public/js/effects/notification.js"></script>
+  <script src="public/js/auth/user.js"></script>
+  <script src="public/js/auth/verify-authenticate.js"></script>
+  <script src="public/js/conditional-rendering/user-options-conditional.js"></script>
+  <script src="public/js/auth/logout.js"></script>
 </body>
 
 </html>
