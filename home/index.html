@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="public/css/global.css" />
+  <link rel="stylesheet" href="public/css/index.css" />
+  <link rel="stylesheet" href="public/css/workspace.css" />
+  <link rel="stylesheet" href="public/css/section_workspace_options.css" />
+  <link rel="stylesheet" href="public/css/tasks.css" />
+  <link rel="stylesheet" href="public/css/notification.css" />
+  <link rel="stylesheet" href="public/css/user_dropdown.css" />
+  <link href='https://css.gg/css' rel='stylesheet'>
+  <title>Jupiter</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="public/assets/jupiter_logo.png" />
+    </div>
+    <div class="user-options"></div>
+  </header>
+  <main>
+    <section class="workspaces">
+      <div class="top_workspaces">
+        <h2><i class="gg-work-alt"></i>Áreas de Trabalho</h2>
+        <button class="btn_create_workspace button">Criar Workspace</button>
+      </div>
+      <div class="workspace">
+        <div class="top_workspace">
+          <h3>Estudos Pessoais</h3>
+        </div>
+        <div class="projects_workspace">
+          <a class="project" href="project?id=rafsjfsufasfas">
+            <div class="content_project">
+              <span class="title">NodeJS</span>
+            </div>
+            <span class="date">23/01/2023</span>
+          </a>
+          <a class="project" href="project?id=rafsjfsufasfas">
+            <div class="content_project">
+              <span class="title">ReactJS</span>
+            </div>
+            <span class="date">10/02/2023</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <section class="tasks">
+        <h2>Tasks</h2>
+        <div class="tasks-card">
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Criar Rota</h3>
+          </a>
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Criar Pasts</h3>
+          </a>
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Mudar Layout</h3>
+          </a>
+          <a class="task" href="project">
+            <i class="gg-calendar"></i>
+            <h3>Fazer JWT</h3>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="public/js/effects/notification.js"></script>
+  <script src="public/js/auth/user.js"></script>
+  <script src="public/js/auth/getcookie.js"></script>
+  <script src="public/js/auth/setcookie.js"></script>
+  <script src="public/js/auth/logout.js"></script>
+  <script src="public/js/auth/verify-authenticate.js"></script>
+  <script src="public/js/conditional-rendering/user-options-conditional.js"></script>
+</body>
+
+</html>
