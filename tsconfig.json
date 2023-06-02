@@ -31,5 +31,6 @@
     "tests",
     "**/*.spec.ts",
     "**/*.test.ts",
+    "jest.config.ts"
   ]
 }
