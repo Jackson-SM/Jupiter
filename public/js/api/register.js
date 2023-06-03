@@ -11,7 +11,7 @@ async function handleSubmit(event) {
 }
 
 const register = async (data) => {
-    const response = await fetch("http://localhost:3000/v1/users/", {
+    const response = await fetch(API_BASE_URL+ "/v1/users/", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
