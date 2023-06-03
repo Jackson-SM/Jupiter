@@ -1,5 +1,6 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { FindProjectByWorkspaceIdCase } from "~/application/use-cases/projects/find-project-by-workspace-id-case";
+import { ProjectViewModel } from "../../view-models/project-view-model";
 
 export class FindProjectByWorkspaceIdController {
   constructor(
@@ -13,6 +14,10 @@ export class FindProjectByWorkspaceIdController {
       id: id,
     });
 
-    return h.response(projects);
+    const projectsFormatToHttp = projects.map((project) =>
+      ProjectViewModel.toHttp(project),
+    );
+
+    return h.response(projectsFormatToHttp);
   };
 }

@@ -9,6 +9,8 @@ export const authMiddleware = (server, options) => {
   return {
     authenticate: async (request: Request, h: ResponseToolkit) => {
       const authorization = request.headers.authorization;
+
+      console.log(authorization);
       try {
         if (!authorization) {
           throw Boom.unauthorized(null, "Bearer");

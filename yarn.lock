@@ -420,6 +420,16 @@
   dependencies:
     "@hapi/boom" "^10.0.0"
 
+"@hapi/cookie@^12.0.1":
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/@hapi/cookie/-/cookie-12.0.1.tgz#7e4da17f9843a01732a5aa875592c1aa8c6bed05"
+  integrity sha512-TpykARUIgTBvgbsgtYe5CrM/7XBGms2/22JD3N6dzct6bG1vcOC6pH1JWIos1O5zvQnyDSJ2pnaFk+DToHkAng==
+  dependencies:
+    "@hapi/boom" "^10.0.1"
+    "@hapi/bounce" "^3.0.1"
+    "@hapi/hoek" "^11.0.2"
+    "@hapi/validate" "^2.0.1"
+
 "@hapi/cryptiles@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@hapi/cryptiles/-/cryptiles-6.0.1.tgz#7868a9d4233567ed66f0a9caf85fdcc56e980621"
