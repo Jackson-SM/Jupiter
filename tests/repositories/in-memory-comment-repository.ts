@@ -1,5 +1,5 @@
-import { Comment } from "~/domain/entities/Comment/Comment";
-import { CommentRepository } from "~/domain/repositories/CommentRepository";
+import { Comment } from "../../src/domain/entities/Comment/Comment";
+import { CommentRepository } from "../../src/domain/repositories/CommentRepository";
 
 export class InMemoryCommentRepository implements CommentRepository {
   public comments: Comment[] = [];

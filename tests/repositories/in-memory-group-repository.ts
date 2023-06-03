@@ -1,6 +1,6 @@
-import { Group } from "~/domain/entities/Group/Group";
-import { TasksInGroup } from "~/domain/entities/TasksInGroup/TasksInGroup";
-import { GroupRepository } from "~/domain/repositories/GroupRepository";
+import { Group } from "../../src/domain/entities/Group/Group";
+import { TasksInGroup } from "../../src/domain/entities/TasksInGroup/TasksInGroup";
+import { GroupRepository } from "../../src/domain/repositories/GroupRepository";
 
 export class InMemoryGroupRepository implements GroupRepository {
   public groups: Group[] = [];

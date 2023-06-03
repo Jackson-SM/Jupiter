@@ -1,6 +1,6 @@
-import { Task } from "~/domain/entities/Task/Task";
-import { TaskResponsible } from "~/domain/entities/TaskReponsible/TaskReponsible";
-import { TaskRepository } from "~/domain/repositories/TaskRepository";
+import { Task } from "../../src/domain/entities/Task/Task";
+import { TaskResponsible } from "../../src/domain/entities/TaskReponsible/TaskReponsible";
+import { TaskRepository } from "../../src/domain/repositories/TaskRepository";
 
 export class InMemoryTaskRepository implements TaskRepository {
   public tasks: Task[] = [];

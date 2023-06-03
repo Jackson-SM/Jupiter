@@ -1,8 +1,8 @@
-import { Project } from "~/domain/entities/Project/Project";
-import { ProjectParticipanting } from "~/domain/entities/ProjectParticipanting/ProjectParticipanting";
-import { User } from "~/domain/entities/User/User";
-import { ProjectRepository } from "~/domain/repositories/ProjectRepository";
-import { UserRepository } from "~/domain/repositories/UserRepository";
+import { Project } from "../../src/domain/entities/Project/Project";
+import { ProjectParticipanting } from "../../src/domain/entities/ProjectParticipanting/ProjectParticipanting";
+import { User } from "../../src/domain/entities/User/User";
+import { ProjectRepository } from "../../src/domain/repositories/ProjectRepository";
+import { UserRepository } from "../../src/domain/repositories/UserRepository";
 
 export class InMemoryProjectRepository implements ProjectRepository {
   public projects: Project[] = [];

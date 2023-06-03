@@ -1,5 +1,5 @@
-import { Workspace } from "~/domain/entities/Workspaces/Workspace";
-import { WorkspaceRepository } from "~/domain/repositories/WorkspaceRepository";
+import { Workspace } from "../../src/domain/entities/Workspaces/Workspace";
+import { WorkspaceRepository } from "../../src/domain/repositories/WorkspaceRepository";
 
 export class InMemoryWorkspaceRepository implements WorkspaceRepository {
   public workspaces: Workspace[] = [];
