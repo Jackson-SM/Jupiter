@@ -35,8 +35,6 @@ describe("Move Task Group Case", () => {
       taskId: taskTesting.id,
     });
 
-    console.log(inMemoryGroupRepository.tasksInGroup);
-
     expect(inMemoryGroupRepository.tasksInGroup[0].groupId).toEqual(
       "other tasks",
     );

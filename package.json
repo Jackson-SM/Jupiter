@@ -4,9 +4,9 @@
   "main": "src/server.ts",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/src/server.js",
+    "start": "ts-node -r tsconfig-paths/register -r ./dist/src/server.js",
     "dev": "nodemon -e ts --watch src --exec ts-node -r tsconfig-paths/register src/server.ts",
-    "build": "npx tsc",
+    "build": "npx tsc --project tsconfig.build.json",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -45,6 +45,6 @@
     "bson-objectid": "^2.0.4",
     "dotenv": "^16.0.3",
     "jsonwebtoken": "^9.0.0",
-    "module-alias": "^2.2.2"
+    "tscpaths": "^0.0.9"
   }
 }
