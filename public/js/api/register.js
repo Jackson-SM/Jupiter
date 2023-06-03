@@ -21,8 +21,15 @@ const register = async (data) => {
 
   const responseData = await response.json()
 
-  if(responseData.statusCode) {
-    return createNotification("Alguma informação está incorreta.")
+  if(responseData.statusCode){
+    switch(responseData.statusCode){
+      case 409:
+        return createNotification("O usuário já está cadastrado.");
+      case 404:
+        return createNotification("Os dados passados estão incorretos.")
+      default:
+        return createNotification("Erro inesperado, tente novamente.");
+    }
   }
 
   setCookie('token', responseData.token, 2);

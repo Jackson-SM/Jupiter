@@ -15,8 +15,9 @@ async function handleSubmit(event) {
 }
 
 const login = async (data) => {
-    const response = await fetch("http://localhost:3000/v1/login/", {
+    const response = await fetch(API_BASE_URL + "/v1/login/", {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -25,13 +26,20 @@ const login = async (data) => {
 
   const responseData = await response.json()
 
-  if(responseData.statusCode) {
-    return createNotification("Os dados estão incorretos ou o usuário não existe.")
+  if(responseData.statusCode){
+    switch(responseData.statusCode){
+      case 404:
+        return createNotification("O Usuário informado não existe.");
+      case 401:
+        return createNotification("Os dados do usuário estão incorretos.")
+      default:
+        return createNotification("Erro inesperado, tente novamente.");
+    }
   }
 
   setCookie('token', responseData.token, 2);
   sessionStorage.setItem('user', JSON.stringify(responseData.user));
-  window.location.href = "/";
+  window.location.href = "/home";
 
   return responseData.user;
 }
