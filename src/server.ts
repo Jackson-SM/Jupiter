@@ -1,4 +1,3 @@
-import "module-alias/register";
 import Hapi from "@hapi/hapi";
 import {
   users,
