@@ -4,7 +4,7 @@
   "main": "src/server.ts",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register -r ./dist/src/server.js",
+    "start": "ts-node -r tsconfig-paths/register -r ./dist/server.js",
     "dev": "nodemon -e ts --watch src --exec ts-node -r tsconfig-paths/register src/server.ts",
     "build": "npx tsc --project tsconfig.build.json",
     "test": "jest",
