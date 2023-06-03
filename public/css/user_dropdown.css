@@ -17,8 +17,70 @@
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
+
+  position: relative;
+}
+
+.user-options {
+  position: relative;
 }
 
 .user_dropdown:hover {
   background: var(--bg-opacity-2);
+}
+
+.dropdown_user {
+  position: absolute;
+
+  background: var(--bg-secondary);
+  top: 100%;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-25%);
+
+  transition: all ease 130ms;
+}
+
+.dropdown_user.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.dropdown_user ul {
+  list-style: none;
+  padding: 10px;
+}
+
+.dropdown_user ul li {
+  width: 100%;
+}
+
+.dropdown_user ul li button {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-color-100);
+
+  transition: background ease 130ms;
+  width: 100%;
+
+  padding: 10px;
+  border-radius: 3px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+
+.dropdown_user ul li button:hover {
+  background: var(--bg-opacity-2);
+}
+.dropdown_user ul li .logout:hover {
+  background: rgb(255, 72, 48);
 }

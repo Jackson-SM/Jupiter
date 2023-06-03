@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../public/css/tasks.css" />
   <link rel="stylesheet" href="../public/css/notification.css" />
   <link rel="stylesheet" href="../public/css/user_dropdown.css" />
-  <link href='https://css.gg/css' rel='stylesheet'>
+  <link href="https://css.gg/css" rel="stylesheet" />
   <title>Jupiter</title>
 </head>
 
@@ -21,7 +21,14 @@
     <div class="logo">
       <img src="../public/assets/jupiter_logo.png" />
     </div>
-    <div class="user-options"></div>
+    <div class="user-options">
+      <div class="dropdown_user">
+        <ul>
+          <li><button class="config">Configurações<i class="gg-menu"></i></button></li>
+          <li><button class="logout" onclick="logout()">Sair<i class="gg-log-off"></i></button></li>
+        </ul>
+      </div>
+    </div>
   </header>
   <main>
     <section class="workspaces">
@@ -29,45 +36,13 @@
         <h2><i class="gg-work-alt"></i>Áreas de Trabalho</h2>
         <button class="btn_create_workspace button">Criar Workspace</button>
       </div>
-      <div class="workspace">
-        <div class="top_workspace">
-          <h3>Estudos Pessoais</h3>
-        </div>
-        <div class="projects_workspace">
-          <a class="project" href="project?id=rafsjfsufasfas">
-            <div class="content_project">
-              <span class="title">NodeJS</span>
-            </div>
-            <span class="date">23/01/2023</span>
-          </a>
-          <a class="project" href="project?id=rafsjfsufasfas">
-            <div class="content_project">
-              <span class="title">ReactJS</span>
-            </div>
-            <span class="date">10/02/2023</span>
-          </a>
-        </div>
-      </div>
     </section>
     <section>
       <section class="tasks">
-        <h2>Tasks</h2>
+        <h2>Tarefas Responsáveis</h2>
         <div class="tasks-card">
           <a class="task" href="project">
-            <i class="gg-calendar"></i>
-            <h3>Criar Rota</h3>
-          </a>
-          <a class="task" href="project">
-            <i class="gg-calendar"></i>
-            <h3>Criar Pasts</h3>
-          </a>
-          <a class="task" href="project">
-            <i class="gg-calendar"></i>
-            <h3>Mudar Layout</h3>
-          </a>
-          <a class="task" href="project">
-            <i class="gg-calendar"></i>
-            <h3>Fazer JWT</h3>
+            <h3>Rota Http</h3>
           </a>
         </div>
       </section>

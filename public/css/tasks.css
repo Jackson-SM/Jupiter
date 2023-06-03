@@ -7,7 +7,12 @@
 }
 
 .tasks > h2 {
-  font-size: 2rem;
+  font-weight: 100;
+  font-size: 1.6rem;
+}
+.tasks h3 {
+  font-size: 1.6em;
+  font-weight: 100;
 }
 
 .tasks-card {
