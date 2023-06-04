@@ -7,8 +7,10 @@ export class FindAllGroupsByProjectController {
   public handler = async (request: Request, h: ResponseToolkit) => {
     const { id } = request.params;
 
-    await this.findAllGroupsByProjectCase.execute({ projectId: id });
+    const { groups } = await this.findAllGroupsByProjectCase.execute({
+      projectId: id,
+    });
 
-    return h.response().code(204);
+    return h.response(groups).code(200);
   };
 }
