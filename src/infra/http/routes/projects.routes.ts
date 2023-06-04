@@ -4,11 +4,14 @@ import {
   createProjectController,
   findAllParticipantsByProjectIdController,
   findProjectByIdController,
+  removeParticipantInProjectController,
+  removeProjectController,
 } from "../controllers/Project";
 import payloadParamsId from "../payloads/payloadParamsId";
 import addParticipantProjectPayload from "../payloads/addParticipantProjectPayload";
 import createProjectPayload from "../payloads/createProjectPayload";
 import { findAllGroupsByProjectController } from "../controllers/Group";
+import removeParticipantInProjectPayload from "../payloads/removeParticipantInProjectPayload";
 
 const projectsRoutes = {
   name: "projects",
@@ -25,12 +28,32 @@ const projectsRoutes = {
         },
       },
       {
+        method: "DELETE",
+        path: "/v1/projects/{id}/",
+        handler: removeProjectController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
+      },
+      {
         method: "POST",
         path: "/v1/projects/participants/",
         handler: addParticipantInProjectController.handler,
         options: {
           validate: {
             payload: addParticipantProjectPayload,
+          },
+        },
+      },
+      {
+        method: "DELETE",
+        path: "/v1/projects/participants/",
+        handler: removeParticipantInProjectController.handler,
+        options: {
+          validate: {
+            payload: removeParticipantInProjectPayload,
           },
         },
       },
