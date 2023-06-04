@@ -8,5 +8,6 @@ export interface ProjectRepository {
   findAllByWorkspaceId(workspaceId: string): Promise<Project[]>;
   findAllParticipantsByProjectId(projectId: string): Promise<User[]>;
   addParticipantsInProject(email: string, projectId: string): Promise<void>;
+  removeParticipantInProject(userId: string, projectId: string): Promise<void>;
   removeProject(projectId: string): Promise<void>;
 }
