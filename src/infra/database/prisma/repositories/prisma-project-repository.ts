@@ -88,6 +88,22 @@ export class PrismaProjectRepository implements ProjectRepository {
     }
   }
 
+  async removeParticipantInProject(
+    userId: string,
+    projectId: string,
+  ): Promise<void> {
+    try {
+      await prisma.projectParticipanting.deleteMany({
+        where: { userId, projectId },
+      });
+    } catch (err: any) {
+      if (err.code === "P2023") {
+        throw Boom.badRequest("ID Invalid");
+      }
+      throw Boom.badRequest(err.message);
+    }
+  }
+
   async removeProject(projectId: string): Promise<void> {
     try {
       await prisma.project.delete({ where: { id: projectId } });
