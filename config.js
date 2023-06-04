@@ -1,1 +1,1 @@
-const API_BASE_URL = "https://api-jupiter.onrender.com"
+const API_BASE_URL = "http://localhost:3000"
