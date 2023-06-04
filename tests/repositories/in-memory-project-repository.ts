@@ -55,6 +55,18 @@ export class InMemoryProjectRepository implements ProjectRepository {
     this.participants.push(projectParticipant);
   }
 
+  async removeParticipantInProject(
+    userId: string,
+    projectId: string,
+  ): Promise<void> {
+    const participantRemoved = this.participants.filter(
+      (participant) =>
+        participant.userId !== userId || participant.projectId !== projectId,
+    );
+
+    this.participants = participantRemoved;
+  }
+
   async findAllParticipantsByProjectId(projectId: string): Promise<User[]> {
     const userIdsParticipantingProject = await this.participants
       .filter((project) => project.projectId === projectId)
