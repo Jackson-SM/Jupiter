@@ -1,7 +1,7 @@
 import { ProjectRepository } from "~/domain/repositories/ProjectRepository";
 
 interface AddParticipantInProjectCaseRequest {
-  userId: string;
+  email: string;
   projectId: string;
 }
 
@@ -9,8 +9,8 @@ export class AddParticipantInProjectCase {
   constructor(private projectRepository: ProjectRepository) {}
 
   async execute(request: AddParticipantInProjectCaseRequest) {
-    const { userId, projectId } = request;
+    const { email, projectId } = request;
 
-    await this.projectRepository.addParticipantsInProject(userId, projectId);
+    await this.projectRepository.addParticipantsInProject(email, projectId);
   }
 }

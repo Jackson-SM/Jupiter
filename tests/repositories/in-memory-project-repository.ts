@@ -1,3 +1,4 @@
+import Boom from "@hapi/boom";
 import { Project } from "../../src/domain/entities/Project/Project";
 import { ProjectParticipanting } from "../../src/domain/entities/ProjectParticipanting/ProjectParticipanting";
 import { User } from "../../src/domain/entities/User/User";
@@ -37,10 +38,19 @@ export class InMemoryProjectRepository implements ProjectRepository {
   }
 
   async addParticipantsInProject(
-    userId: string,
+    email: string,
     projectId: string,
   ): Promise<void> {
-    const projectParticipant = new ProjectParticipanting({ userId, projectId });
+    const user = await this.userRepository?.findByEmail(email);
+
+    if (!user) {
+      throw Boom.notFound("Usuário não encontrado.");
+    }
+
+    const projectParticipant = new ProjectParticipanting({
+      userId: user.id,
+      projectId,
+    });
 
     this.participants.push(projectParticipant);
   }

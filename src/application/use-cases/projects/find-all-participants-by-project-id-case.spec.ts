@@ -41,11 +41,11 @@ describe("Find all Participants Project User Case", () => {
     );
     projectTesting = project;
     await addParticipantInProjectCase.execute({
-      userId: userTesting.id,
+      email: userTesting.email,
       projectId: projectTesting.id,
     });
     await addParticipantInProjectCase.execute({
-      userId: userTestingTwo.id,
+      email: userTestingTwo.email,
       projectId: projectTesting.id,
     });
     findAllParticipantsByProjectIdCase = new FindAllParticipantsByProjectIdCase(
