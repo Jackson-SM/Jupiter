@@ -58,12 +58,12 @@ const projectsRoutes = {
         },
       },
       {
-        method: "POST",
+        method: "GET",
         path: "/v1/projects/{id}/groups/",
         handler: findAllGroupsByProjectController.handler,
         options: {
           validate: {
-            payload: payloadParamsId,
+            params: payloadParamsId,
           },
         },
       },
