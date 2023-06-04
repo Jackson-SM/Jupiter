@@ -66,12 +66,18 @@ export class PrismaProjectRepository implements ProjectRepository {
   }
 
   async addParticipantsInProject(
-    userId: string,
+    email: string,
     projectId: string,
   ): Promise<void> {
     try {
+      const user = await prisma.user.findFirst({ where: { email } });
+
+      if (!user) {
+        throw Boom.notFound("Usuário Não encontrado!");
+      }
+
       await prisma.projectParticipanting.create({
-        data: { userId, projectId },
+        data: { userId: user.id, projectId },
       });
     } catch (err: any) {
       if (err.code === "P2023") {
