@@ -69,23 +69,30 @@ export class PrismaProjectRepository implements ProjectRepository {
     email: string,
     projectId: string,
   ): Promise<void> {
-    try {
-      const user = await prisma.user.findFirst({ where: { email } });
+    const user = await prisma.user.findFirst({ where: { email } });
 
-      if (!user) {
-        throw Boom.notFound("Usuário Não encontrado!");
-      }
-
-      await prisma.projectParticipanting.create({
-        data: { userId: user.id, projectId },
-      });
-    } catch (err: any) {
-      if (err.code === "P2023") {
-        throw Boom.badRequest("ID's Inválidos");
-      }
-
-      throw Boom.badRequest(err.message);
+    if (!user) {
+      throw Boom.notFound("Usuário Não encontrado!");
     }
+
+    const isParticipant = await prisma.projectParticipanting.findFirst({
+      where: { userId: user.id, projectId: projectId },
+    });
+    const project = await prisma.project.findUnique({
+      where: { id: projectId },
+    });
+
+    if (!project) {
+      throw Boom.notFound("Projeto não encontrado");
+    }
+
+    if (isParticipant || project.leadId === user.id) {
+      throw Boom.conflict("Usuário já está no projeto.");
+    }
+
+    await prisma.projectParticipanting.create({
+      data: { userId: user.id, projectId },
+    });
   }
 
   async removeParticipantInProject(
@@ -106,6 +113,12 @@ export class PrismaProjectRepository implements ProjectRepository {
 
   async removeProject(projectId: string): Promise<void> {
     try {
+      await prisma.projectParticipanting.deleteMany({
+        where: { projectId },
+      });
+      await prisma.group.deleteMany({
+        where: { projectId },
+      });
       await prisma.project.delete({ where: { id: projectId } });
     } catch (err: any) {
       if (err.code === "P2023") {
