@@ -1,0 +1,81 @@
+.invite_workspaces {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.top_invite_workspaces {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_invite_workspaces > h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 100;
+}
+
+.invite_workspaces h2 {
+  font-weight: 100;
+  font-size: 1.6rem;
+}
+.invite_workspaces h3 {
+  font-weight: 100;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.projects_workspace_invite {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  padding: 20px;
+}
+
+.projects_workspace_invite > .project {
+  background: var(--bg-secondary);
+  transition: background ease 130ms;
+  text-decoration: none;
+  color: var(--text-color-100);
+  border-radius: 5px;
+  position: relative;
+  padding: 20px;
+  height: 100px;
+}
+.projects_workspace_invite > .project:hover {
+  background: var(--bg-tertiary);
+}
+
+.projects_workspace_invite > .project .content_project {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.projects_workspace_invite > .project .content_project .title {
+  font-size: 0.9em;
+}
+.projects_workspace_invite > .project .date {
+  font-size: 0.6rem;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-radius: 5px;
+  padding: 5px;
+  color: var(--text-color-400)
+}
+
+.projects_workspace_invite > .create_project {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.9em;
+}
+.projects_workspace_invite > .create_project:hover {
+  background: var(--color-primary-2);
+}

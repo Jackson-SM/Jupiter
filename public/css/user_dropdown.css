@@ -53,6 +53,10 @@
   padding: 10px;
 }
 
+.dropdown_user ul .user {
+  font-size: 0.8em;
+}
+
 .dropdown_user ul li {
   width: 100%;
 }

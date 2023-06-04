@@ -1,0 +1,218 @@
+.top_bar_project {
+  margin-top: 5px;
+  background: var(--bg-secondary);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn_add_group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn_add_members {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.count_members {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  color: var(--text-color-100);
+
+  transition: background ease 130ms;
+}
+.count_members:hover {
+  background: var(--bg-tertiary);
+}
+
+/*  Form  */
+
+.form_container {
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+
+  opacity: 0;
+  pointer-events: none;
+}
+.form_container.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.form_container .overlay {
+  background: rgba(0, 0, 0, 0.645);
+
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+}
+
+.container_form_group {
+  z-index: 1;
+  background: var(--bg-primary);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+
+  border-radius: 5px;
+
+  width: 400px;
+}
+.container_form_group img {
+  height: 80px;
+}
+.container_form_group > h3 {
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+
+  width: 100%;
+}
+
+.form_group fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_group fieldset textarea {
+  border: none;
+  outline: none;
+  background: none;
+
+  border: 1px solid var(--bg-opacity);
+
+  padding: 10px;
+
+  color: var(--text-color-100);
+
+  transition: border ease 130ms;
+}
+.form_group fieldset textarea:focus {
+  border: 1px solid var(--color-primary)
+}
+
+.form_group fieldset input {
+  border: 1px solid var(--bg-opacity);
+  outline: none;
+  padding: 10px;
+  color: var(--text-color-100);
+  font-family: "Poppins", sans-serif;
+  border-radius: 3px;
+  background: none;
+  flex-direction: column;
+
+  transition: all ease 130ms;
+}
+
+.form_group fieldset input:focus,
+.form_group fieldset input:valid  {
+  border: 1px solid var(--color-primary);
+}
+
+/* Form Member */
+
+.container_form_member {
+  z-index: 1;
+  background: var(--bg-primary);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+
+  border-radius: 5px;
+
+  width: 400px;
+}
+.container_form_member img {
+  height: 80px;
+}
+.container_form_member > h3 {
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+.form_member {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+
+  width: 100%;
+}
+
+.form_member fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_member fieldset textarea {
+  border: none;
+  outline: none;
+  background: none;
+
+  border: 1px solid var(--bg-opacity);
+
+  padding: 10px;
+
+  color: var(--text-color-100);
+
+  transition: border ease 130ms;
+}
+.form_member fieldset textarea:focus {
+  border: 1px solid var(--color-primary)
+}
+
+.form_member fieldset input {
+  border: 1px solid var(--bg-opacity);
+  outline: none;
+  padding: 10px;
+  color: var(--text-color-100);
+  font-family: "Poppins", sans-serif;
+  border-radius: 3px;
+  background: none;
+  flex-direction: column;
+
+  transition: all ease 130ms;
+}
+
+.form_member fieldset input:focus,
+.form_member fieldset input:valid  {
+  border: 1px solid var(--color-primary);
+}
