@@ -8,12 +8,11 @@ export class AddParticipantInProjectController {
   ) {}
 
   public handler = async (request: Request, h: ResponseToolkit) => {
-    const { projectId, userId } =
-      request.payload as AddParticipantInProjectBody;
+    const { projectId, email } = request.payload as AddParticipantInProjectBody;
 
     await this.addParticipantInProjectCase.execute({
       projectId,
-      userId,
+      email,
     });
 
     return h.response().code(201);
