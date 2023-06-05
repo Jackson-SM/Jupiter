@@ -39,7 +39,6 @@ const getProject = async (project_id) => {
   if(data.leadId !== user.id && participants.includes(participant => participant.userId !== user.id)) {
     return window.location.href = "/"
   }
-  console.log("É participante do projeto")
 
   const projectAndParticipants = {...data, participants}
 

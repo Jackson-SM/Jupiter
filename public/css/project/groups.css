@@ -1,0 +1,91 @@
+body,html {
+  height: calc(100% - 65px);
+}
+
+main {
+  height: 100%;
+}
+
+.groups {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.group_card {
+  background: var(--bg-secondary);
+  border-radius: 5px;
+
+  min-width: 300px;
+  width: 300px;
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.group_card .top_group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--bg-opacity);
+  background: var(--bg-primary);
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.group_card .title_group {
+  font-size: 0.8em;
+}
+
+.group_card .tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+}
+
+.task_card {
+  background: var(--bg-secondary);
+  border: none;
+  color: var(--text-color-100);
+  padding: 10px;
+  display: flex;
+  cursor: pointer;
+}
+
+.task_card:hover {
+  background: var(--bg-opacity-2);
+}
+
+.footer_group {
+  padding: 10px;
+  background: var(--bg-tertiary);
+}
+
+.btn_add_task {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  outline: none;
+
+  color: var(--text-color-100);
+
+  cursor: pointer;
+
+  transition: background ease 130ms;
+}
+
+.btn_add_task:hover {
+  background: var(--bg-opacity-2)
+}
+
+.title {
+  font-size: 0.85em;
+}

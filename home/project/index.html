@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="../../public/css/project/top_bar_project.css">
   <link rel="stylesheet" href="../../public/css/project/dropdown_members.css">
   <link rel="stylesheet" href="../../public/css/notification.css">
+  <link rel="stylesheet" href="../../public/css/project/groups.css">
+  <link rel="stylesheet" href="../../public/css/form_edit.css">
+  <link rel="stylesheet" href="../../public/css/dropdown_group.css">
   <link rel="stylesheet" href="../../public/css/loading.css">
   <link href="https://css.gg/css" rel="stylesheet" />
   <title>Document</title>
@@ -44,9 +47,20 @@
   </div>
   <main>
     <section class="groups">
-
     </section>
   </main>
+  <div class="form_container edit_title_group">
+    <div class="overlay"></div>
+    <div class="container_form_edit">
+      <form class="form_edit" action="/" method="PATCH">
+        <fieldset>
+          <input type="text" name="name" placeholder="Novo Título" required />
+        </fieldset>
+        <input type="hidden" value="" name="groupId" class="input_groupid" />
+        <button class="button" type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
   <div class="form_container group">
     <div class="overlay"></div>
     <div class="container_form_group">
@@ -84,12 +98,15 @@
   <script src="../../public/js/auth/verify-authenticate.js"></script>
   <script src="../../public/js/api/getProject.js"></script>
   <script src="../../public/js/api/delete_member_in_project.js"></script>
+  <script src="../../public/js/api/get_groups_and_tasks.js"></script>
+  <script src="../../public/js/api/delete_group.js"></script>
   <script src="../../public/js/project/render-info-project.js"></script>
   <script src="../../public/js/conditional-rendering/user-options-conditional.js"></script>
   <script src="../../public/js/project/render-forms-project.js"></script>
   <script src="../../public/js/private/private-for-user-else-participant-or-lead.js"></script>
   <script src="../../public/js/api/create_group.js"></script>
   <script src="../../public/js/api/add_member_in_project.js"></script>
+  <script src="../../public/js/api/edit_name_group.js"></script>
 </body>
 
 </html>
