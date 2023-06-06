@@ -2,13 +2,11 @@ import Hapi from "@hapi/hapi";
 import payloadParamsId from "../payloads/payloadParamsId";
 import { findTaskByGroupIdController } from "../controllers/Task";
 import {
-  addTaskInGroupController,
   createGroupController,
   deleteGroupController,
   editNameGroupController,
 } from "../controllers/Group";
 import createGroupPayload from "../payloads/createGroupPayload";
-import addTaskInGroupPayload from "../payloads/addTaskInGroupPayload";
 
 const groupsRoutes = {
   name: "groups",
@@ -25,33 +23,22 @@ const groupsRoutes = {
         },
       },
       {
-        method: "POST",
-        path: "/v1/groups/{id}/tasks/",
-        handler: addTaskInGroupController.handler,
-        options: {
-          validate: {
-            params: payloadParamsId,
-            payload: addTaskInGroupPayload,
-          },
-        },
-      },
-      {
         method: "DELETE",
-        path: "/v1/groups/{id}",
+        path: "/v1/groups/{id}/",
         handler: deleteGroupController.handler,
         options: {
           validate: {
-            payload: payloadParamsId,
+            params: payloadParamsId,
           },
         },
       },
       {
         method: "PATCH",
-        path: "/v1/groups/{id}",
+        path: "/v1/groups/{id}/",
         handler: editNameGroupController.handler,
         options: {
           validate: {
-            payload: payloadParamsId,
+            params: payloadParamsId,
           },
         },
       },

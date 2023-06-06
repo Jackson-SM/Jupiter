@@ -1,4 +1,4 @@
 export interface IMoveTaskInGroupBody {
-  newGroupId: string;
+  groupId: string;
   taskId: string;
 }

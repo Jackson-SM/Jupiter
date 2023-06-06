@@ -4,7 +4,10 @@ import {
   createUserController,
   findUserByIdController,
 } from "../controllers/User";
-import { findProjectByLeadIdController } from "../controllers/Project";
+import {
+  findAllProjectParticipantingByUserController,
+  findProjectByLeadIdController,
+} from "../controllers/Project";
 import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
 import { findTaskByResponsibleIdController } from "../controllers/Task";
 import { findAllCommentsByUserIdController } from "../controllers/Comment";
@@ -39,6 +42,16 @@ const usersRoutes = {
         method: "GET",
         path: "/v1/users/{id}/projects-lead/",
         handler: findProjectByLeadIdController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
+          },
+        },
+      },
+      {
+        method: "GET",
+        path: "/v1/users/{id}/projects/participant",
+        handler: findAllProjectParticipantingByUserController.handler,
         options: {
           validate: {
             params: payloadParamsId,

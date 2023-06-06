@@ -3,6 +3,8 @@ import prisma from "../client/prisma";
 import Boom from "@hapi/boom";
 import { TaskRepository } from "~/domain/repositories/TaskRepository";
 import { PrismaTaskMapper } from "../mappers/prisma-task-mapper";
+import { User } from "~/domain/entities/User/User";
+import { PrismaUserMapper } from "../mappers/prisma-user-mapper";
 
 export class PrismaTaskRepository implements TaskRepository {
   async doneTask(taskId: string): Promise<void> {
@@ -13,6 +15,33 @@ export class PrismaTaskRepository implements TaskRepository {
       },
     });
   }
+  async editTask(
+    taskId: string,
+    title: string,
+    description: string,
+  ): Promise<void> {
+    await prisma.task.update({
+      where: { id: taskId },
+      data: { title, description },
+    });
+  }
+
+  async findAllResponsiblesTask(taskId: string): Promise<User[]> {
+    const users = await prisma.tasksResponsible.findMany({
+      where: { taskId: taskId },
+      include: {
+        user: true,
+      },
+    });
+
+    const usersFilter = users.map((user) => user.user);
+    const usersToDomain = usersFilter.map((user) =>
+      PrismaUserMapper.toDomain(user),
+    );
+
+    return usersToDomain;
+  }
+
   async findById(id: string): Promise<Task | null> {
     try {
       const task = await prisma.task.findUnique({ where: { id: id } });
@@ -69,6 +98,13 @@ export class PrismaTaskRepository implements TaskRepository {
       }
       throw Boom.badRequest(err.message);
     }
+  }
+
+  async moveTaskGroup(newGroup: string, taskId: string): Promise<void> {
+    await prisma.task.update({
+      where: { id: taskId },
+      data: { groupId: newGroup },
+    });
   }
 
   async findTasksByGroupId(groupId: string): Promise<Task[]> {

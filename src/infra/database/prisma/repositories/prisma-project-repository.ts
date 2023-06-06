@@ -37,6 +37,21 @@ export class PrismaProjectRepository implements ProjectRepository {
       throw Boom.badRequest(err.message);
     }
   }
+
+  async findAllProjectParticipantingByUser(userId: string): Promise<Project[]> {
+    const rawProjectsParticipanting =
+      await prisma.projectParticipanting.findMany({
+        where: { userId },
+        include: { project: true },
+      });
+
+    const projects = rawProjectsParticipanting.map(
+      (projectsParticipanting) => projectsParticipanting.project,
+    );
+
+    return projects.map((project) => PrismaProjectMapper.toDomain(project));
+  }
+
   async findAllByLeadId(leadId: string): Promise<Project[]> {
     try {
       const projects = await prisma.project.findMany({

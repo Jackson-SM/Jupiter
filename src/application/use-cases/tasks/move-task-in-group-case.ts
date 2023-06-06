@@ -1,4 +1,4 @@
-import { GroupRepository } from "~/domain/repositories/GroupRepository";
+import { TaskRepository } from "~/domain/repositories/TaskRepository";
 
 interface MoveTaskInGroupCaseRequest {
   taskId: string;
@@ -6,11 +6,11 @@ interface MoveTaskInGroupCaseRequest {
 }
 
 export class MoveTaskInGroupCase {
-  constructor(private groupRepository: GroupRepository) {}
+  constructor(private taskRepository: TaskRepository) {}
 
   async execute(request: MoveTaskInGroupCaseRequest): Promise<void> {
     const { taskId, newGroup } = request;
 
-    await this.groupRepository.moveTaskGroup(newGroup, taskId);
+    await this.taskRepository.moveTaskGroup(newGroup, taskId);
   }
 }

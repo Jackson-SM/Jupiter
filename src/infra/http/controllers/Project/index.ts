@@ -15,6 +15,8 @@ import { RemoveParticipantInProjectController } from "./RemoveParticipantInProje
 import { RemoveParticipantInProjectCase } from "~/application/use-cases/projects/remove-participant-in-project-case";
 import { RemoveProjectController } from "./RemoveProjectController";
 import { RemoveProjectCase } from "~/application/use-cases/projects/remove-project-case";
+import { FindAllProjectParticipantingByUserController } from "./FindAllProjectParticipantingByUserController";
+import { FindAllProjectParticipantingByUserCase } from "~/application/use-cases/projects/find-all-project-participanting-by-user-case";
 
 const prismaProjectRepository = new PrismaProjectRepository();
 
@@ -36,6 +38,9 @@ const removeParticipantInProjectCase = new RemoveParticipantInProjectCase(
   prismaProjectRepository,
 );
 const removeProjectCase = new RemoveProjectCase(prismaProjectRepository);
+const findAllProjectParticipantingByUserCase =
+  new FindAllProjectParticipantingByUserCase(prismaProjectRepository);
+
 // Controllers
 const createProjectController = new CreateProjectController(createProjectCase);
 const findProjectByIdController = new FindProjectByIdController(
@@ -56,6 +61,10 @@ const addParticipantInProjectController = new AddParticipantInProjectController(
 const removeParticipantInProjectController =
   new RemoveParticipantInProjectController(removeParticipantInProjectCase);
 const removeProjectController = new RemoveProjectController(removeProjectCase);
+const findAllProjectParticipantingByUserController =
+  new FindAllProjectParticipantingByUserController(
+    findAllProjectParticipantingByUserCase,
+  );
 
 export {
   createProjectController,
@@ -66,4 +75,5 @@ export {
   addParticipantInProjectController,
   removeParticipantInProjectController,
   removeProjectController,
+  findAllProjectParticipantingByUserController,
 };

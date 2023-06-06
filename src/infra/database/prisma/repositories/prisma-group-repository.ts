@@ -21,6 +21,12 @@ export class PrismaGroupRepository implements GroupRepository {
   }
   async deleteGroup(groupId: string): Promise<void> {
     try {
+      const tasks = await prisma.task.findMany({ where: { groupId } });
+
+      if (tasks.length > 0) {
+        await prisma.task.deleteMany({ where: { groupId } });
+      }
+
       await prisma.group.delete({ where: { id: groupId } });
     } catch (err: any) {
       if (err.code === "P2023") {

@@ -29,6 +29,20 @@ export class InMemoryProjectRepository implements ProjectRepository {
     return project;
   }
 
+  async findAllProjectParticipantingByUser(userId: string): Promise<Project[]> {
+    const projectsParticipanting = this.participants
+      .filter((participant) => participant.userId === userId)
+      .map((participant) => participant.projectId);
+
+    const projects = projectsParticipanting.map((projectId) =>
+      this.findById(projectId),
+    );
+
+    const projectsPromise = await Promise.all(projects);
+
+    return projectsPromise.filter((project) => project !== null) as Project[];
+  }
+
   async findAllByLeadId(leadId: string): Promise<Project[]> {
     const project = this.projects.filter(
       (project) => project.leadId === leadId,

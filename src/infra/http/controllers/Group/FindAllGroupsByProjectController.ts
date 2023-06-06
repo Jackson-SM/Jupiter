@@ -1,5 +1,6 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { FindAllGroupsByProjectCase } from "~/application/use-cases/groups/find-all-groups-by-project-case";
+import { GroupViewModel } from "../../view-models/group-view-model";
 
 export class FindAllGroupsByProjectController {
   constructor(private findAllGroupsByProjectCase: FindAllGroupsByProjectCase) {}
@@ -11,6 +12,8 @@ export class FindAllGroupsByProjectController {
       projectId: id,
     });
 
-    return h.response(groups).code(200);
+    const groupsToHttp = groups.map((group) => GroupViewModel.toHttp(group));
+
+    return h.response(groupsToHttp).code(200);
   };
 }

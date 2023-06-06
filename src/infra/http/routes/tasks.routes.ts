@@ -3,15 +3,18 @@ import {
   addTaskResponsibleController,
   createTaskController,
   doneTaskController,
+  editTaskController,
+  findAllResponsiblesTaskController,
   findTaskByIdController,
+  moveTaskInGroupController,
   removeTaskController,
 } from "../controllers/Task";
 import { findAllCommentsByTaskIdController } from "../controllers/Comment";
 import payloadParamsId from "../payloads/payloadParamsId";
 import createTaskPayload from "../payloads/createTaskPayload";
 import addTaskPayload from "../payloads/addTaskPayload";
-import { moveTaskInGroupController } from "../controllers/Group";
 import moveTaskInGroupPayload from "../payloads/moveTaskInGroupPayload";
+import editTaskPayload from "../payloads/edit-task-payload";
 
 const tasksRoutes = {
   name: "tasks",
@@ -49,17 +52,29 @@ const tasksRoutes = {
       },
       {
         method: "PATCH",
-        path: "/v1/tasks/",
+        path: "/v1/tasks/{id}/",
         handler: moveTaskInGroupController.handler,
         options: {
           validate: {
             payload: moveTaskInGroupPayload,
+            params: payloadParamsId,
+          },
+        },
+      },
+      {
+        method: "PUT",
+        path: "/v1/tasks/{id}/",
+        handler: editTaskController.handler,
+        options: {
+          validate: {
+            payload: editTaskPayload,
+            params: payloadParamsId,
           },
         },
       },
       {
         method: "DELETE",
-        path: "/v1/tasks/{id}",
+        path: "/v1/tasks/{id}/",
         handler: removeTaskController.handler,
         options: {
           validate: {
@@ -84,6 +99,16 @@ const tasksRoutes = {
         options: {
           validate: {
             payload: addTaskPayload,
+          },
+        },
+      },
+      {
+        method: "GET",
+        path: "/v1/tasks/{id}/responsibles/",
+        handler: findAllResponsiblesTaskController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
           },
         },
       },

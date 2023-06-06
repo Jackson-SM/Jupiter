@@ -7,6 +7,7 @@ export interface ProjectRepository {
   findAllByLeadId(leadId: string): Promise<Project[]>;
   findAllByWorkspaceId(workspaceId: string): Promise<Project[]>;
   findAllParticipantsByProjectId(projectId: string): Promise<User[]>;
+  findAllProjectParticipantingByUser(userId: string): Promise<Project[]>;
   addParticipantsInProject(email: string, projectId: string): Promise<void>;
   removeParticipantInProject(userId: string, projectId: string): Promise<void>;
   removeProject(projectId: string): Promise<void>;

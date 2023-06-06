@@ -13,6 +13,12 @@ import { DoneTaskController } from "./DoneTaskController";
 import { DoneTaskCase } from "~/application/use-cases/tasks/done-task-case";
 import { FindTaskByGroupIdController } from "./FindTaskByGroupIdController";
 import { FindTaskByGroupIdCase } from "~/application/use-cases/tasks/find-task-by-group-id";
+import { EditTaskController } from "./EditTaskController";
+import { EditTaskCase } from "~/application/use-cases/tasks/edit-task-case";
+import { MoveTaskInGroupController } from "./MoveTaskInGroupController";
+import { MoveTaskInGroupCase } from "~/application/use-cases/tasks/move-task-in-group-case";
+import { FindAllResponsiblesTaskController } from "./FindAllResponsiblesTaskController";
+import { FindAllResponsiblesTaskCase } from "~/application/use-cases/tasks/find-all-responsibles-task-case";
 
 const prismaTaskRepository = new PrismaTaskRepository();
 
@@ -26,6 +32,11 @@ const findTaskByIdCase = new FindTaskByIdCase(prismaTaskRepository);
 const removeTaskCase = new RemoveTaskCase(prismaTaskRepository);
 const doneTaskCase = new DoneTaskCase(prismaTaskRepository);
 const findTaskByGroupIdCase = new FindTaskByGroupIdCase(prismaTaskRepository);
+const editTaskCase = new EditTaskCase(prismaTaskRepository);
+const moveTaskInGroupCase = new MoveTaskInGroupCase(prismaTaskRepository);
+const findAllResponsiblesTaskCase = new FindAllResponsiblesTaskCase(
+  prismaTaskRepository,
+);
 
 // Controllers
 const createTaskController = new CreateTaskController(createTaskCase);
@@ -41,6 +52,13 @@ const doneTaskController = new DoneTaskController(doneTaskCase);
 const findTaskByGroupIdController = new FindTaskByGroupIdController(
   findTaskByGroupIdCase,
 );
+const editTaskController = new EditTaskController(editTaskCase);
+const moveTaskInGroupController = new MoveTaskInGroupController(
+  moveTaskInGroupCase,
+);
+const findAllResponsiblesTaskController = new FindAllResponsiblesTaskController(
+  findAllResponsiblesTaskCase,
+);
 
 export {
   createTaskController,
@@ -50,4 +68,7 @@ export {
   removeTaskController,
   doneTaskController,
   findTaskByGroupIdController,
+  editTaskController,
+  moveTaskInGroupController,
+  findAllResponsiblesTaskController,
 };
