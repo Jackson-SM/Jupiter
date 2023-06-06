@@ -1,108 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/global.css" />
+    <link rel="stylesheet" href="../public/css/index.css" />
+    <link rel="stylesheet" href="../public/css/create_project.css" />
+    <link rel="stylesheet" href="../public/css/create_workspace.css" />
+    <link rel="stylesheet" href="../public/css/workspace.css" />
+    <link rel="stylesheet" href="../public/css/section_workspace_options.css" />
+    <link rel="stylesheet" href="../public/css/tasks.css" />
+    <link rel="stylesheet" href="../public/css/notification.css" />
+    <link rel="stylesheet" href="../public/css/user_dropdown.css" />
+    <link rel="stylesheet" href="../public/css/invite_workspaces.css" />
+    <link rel="stylesheet" href="../public/css/loading.css" />
+    <link href="https://css.gg/css" rel="stylesheet" />
+    <style>
+      main {
+        padding: 20px;
+      }
+    </style>
+    <title>Jupiter</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../public/css/global.css" />
-  <link rel="stylesheet" href="../public/css/index.css" />
-  <link rel="stylesheet" href="../public/css/create_project.css" />
-  <link rel="stylesheet" href="../public/css/create_workspace.css" />
-  <link rel="stylesheet" href="../public/css/workspace.css" />
-  <link rel="stylesheet" href="../public/css/section_workspace_options.css" />
-  <link rel="stylesheet" href="../public/css/tasks.css" />
-  <link rel="stylesheet" href="../public/css/notification.css" />
-  <link rel="stylesheet" href="../public/css/user_dropdown.css" />
-  <link rel="stylesheet" href="../public/css/invite_workspaces.css" />
-  <link rel="stylesheet" href="../public/css/loading.css" />
-  <link href="https://css.gg/css" rel="stylesheet" />
-  <style>
-    main {
-      padding: 20px;
-    }
-  </style>
-  <title>Jupiter</title>
-</head>
-
-<body>
-  <header>
-    <div class="logo">
-      <img src="../public/assets/jupiter_logo.png" />
-    </div>
-    <div class="user-options">
-      <div class="dropdown_user">
-        <ul>
-          <li class="user"></li>
-          <li><button class="config">Configurações<i class="gg-menu"></i></button></li>
-          <li><button class="logout" onclick="logout()">Sair<i class="gg-log-off"></i></button></li>
-        </ul>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="../public/assets/jupiter_logo.png" />
+      </div>
+      <div class="user-options">
+        <div class="dropdown_user">
+          <ul>
+            <li class="user"></li>
+            <li>
+              <button class="config">
+                Configurações<i class="gg-menu"></i>
+              </button>
+            </li>
+            <li>
+              <button class="logout" onclick="logout()">
+                Sair<i class="gg-log-off"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="workspaces">
+        <div class="top_workspaces">
+          <h2><i class="gg-work-alt"></i>Áreas de Trabalho</h2>
+          <button class="btn_create_workspace button">Criar Workspace</button>
+        </div>
+      </section>
+      <section class="invite_workspaces">
+        <div class="top_invite_workspaces">
+          <h2><i class="gg-work-alt"></i>Projetos Convidado</h2>
+        </div>
+        <div class="projects_workspace_invite"></div>
+      </section>
+    </main>
+    <div class="form_container workspace">
+      <div class="overlay"></div>
+      <div class="container_form_workspace">
+        <img src="../public/assets/jupiter_logo.png" />
+        <h3>Criar Workspace</h3>
+        <form class="form_workspace" action="/" method="POST">
+          <fieldset>
+            <input
+              type="text"
+              name="title"
+              placeholder="Título do Workspace"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <textarea
+              rows="10"
+              cols="20"
+              name="description"
+              placeholder="Descrição do Workspace"
+            ></textarea>
+          </fieldset>
+          <button class="button" type="submit">Criar Workspace</button>
+        </form>
       </div>
     </div>
-  </header>
-  <main>
-    <section class="workspaces">
-      <div class="top_workspaces">
-        <h2><i class="gg-work-alt"></i>Áreas de Trabalho</h2>
-        <button class="btn_create_workspace button">Criar Workspace</button>
+    <div class="form_container project">
+      <div class="overlay"></div>
+      <div class="container_form_project">
+        <img src="../public/assets/jupiter_logo.png" />
+        <h3>Criar Projeto</h3>
+        <form class="form_project" action="/" method="POST">
+          <fieldset>
+            <input
+              type="text"
+              name="title"
+              placeholder="Título do Projeto"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <textarea
+              rows="10"
+              cols="20"
+              name="description"
+              placeholder="Descrição do Projeto"
+            ></textarea>
+          </fieldset>
+          <input
+            type="hidden"
+            value=""
+            name="workspaceId"
+            class="input_workspaceid"
+          />
+          <button class="button" type="submit">Criar Projeto</button>
+        </form>
       </div>
-    </section>
-    <section class="invite_workspaces">
-      <div class="top_invite_workspaces">
-        <h2><i class="gg-work-alt"></i>Projetos Convidado</h2>
-      </div>
-      <div class="projects_workspace_invite"></div>
-    </section>
-  </main>
-  <div class="form_container workspace">
-    <div class="overlay"></div>
-    <div class="container_form_workspace">
-      <img src="../public/assets/jupiter_logo.png" />
-      <h3>Criar Workspace</h3>
-      <form class="form_workspace" action="/" method="POST">
-        <fieldset>
-          <input type="text" name="title" placeholder="Título do Workspace" required />
-        </fieldset>
-        <fieldset>
-          <textarea rows="10" cols="20" name="description" placeholder="Descrição do Workspace"></textarea>
-        </fieldset>
-        <button class="button" type="submit">Criar Workspace</button>
-      </form>
     </div>
-  </div>
-  <div class="form_container project">
-    <div class="overlay"></div>
-    <div class="container_form_project">
-      <img src="../public/assets/jupiter_logo.png" />
-      <h3>Criar Projeto</h3>
-      <form class="form_project" action="/" method="POST">
-        <fieldset>
-          <input type="text" name="title" placeholder="Título do Projeto" required />
-        </fieldset>
-        <fieldset>
-          <textarea rows="10" cols="20" name="description" placeholder="Descrição do Projeto"></textarea>
-        </fieldset>
-        <input type="hidden" value="" name="workspaceId" class="input_workspaceid" />
-        <button class="button" type="submit">Criar Projeto</button>
-      </form>
-    </div>
-  </div>
 
-  <script src="../config.js"></script>
-  <script src="../public/js/effects/loading.js"></script>
-  <script src="../public/js/effects/notification.js"></script>
-  <script src="../public/js/auth/user.js"></script>
-  <script src="../public/js/auth/getcookie.js"></script>
-  <script src="../public/js/auth/setcookie.js"></script>
-  <script src="../public/js/auth/logout.js"></script>
-  <script src="../public/js/auth/verify-authenticate.js"></script>
-  <script src="../public/js/conditional-rendering/user-options-conditional.js"></script>
-  <script src="../public/js/api/workspaces.js"></script>
-  <script src="../public/js/conditional-rendering/open_create_workspace.js"></script>
-  <script src="../public/js/api/create_workspace.js"></script>
-  <script src="../public/js/api/create_project.js"></script>
-  <script src="../public/js/api/get_project_participant.js"></script>
-  <script src="../public/js/conditional-rendering/rendering-workspace.js"></script>
-</body>
-
+    <script src="../config.js"></script>
+    <script src="../public/js/effects/loading.js"></script>
+    <script src="../public/js/effects/notification.js"></script>
+    <script src="../public/js/auth/user.js"></script>
+    <script src="../public/js/auth/getcookie.js"></script>
+    <script src="../public/js/auth/setcookie.js"></script>
+    <script src="../public/js/auth/logout.js"></script>
+    <script src="../public/js/auth/verify-authenticate.js"></script>
+    <script src="../public/js/conditional-rendering/user-options-conditional.js"></script>
+    <script src="../public/js/api/workspaces.js"></script>
+    <script src="../public/js/conditional-rendering/open_create_workspace.js"></script>
+    <script src="../public/js/api/create_workspace.js"></script>
+    <script src="../public/js/api/create_project.js"></script>
+    <script src="../public/js/api/get_project_participant.js"></script>
+    <script src="../public/js/conditional-rendering/rendering-workspace.js"></script>
+  </body>
 </html>

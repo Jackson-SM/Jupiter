@@ -1,6 +1,6 @@
-const delete_group = async (groupId) => {
-  const response = await fetch(API_BASE_URL + `/v1/groups/${groupId}/`, {
-    method: "DELETE",
+const done_task = async (taskId) => {
+  const response = await fetch(API_BASE_URL + `/v1/tasks/${taskId}/done`, {
+    method: "PATCH",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",

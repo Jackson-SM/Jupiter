@@ -81,7 +81,7 @@
   position: absolute;
   border-radius: 5px;
   padding: 5px;
-  color: var(--text-color-400)
+  color: var(--text-color-400);
 }
 
 .projects_workspace > .create_project {

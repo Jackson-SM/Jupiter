@@ -1,35 +1,4 @@
-.form_container {
-  position: fixed;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  height: 100%;
-
-  top: 0;
-
-  opacity: 0;
-  pointer-events: none;
-}
-.form_container.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-.form_container .overlay {
-  background: rgba(0, 0, 0, 0.645);
-
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-
-  top: 0;
-  left: 0;
-}
-
-.container_form_workspace {
+.container_form_task {
   z-index: 1;
   background: var(--bg-primary);
   padding: 20px;
@@ -41,17 +10,17 @@
 
   border-radius: 5px;
 
-  width: 400px;
+  width: 450px;
 }
-.container_form_workspace img {
+.container_form_task img {
   height: 80px;
 }
-.container_form_workspace > h3 {
+.container_form_task > h3 {
   font-weight: 100;
   font-size: 1.5em;
 }
 
-.form_workspace {
+.form_task {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -60,13 +29,13 @@
   width: 100%;
 }
 
-.form_workspace fieldset {
+.form_task fieldset {
   border: none;
   display: flex;
   flex-direction: column;
 }
 
-.form_workspace fieldset textarea {
+.form_task fieldset textarea {
   border: none;
   outline: none;
   background: none;
@@ -79,11 +48,11 @@
 
   transition: border ease 130ms;
 }
-.form_workspace fieldset textarea:focus {
+.form_task fieldset textarea:focus {
   border: 1px solid var(--color-primary);
 }
 
-.form_workspace fieldset input {
+.form_task fieldset input {
   border: 1px solid var(--bg-opacity);
   outline: none;
   padding: 10px;
@@ -96,7 +65,7 @@
   transition: all ease 130ms;
 }
 
-.form_workspace fieldset input:focus,
-.form_workspace fieldset input:valid {
+.form_task fieldset input:focus,
+.form_task fieldset input:valid {
   border: 1px solid var(--color-primary);
 }

@@ -1,6 +1,6 @@
-const delete_group = async (groupId) => {
-  const response = await fetch(API_BASE_URL + `/v1/groups/${groupId}/`, {
-    method: "DELETE",
+const find_user_by_id = async (userId) => {
+  const response = await fetch(API_BASE_URL + `/v1/users/${userId}`, {
+    method: "GET",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
@@ -13,8 +13,8 @@ const delete_group = async (groupId) => {
       return createNotification("Verifique os dados novamente.");
     case 401:
       return logout();
-    case 204:
-      return window.location.reload();
+    case 200:
+      return await response.json()
     default:
       return createNotification("Erro inesperado, tente novamente.");
   }

@@ -80,7 +80,7 @@
   transition: border ease 130ms;
 }
 .form_edit fieldset textarea:focus {
-  border: 1px solid var(--color-primary)
+  border: 1px solid var(--color-primary);
 }
 
 .form_edit fieldset input {
@@ -97,6 +97,6 @@
 }
 
 .form_edit fieldset input:focus,
-.form_edit fieldset input:valid  {
+.form_edit fieldset input:valid {
   border: 1px solid var(--color-primary);
 }

@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="../../public/css/project/groups.css">
   <link rel="stylesheet" href="../../public/css/form_edit.css">
   <link rel="stylesheet" href="../../public/css/dropdown_group.css">
+  <link rel="stylesheet" href="../../public/css/create_task.css">
+  <link rel="stylesheet" href="../../public/css/task_info.css">
   <link rel="stylesheet" href="../../public/css/loading.css">
+  <link rel="stylesheet" href="../../public/css/comments.css">
   <link href="https://css.gg/css" rel="stylesheet" />
   <title>Document</title>
 </head>
@@ -49,6 +52,56 @@
     <section class="groups">
     </section>
   </main>
+  <div class="task_info">
+    <div class="overlay"></div>
+    <div class="body_task_info">
+      <div class="top_task_info">
+        <div class="container_title_task">
+          <p class="title_task"></p>
+          <input type="text" value="Título da Task" class="title_task_edit" />
+        </div>
+        <span class="group_task">Tarefa do Backend</span>
+      </div>
+      <div class="content_task_info">
+        <span>Descrição</span>
+        <p class="description_task"></p>
+        <textarea>Aqui está o texto da task</textarea>
+      </div>
+      <div class="options_task">
+        <button class="show_options">Opções<i class="gg-math-plus"></i></button>
+        <div class="options_dropdown">
+          <button class="button_options_task delete_task">Deletar<i class="gg-trash"></i></button>
+          <button class="button_options_task add_responsible">Adicionar<i class="gg-user-add"></i>
+            <div class="dropdown_participants">
+            </div>
+          </button>
+          <button class="button_options_task done_task">Terminar Tarefa</button>
+          <button class="button_options_task move_task">Mover<i class="gg-move-right"></i>
+            <div class="groups_move_to">
+            </div>
+          </button>
+          <button class="button_options_task save_task" disabled>Salvar<i class="gg-check"></i></button>
+          <button class="count_members">
+            <i class="gg-user"></i>
+            <div class="dropdown_members">
+              <ul class="members">
+              </ul>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="container_comments">
+        <div class="add_comment">
+          <input type="text" name="content" class="input_comment" />
+          <button class="button post_comment">Comentar</button>
+        </div>
+        <div class="comments">
+          <h3>Comentários</h3>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="form_container edit_title_group">
     <div class="overlay"></div>
     <div class="container_form_edit">
@@ -61,6 +114,25 @@
       </form>
     </div>
   </div>
+
+  <div class="form_container task">
+    <div class="overlay"></div>
+    <div class="container_form_task">
+      <img src="../../public/assets/jupiter_logo.png" />
+      <h3>Criar Tarefa</h3>
+      <form class="form_task" action="/" method="POST">
+        <fieldset>
+          <input type="text" name="title" placeholder="Título da Tarefa" required />
+        </fieldset>
+        <fieldset>
+          <textarea cols="20" rows="20" name="description" placeholder="Descrição da Tarefa"></textarea>
+        </fieldset>
+        <input type="hidden" value="" name="groupId" class="input_groupId" />
+        <button class="button" type="submit">Criar Tarefa</button>
+      </form>
+    </div>
+  </div>
+
   <div class="form_container group">
     <div class="overlay"></div>
     <div class="container_form_group">
@@ -99,14 +171,24 @@
   <script src="../../public/js/api/getProject.js"></script>
   <script src="../../public/js/api/delete_member_in_project.js"></script>
   <script src="../../public/js/api/get_groups_and_tasks.js"></script>
+  <script src="../../public/js/api/delete_task.js"></script>
+  <script src="../../public/js/api/find-user-by-id.js"></script>
+  <script src="../../public/js/api/find-all-comments-task.js"></script>
+  <script src="../../public/js/api/find_all_responsibles.js"></script>
   <script src="../../public/js/api/delete_group.js"></script>
+  <script src="../../public/js/api/add_responsibles_task.js"></script>
+  <script src="../../public/js/api/done_task.js"></script>
+  <script src="../../public/js/api/move_task_to.js"></script>
+  <script src="../../public/js/api/edit_task.js"></script>
+  <script src="../../public/js/project/render-task-info.js"></script>
   <script src="../../public/js/project/render-info-project.js"></script>
   <script src="../../public/js/conditional-rendering/user-options-conditional.js"></script>
   <script src="../../public/js/project/render-forms-project.js"></script>
-  <script src="../../public/js/private/private-for-user-else-participant-or-lead.js"></script>
   <script src="../../public/js/api/create_group.js"></script>
   <script src="../../public/js/api/add_member_in_project.js"></script>
   <script src="../../public/js/api/edit_name_group.js"></script>
+  <script src="../../public/js/api/create_task.js"></script>
+  <script src="../../public/js/effects/task_edit_effect.js"></script>
 </body>
 
 </html>

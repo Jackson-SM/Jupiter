@@ -1,90 +1,94 @@
-const section_workspaces = document.querySelector('.workspaces')
+const section_workspaces = document.querySelector(".workspaces");
 
 async function renderWorkspaces() {
-  const data = await fetchWorkspaces()
-  const dataParticipanting = await getProjectsParticipant()
+  const data = await fetchWorkspaces();
+  const dataParticipanting = await getProjectsParticipant();
 
-  console.log(dataParticipanting)
-  
+  console.log(dataParticipanting);
+
   data.map((data) => {
-    const workspace = document.createElement('div');
-    workspace.classList.add('workspace');
-    
-    const title_workspace = document.createElement('h3');
-    const top_workspace = document.createElement('div');
+    const workspace = document.createElement("div");
+    workspace.classList.add("workspace");
+
+    const title_workspace = document.createElement("h3");
+    const top_workspace = document.createElement("div");
     top_workspace.classList.add("top_workspace");
     title_workspace.innerHTML = `${data.title}<i class="gg-arrow-down"></i>`;
     top_workspace.appendChild(title_workspace);
-    workspace.appendChild(top_workspace) // Add In Workspace
+    workspace.appendChild(top_workspace); // Add In Workspace
 
-    const projects_workspace = document.createElement('div');
+    const projects_workspace = document.createElement("div");
     projects_workspace.classList.add("projects_workspace");
     workspace.appendChild(projects_workspace); // Add Collection Projects
 
     data.projects.map((project) => {
-      const projectElement = document.createElement('a')
-      projectElement.classList.add("project")
-      projectElement.setAttribute("href", `project/?id=${project.id}`)
-      projects_workspace.appendChild(projectElement)
+      const projectElement = document.createElement("a");
+      projectElement.classList.add("project");
+      projectElement.setAttribute("href", `project/?id=${project.id}`);
+      projects_workspace.appendChild(projectElement);
 
       // Content Project
-      const content_project = document.createElement('div')
-      content_project.classList.add("content_project")
-      const title_project = document.createElement('span')
-      title_project.classList.add("title")
-      title_project.textContent = project.title
-      
-      content_project.appendChild(title_project)
+      const content_project = document.createElement("div");
+      content_project.classList.add("content_project");
+      const title_project = document.createElement("span");
+      title_project.classList.add("title");
+      title_project.textContent = project.title;
 
-      projectElement.appendChild(content_project)
-    })
+      content_project.appendChild(title_project);
 
-    const create_project = document.createElement('div')
-    create_project.classList.add("project", "create_project")
-    create_project.innerHTML = '<i class="gg-add-r"></i> Criar Projeto'
+      projectElement.appendChild(content_project);
+    });
 
-    create_project.addEventListener('click', (event) => {
-      const input_workspaceid = document.querySelector('.input_workspaceid')
-      input_workspaceid.setAttribute('value', data.id);
-      document.querySelector('.form_container.project').classList.toggle('open')
-      console.log(input_workspaceid)
-      console.log(data.id)
-    })
+    const create_project = document.createElement("div");
+    create_project.classList.add("project", "create_project");
+    create_project.innerHTML = '<i class="gg-add-r"></i> Criar Projeto';
 
-    projects_workspace.appendChild(create_project)
+    create_project.addEventListener("click", (event) => {
+      const input_workspaceid = document.querySelector(".input_workspaceid");
+      input_workspaceid.setAttribute("value", data.id);
+      document
+        .querySelector(".form_container.project")
+        .classList.toggle("open");
+      console.log(input_workspaceid);
+      console.log(data.id);
+    });
+
+    projects_workspace.appendChild(create_project);
 
     section_workspaces.appendChild(workspace);
-  })
+  });
 
-  dataParticipanting.map(project => {
-    const inviteWorkspaces = document.querySelector('.projects_workspace_invite')
+  dataParticipanting.map((project) => {
+    const inviteWorkspaces = document.querySelector(
+      ".projects_workspace_invite"
+    );
 
-    const projectElement = document.createElement('a')
-      projectElement.classList.add("project")
-      projectElement.setAttribute("href", `project/?id=${project.id}`)
+    const projectElement = document.createElement("a");
+    projectElement.classList.add("project");
+    projectElement.setAttribute("href", `project/?id=${project.id}`);
 
-      // Content Project
-      const content_project = document.createElement('div')
-      content_project.classList.add("content_project")
-      const title_project = document.createElement('span')
-      title_project.classList.add("title")
-      title_project.textContent = project.title
-      
-      content_project.appendChild(title_project)
+    // Content Project
+    const content_project = document.createElement("div");
+    content_project.classList.add("content_project");
+    const title_project = document.createElement("span");
+    title_project.classList.add("title");
+    title_project.textContent = project.title;
 
-      projectElement.appendChild(content_project)
+    content_project.appendChild(title_project);
 
-      inviteWorkspaces.appendChild(projectElement)
-  })
+    projectElement.appendChild(content_project);
+
+    inviteWorkspaces.appendChild(projectElement);
+  });
 }
 
-renderWorkspaces()
+renderWorkspaces();
 
-const overlays = document.querySelectorAll('.overlay')
+const overlays = document.querySelectorAll(".overlay");
 
 overlays.forEach((overlay) => {
-  overlay.addEventListener('click', (event) => {
-    const form_container_open = document.querySelector('.form_container.open');
-    form_container_open.classList.toggle('open');
-  })
-})
+  overlay.addEventListener("click", (event) => {
+    const form_container_open = document.querySelector(".form_container.open");
+    form_container_open.classList.toggle("open");
+  });
+});

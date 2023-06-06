@@ -1,11 +1,12 @@
-const delete_group = async (groupId) => {
-  const response = await fetch(API_BASE_URL + `/v1/groups/${groupId}/`, {
-    method: "DELETE",
+const add_responsibles_task = async (data) => {
+  const response = await fetch(API_BASE_URL + `/v1/tasks/responsibles/`, {
+    method: "POST",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify(data)
   });
 
   switch (response.status) {
@@ -13,7 +14,7 @@ const delete_group = async (groupId) => {
       return createNotification("Verifique os dados novamente.");
     case 401:
       return logout();
-    case 204:
+    case 201:
       return window.location.reload();
     default:
       return createNotification("Erro inesperado, tente novamente.");

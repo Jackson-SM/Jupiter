@@ -1,48 +1,54 @@
-const token = getCookie('token')
+const token = getCookie("token");
 
 const getProject = async (project_id) => {
-  initLoading()
-  const responseParticipants = await fetch(`${API_BASE_URL}/v1/projects/${project_id}/participants/`, {
-    method: "GET",
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }  
-  })
+  initLoading();
+  const responseParticipants = await fetch(
+    `${API_BASE_URL}/v1/projects/${project_id}/participants/`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
-  const participants = await responseParticipants.json()
+  const participants = await responseParticipants.json();
 
   const response = await fetch(`${API_BASE_URL}/v1/projects/${project_id}/`, {
     method: "GET",
     headers: {
-      'Authorization': `Bearer ${token}`
-    }  
-  })
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-  let data = await response.json()
+  let data = await response.json();
 
-  switch(response.status){
+  switch (response.status) {
     case 404:
-      window.location.href = "/"
-      break
+      window.location.href = "/";
+      break;
     case 401:
-      return logout()
+      return logout();
   }
 
-  if(data.statusCode === 401){
-    return logout()
+  if (data.statusCode === 401) {
+    return logout();
   }
 
-  if(participants.statusCode === 401) {
-    return logout()
+  if (participants.statusCode === 401) {
+    return logout();
   }
 
-  if(data.leadId !== user.id && participants.includes(participant => participant.userId !== user.id)) {
-    return window.location.href = "/"
+  if (
+    data.leadId !== user.id &&
+    participants.includes((participant) => participant.userId !== user.id)
+  ) {
+    return (window.location.href = "/");
   }
 
-  const projectAndParticipants = {...data, participants}
+  const projectAndParticipants = { ...data, participants };
 
-  stopLoading()
+  stopLoading();
 
   return projectAndParticipants;
-}
+};

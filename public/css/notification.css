@@ -2,7 +2,7 @@
   background: var(--bg-tertiary);
   width: 350px;
   padding: 20px;
-  
+
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -15,7 +15,6 @@
 
   gap: 20px;
 }
-
 
 .btn_close_notification {
   background: none;

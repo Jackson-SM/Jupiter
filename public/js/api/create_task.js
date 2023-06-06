@@ -1,4 +1,4 @@
-const formEdit = document.querySelector(".form_edit");
+const formTask = document.querySelector(".form_task");
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -7,12 +7,16 @@ async function handleSubmit(event) {
   const formObject = Object.fromEntries(formData.entries()); // Transformando o FormData em Objeto
   console.log(formObject);
 
-  edit_name_group({ name: formObject.name, groupId: formObject.groupId });
+  const data = create_task({
+    title: formObject.title,
+    description: formObject.description,
+    groupId: formObject.groupId,
+  });
 }
 
-const edit_name_group = async (data) => {
-  const response = await fetch(API_BASE_URL + `/v1/groups/${data.groupId}/`, {
-    method: "PATCH",
+const create_task = async (data) => {
+  const response = await fetch(API_BASE_URL + "/v1/tasks/", {
+    method: "POST",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
@@ -26,11 +30,11 @@ const edit_name_group = async (data) => {
       return createNotification("Verifique os dados novamente.");
     case 401:
       return logout();
-    case 204:
+    case 201:
       return window.location.reload();
     default:
       return createNotification("Erro inesperado, tente novamente.");
   }
 };
 
-formEdit.addEventListener("submit", handleSubmit);
+formTask.addEventListener("submit", handleSubmit);

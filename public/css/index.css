@@ -15,24 +15,33 @@ header .user-options {
   padding: 5px 25px;
   border-radius: 3px;
   font-size: 0.9rem;
-  
+
   outline: none;
   background: none;
   border: none;
   text-decoration: none;
-  
+
   font-family: "Poppins", sans-serif;
   color: var(--text-color-100);
   background-color: var(--bg-opacity-2);
   border: 1px solid var(--bg-opacity);
   cursor: pointer;
-  
+
   transition: all ease 130ms;
-  
 }
+
+.button[disabled] {
+  border: 1px solid var(--bg-tertiary);
+  cursor: auto;
+}
+
 .button:hover {
-  background-color: var(--color-primary-2); 
+  background-color: var(--color-primary-2);
   border: 1px solid var(--bg-opacity-2);
+}
+
+.button[disabled]:hover {
+  background-color: var(--bg-tertiary);
 }
 
 .logo {

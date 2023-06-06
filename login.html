@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/global.css" />
+    <link rel="stylesheet" href="public/css/login.css" />
+    <link rel="stylesheet" href="public/css/index.css" />
+    <link rel="stylesheet" href="public/css/link.css" />
+    <link rel="stylesheet" href="public/css/notification.css" />
+    <link href="https://css.gg/css" rel="stylesheet" />
+    <title>Login</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="public/css/global.css">
-  <link rel="stylesheet" href="public/css/login.css">
-  <link rel="stylesheet" href="public/css/index.css">
-  <link rel="stylesheet" href="public/css/link.css">
-  <link rel="stylesheet" href="public/css/notification.css">
-  <link href='https://css.gg/css' rel='stylesheet'>
-  <title>Login</title>
-</head>
-
-<body>
-  <a href="/" class="link">
-    <i class="gg-arrow-left"></i>Início
-  </a>
-  <div class="form-center">
-    <div class="form-container">
-      <div class="logo-form">
-        <img src="public/assets/logo_without.png" />
+  <body>
+    <a href="/" class="link"> <i class="gg-arrow-left"></i>Início </a>
+    <div class="form-center">
+      <div class="form-container">
+        <div class="logo-form">
+          <img src="public/assets/logo_without.png" />
+        </div>
+        <div class="top-form">
+          <h2 class="title-form">Jupiter Login</h2>
+          <p class="description-form">Entre em sua conta.</p>
+        </div>
+        <form method="POST" action="/" class="form-login">
+          <fieldset>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+          </fieldset>
+          <a class="forgot-password" href="register.html"
+            >Não possuo uma conta.</a
+          >
+          <button type="submit" class="button button-submit">
+            Fazer Login
+          </button>
+        </form>
       </div>
-      <div class="top-form">
-        <h2 class="title-form">Jupiter Login</h2>
-        <p class="description-form">Entre em sua conta.</p>
-      </div>
-      <form method="POST" action="/" class="form-login">
-        <fieldset>
-          <input type="email" name="email" id="email" placeholder="Email" required />
-        </fieldset>
-        <fieldset>
-          <input type="password" name="password" id="password" placeholder="Password" required />
-        </fieldset>
-        <fieldset>
-          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required />
-        </fieldset>
-        <a class="forgot-password" href="register.html">Não possuo uma conta.</a>
-        <button type="submit" class="button button-submit">Fazer Login</button>
-      </form>
     </div>
-  </div>
-  <script src="config.js"></script>
-  <script src="public/js/auth/setcookie.js"></script>
-  <script src="public/js/auth/getcookie.js"></script>
-  <script src="public/js/api/login.js"></script>
-  <script src="public/js/effects/notification.js"></script>
-  <script src="public/js/auth/user.js"></script>
-  <script src="public/js/private/private-for-users.js"></script>
-
-</body>
-
+    <script src="config.js"></script>
+    <script src="public/js/auth/setcookie.js"></script>
+    <script src="public/js/auth/getcookie.js"></script>
+    <script src="public/js/api/login.js"></script>
+    <script src="public/js/effects/notification.js"></script>
+    <script src="public/js/auth/user.js"></script>
+    <script src="public/js/private/private-for-users.js"></script>
+  </body>
 </html>

@@ -122,7 +122,7 @@
   transition: border ease 130ms;
 }
 .form_group fieldset textarea:focus {
-  border: 1px solid var(--color-primary)
+  border: 1px solid var(--color-primary);
 }
 
 .form_group fieldset input {
@@ -139,7 +139,7 @@
 }
 
 .form_group fieldset input:focus,
-.form_group fieldset input:valid  {
+.form_group fieldset input:valid {
   border: 1px solid var(--color-primary);
 }
 
@@ -196,7 +196,7 @@
   transition: border ease 130ms;
 }
 .form_member fieldset textarea:focus {
-  border: 1px solid var(--color-primary)
+  border: 1px solid var(--color-primary);
 }
 
 .form_member fieldset input {
@@ -213,6 +213,6 @@
 }
 
 .form_member fieldset input:focus,
-.form_member fieldset input:valid  {
+.form_member fieldset input:valid {
   border: 1px solid var(--color-primary);
 }

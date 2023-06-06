@@ -1,5 +1,4 @@
-const formWorkspace = document.querySelector('.form_workspace')
-
+const formWorkspace = document.querySelector(".form_workspace");
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -7,37 +6,39 @@ async function handleSubmit(event) {
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries()); // Transformando o FormData em Objeto
 
-  const data = create_workspace({title: formObject.title, description: formObject.description})
+  const data = create_workspace({
+    title: formObject.title,
+    description: formObject.description,
+  });
 }
 
 const create_workspace = async (data) => {
-    const response = await fetch(API_BASE_URL + "/v1/workspaces/", {
-    method: 'POST',
-    credentials: 'include',
+  const response = await fetch(API_BASE_URL + "/v1/workspaces/", {
+    method: "POST",
+    credentials: "include",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
 
-  const responseData = await response.json()
-  console.log(responseData)
+  const responseData = await response.json();
+  console.log(responseData);
 
-  if(responseData.statusCode){
-    switch(responseData.statusCode){
+  if (responseData.statusCode) {
+    switch (responseData.statusCode) {
       case 404:
         return createNotification("Verifique os dados novamente.");
       case 401:
-        return logout()
+        return logout();
       default:
         return createNotification("Erro inesperado, tente novamente.");
     }
   }
 
-
-  window.location.reload()
+  window.location.reload();
   return responseData.user;
-}
+};
 
-formWorkspace.addEventListener('submit', handleSubmit);
+formWorkspace.addEventListener("submit", handleSubmit);

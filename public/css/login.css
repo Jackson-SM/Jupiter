@@ -3,7 +3,11 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 55px);
-  background: linear-gradient(to top, rgba(132, 0, 255, 0.187), transparent 30%)
+  background: linear-gradient(
+    to top,
+    rgba(132, 0, 255, 0.187),
+    transparent 30%
+  );
 }
 
 .title-form {
@@ -36,7 +40,7 @@
   height: 100%;
 }
 
-.form-login { 
+.form-login {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -61,7 +65,7 @@
   transition: all ease 130ms;
 }
 .form-login fieldset input:focus,
-.form-login fieldset input:valid  {
+.form-login fieldset input:valid {
   border: 1px solid var(--color-primary);
 }
 

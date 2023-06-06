@@ -1,7 +1,7 @@
 .user_dropdown {
   display: flex;
   align-items: center;
-  
+
   padding: 10px;
   gap: 10px;
   border-radius: 3px;
@@ -80,7 +80,6 @@
   justify-content: space-between;
   gap: 5px;
 }
-
 
 .dropdown_user ul li button:hover {
   background: var(--bg-opacity-2);

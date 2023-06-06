@@ -3,7 +3,11 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(to top, rgba(132, 0, 255, 0.187), transparent 30%)
+  background: linear-gradient(
+    to top,
+    rgba(132, 0, 255, 0.187),
+    transparent 30%
+  );
 }
 
 .title-form {
@@ -36,7 +40,7 @@
   height: 100%;
 }
 
-.form-register { 
+.form-register {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -61,7 +65,7 @@
   transition: all ease 130ms;
 }
 .form-register fieldset input:focus,
-.form-register fieldset input:valid  {
+.form-register fieldset input:valid {
   border: 1px solid var(--color-primary);
 }
 
