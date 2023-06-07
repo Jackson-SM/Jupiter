@@ -19,7 +19,6 @@ describe("Edit Task Case", () => {
     editTaskCase = new EditTaskCase(inMemoryTaskRepository);
     const { task } = await createTaskCase.execute(makeTask());
     taskTesting = task;
-    console.log(taskTesting);
     await editTaskCase.execute({
       taskId: taskTesting.id,
       description: "Descrição para a task",
