@@ -3,6 +3,7 @@ import {
   createWorkspaceController,
   findWorkspaceByIdController,
   getAllWorkspacecByCretorIdController,
+  removeWorkspaceController,
 } from "../controllers/Workspace";
 import { findProjectByWorkspaceIdIdController } from "../controllers/Project";
 import payloadParamsId from "../payloads/payloadParamsId";
@@ -39,6 +40,16 @@ const workspacesRoutes = {
         options: {
           validate: {
             payload: createWorkspacePayload,
+          },
+        },
+      },
+      {
+        method: "DELETE",
+        path: "/v1/workspaces/{id}/",
+        handler: removeWorkspaceController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
           },
         },
       },

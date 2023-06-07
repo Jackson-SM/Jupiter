@@ -15,6 +15,6 @@ export class CreateCommentController {
       userId,
     });
 
-    return CommentViewModel.toHttp(comment);
+    return h.response(CommentViewModel.toHttp(comment)).code(201);
   };
 }

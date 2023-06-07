@@ -7,6 +7,7 @@ import {
   findAllResponsiblesTaskController,
   findTaskByIdController,
   moveTaskInGroupController,
+  removeResponsibleController,
   removeTaskController,
 } from "../controllers/Task";
 import { findAllCommentsByTaskIdController } from "../controllers/Comment";
@@ -99,6 +100,16 @@ const tasksRoutes = {
         options: {
           validate: {
             payload: addTaskPayload,
+          },
+        },
+      },
+      {
+        method: "DELETE",
+        path: "/v1/tasks/{id}/responsibles/",
+        handler: removeResponsibleController.handler,
+        options: {
+          validate: {
+            params: payloadParamsId,
           },
         },
       },

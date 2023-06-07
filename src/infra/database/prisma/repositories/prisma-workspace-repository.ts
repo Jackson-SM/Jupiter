@@ -45,7 +45,73 @@ export class PrismaWorkspaceRepository implements WorkspaceRepository {
   }
   async removeWorkspace(workspaceId: string): Promise<void> {
     try {
-      await prisma.workspace.delete({ where: { id: workspaceId } });
+      await prisma.projectParticipanting.deleteMany({
+        where: {
+          project: {
+            workspaceId,
+          },
+        },
+      });
+      await prisma.tasksResponsible.deleteMany({
+        where: {
+          task: {
+            Group: {
+              project: {
+                workspaceId,
+              },
+            },
+          },
+        },
+      });
+      await prisma.tasksInGroup.deleteMany({
+        where: {
+          group: {
+            project: {
+              workspaceId,
+            },
+          },
+        },
+      });
+
+      await prisma.comment.deleteMany({
+        where: {
+          task: {
+            Group: {
+              project: {
+                workspaceId,
+              },
+            },
+          },
+        },
+      });
+
+      await prisma.task.deleteMany({
+        where: {
+          Group: {
+            project: {
+              workspaceId,
+            },
+          },
+        },
+      });
+
+      await prisma.group.deleteMany({
+        where: {
+          project: {
+            workspaceId,
+          },
+        },
+      });
+      await prisma.project.deleteMany({
+        where: {
+          workspaceId,
+        },
+      });
+      await prisma.workspace.delete({
+        where: {
+          id: workspaceId,
+        },
+      });
     } catch (err: any) {
       if (err.code === "P2023") {
         throw Boom.badRequest("Formato de ID Inválido");

@@ -89,6 +89,11 @@ export class PrismaTaskRepository implements TaskRepository {
       throw Boom.badRequest(err.message);
     }
   }
+
+  async removeResponsible(userId: string, taskId: string): Promise<void> {
+    await prisma.tasksResponsible.deleteMany({ where: { userId, taskId } });
+  }
+
   async removeTask(taskId: string): Promise<void> {
     try {
       await prisma.task.delete({ where: { id: taskId } });

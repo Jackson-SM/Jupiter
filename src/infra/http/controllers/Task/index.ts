@@ -19,6 +19,8 @@ import { MoveTaskInGroupController } from "./MoveTaskInGroupController";
 import { MoveTaskInGroupCase } from "~/application/use-cases/tasks/move-task-in-group-case";
 import { FindAllResponsiblesTaskController } from "./FindAllResponsiblesTaskController";
 import { FindAllResponsiblesTaskCase } from "~/application/use-cases/tasks/find-all-responsibles-task-case";
+import { RemoveResponsibleCase } from "~/application/use-cases/tasks/remove-responsible-case";
+import { RemoveResponsibleController } from "./RemoveResponsibleController";
 
 const prismaTaskRepository = new PrismaTaskRepository();
 
@@ -37,6 +39,7 @@ const moveTaskInGroupCase = new MoveTaskInGroupCase(prismaTaskRepository);
 const findAllResponsiblesTaskCase = new FindAllResponsiblesTaskCase(
   prismaTaskRepository,
 );
+const removeResponsibleCase = new RemoveResponsibleCase(prismaTaskRepository);
 
 // Controllers
 const createTaskController = new CreateTaskController(createTaskCase);
@@ -59,6 +62,9 @@ const moveTaskInGroupController = new MoveTaskInGroupController(
 const findAllResponsiblesTaskController = new FindAllResponsiblesTaskController(
   findAllResponsiblesTaskCase,
 );
+const removeResponsibleController = new RemoveResponsibleController(
+  removeResponsibleCase,
+);
 
 export {
   createTaskController,
@@ -71,4 +77,5 @@ export {
   editTaskController,
   moveTaskInGroupController,
   findAllResponsiblesTaskController,
+  removeResponsibleController,
 };

@@ -82,6 +82,15 @@ export class InMemoryTaskRepository implements TaskRepository {
     });
   }
 
+  async removeResponsible(userId: string, taskId: string): Promise<void> {
+    const responsibleRemoved = this.taskResponsible.filter(
+      (responsible) =>
+        responsible.userId !== userId || responsible.taskId !== taskId,
+    );
+
+    this.taskResponsible = responsibleRemoved;
+  }
+
   async addResponsible(userId: string, taskId: string): Promise<void> {
     const task = new TaskResponsible({ userId, taskId });
     this.taskResponsible.push(task);
