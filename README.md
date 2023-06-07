@@ -1,6 +1,8 @@
 ## Visão Geral
 > Este documento fornece uma visão geral e uma documentação básica para um projeto de gerenciador de tarefas desenvolvido em HTML, CSS e JavaScript. O projeto utiliza uma API fornecida por outro repositório para realizar operações de login, registro e gerenciamento de tarefas.
 
+- <a href="https://jupiter-project.netlify.app/">Deploy da Aplicação</a>
+
 ## Funcionalidades Principais
 O gerenciador de tarefas possui as seguintes funcionalidades principais:
 
