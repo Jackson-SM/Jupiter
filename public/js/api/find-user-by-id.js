@@ -14,7 +14,7 @@ const find_user_by_id = async (userId) => {
     case 401:
       return logout();
     case 200:
-      return await response.json()
+      return await response.json();
     default:
       return createNotification("Erro inesperado, tente novamente.");
   }

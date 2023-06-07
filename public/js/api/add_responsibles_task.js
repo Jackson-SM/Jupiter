@@ -6,7 +6,7 @@ const add_responsibles_task = async (data) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   });
 
   switch (response.status) {

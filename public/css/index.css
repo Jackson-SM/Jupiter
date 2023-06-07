@@ -52,3 +52,7 @@ header .user-options {
   width: 100%;
   height: 100%;
 }
+
+.not_workspaces {
+  color: var(--text-color-400);
+}

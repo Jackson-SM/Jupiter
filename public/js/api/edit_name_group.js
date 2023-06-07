@@ -5,7 +5,6 @@ async function handleSubmit(event) {
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries()); // Transformando o FormData em Objeto
-  console.log(formObject);
 
   edit_name_group({ name: formObject.name, groupId: formObject.groupId });
 }

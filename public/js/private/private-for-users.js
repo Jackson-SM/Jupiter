@@ -1,9 +1,7 @@
 function privateForUsers() {
   if (getCookie("token").length > 0) {
-    window.location.href = "/home";
+    window.location.href = "/";
   }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  privateForUsers();
-});
+privateForUsers();

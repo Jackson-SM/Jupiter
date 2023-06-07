@@ -87,3 +87,12 @@
 .dropdown_user ul li .logout:hover {
   background: rgb(255, 72, 48);
 }
+
+.dropdown_user ul li.user {
+  padding: 5px;
+  background: var(--bg-opacity);
+  font-size: 0.9em;
+  border-radius: 5px;
+
+  border-bottom: 1px solid red;
+}

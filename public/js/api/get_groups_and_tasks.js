@@ -44,7 +44,5 @@ const get_groups_and_tasks = async (project_id) => {
     return logout();
   }
 
-  console.log(data);
-
   return data;
 };

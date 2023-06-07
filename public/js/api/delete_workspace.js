@@ -1,8 +1,9 @@
-const find_all_responsibles = async (taskId) => {
+const delete_workspace = async (workspaceId) => {
+  initLoading();
   const response = await fetch(
-    API_BASE_URL + `/v1/tasks/${taskId}/responsibles/`,
+    API_BASE_URL + `/v1/workspaces/${workspaceId}/`,
     {
-      method: "GET",
+      method: "DELETE",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
@@ -13,12 +14,15 @@ const find_all_responsibles = async (taskId) => {
 
   switch (response.status) {
     case 404:
+      stopLoading();
       return createNotification("Verifique os dados novamente.");
     case 401:
+      stopLoading();
       return logout();
-    case 200:
-      return await response.json();
+    case 204:
+      return window.location.reload();
     default:
+      stopLoading();
       return createNotification("Erro inesperado, tente novamente.");
   }
 };

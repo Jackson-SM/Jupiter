@@ -1,11 +1,12 @@
-const find_all_comments = async (taskId) => {
-  const response = await fetch(API_BASE_URL + `/v1/tasks/${taskId}/comments/`, {
-    method: "GET",
+const create_comment = async (data) => {
+  const response = await fetch(API_BASE_URL + `/v1/comments/`, {
+    method: "POST",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify(data),
   });
 
   switch (response.status) {
@@ -13,8 +14,8 @@ const find_all_comments = async (taskId) => {
       return createNotification("Verifique os dados novamente.");
     case 401:
       return logout();
-    case 200:
-      return await response.json();
+    case 201:
+      return window.location.reload();
     default:
       return createNotification("Erro inesperado, tente novamente.");
   }

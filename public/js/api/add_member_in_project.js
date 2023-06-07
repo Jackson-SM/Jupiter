@@ -5,7 +5,6 @@ async function handleSubmit(event) {
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries()); // Transformando o FormData em Objeto
-  console.log(formObject);
 
   const data = add_member({
     email: formObject.email,
@@ -35,7 +34,7 @@ const add_member = async (data) => {
       case 409:
         return createNotification("O Usuário específicado já está no projeto.");
       case 201:
-        window.location.reload();
+        return window.location.reload();
       default:
         return createNotification("Erro inesperado, tente novamente.");
     }

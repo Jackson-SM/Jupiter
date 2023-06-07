@@ -5,7 +5,6 @@ async function handleSubmit(event) {
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries()); // Transformando o FormData em Objeto
-  console.log(formObject);
 
   const data = create_group({
     name: formObject.name,
@@ -25,7 +24,6 @@ const create_group = async (data) => {
   });
 
   const responseData = await response.json();
-  console.log(responseData);
 
   if (responseData.statusCode) {
     switch (responseData.statusCode) {

@@ -4,7 +4,6 @@ async function renderWorkspaces() {
   const data = await fetchWorkspaces();
   const dataParticipanting = await getProjectsParticipant();
 
-  console.log(dataParticipanting);
 
   data.map((data) => {
     const workspace = document.createElement("div");
@@ -33,7 +32,16 @@ async function renderWorkspaces() {
       const title_project = document.createElement("span");
       title_project.classList.add("title");
       title_project.textContent = project.title;
+      const btn_delete_workspace = document.createElement("button");
+      btn_delete_workspace.classList.add("btn_delete_workspace");
+      btn_delete_workspace.innerHTML = '<i class="gg-trash"></i>';
 
+      btn_delete_workspace.addEventListener("click", (event) => {
+        event.preventDefault();
+        delete_workspace(data.id);
+      });
+
+      content_project.appendChild(btn_delete_workspace);
       content_project.appendChild(title_project);
 
       projectElement.appendChild(content_project);
@@ -49,14 +57,33 @@ async function renderWorkspaces() {
       document
         .querySelector(".form_container.project")
         .classList.toggle("open");
-      console.log(input_workspaceid);
-      console.log(data.id);
     });
 
     projects_workspace.appendChild(create_project);
 
     section_workspaces.appendChild(workspace);
   });
+
+  if (data.length < 1) {
+    const workspaces = document.querySelector(".workspaces");
+
+    const textNotWorkspace = document.createElement("h3");
+    textNotWorkspace.classList.add("not_workspaces");
+    textNotWorkspace.textContent = "Você não possui Workspaces";
+
+    workspaces.appendChild(textNotWorkspace);
+  }
+
+  if (dataParticipanting.length < 1) {
+    const inviteWorkspaces = document.querySelector(".invite_workspaces");
+
+    const textNotProjectParticipanting = document.createElement("h3");
+    textNotProjectParticipanting.classList.add("not_workspaces");
+    textNotProjectParticipanting.textContent =
+      "Você não participa de nenhum projeto";
+
+    inviteWorkspaces.appendChild(textNotProjectParticipanting);
+  }
 
   dataParticipanting.map((project) => {
     const inviteWorkspaces = document.querySelector(

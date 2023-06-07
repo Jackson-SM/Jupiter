@@ -1,8 +1,6 @@
 .container_comments {
   background: var(--bg-secondary);
-  flex: 1;
   margin-top: 10px;
-  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
@@ -62,4 +60,11 @@
   background: var(--bg-primary);
   padding: 10px;
   font-size: 0.8em;
+}
+
+.content_comments {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 200px;
 }

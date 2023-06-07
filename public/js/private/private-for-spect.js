@@ -1,9 +1,7 @@
 function privateForSpec() {
   if (getCookie("token").length < 1 || !sessionStorage.getItem("user")) {
-    window.location.href = "/";
+    window.location.href = "/login.html";
   }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  privateForSpec();
-});
+privateForSpec();

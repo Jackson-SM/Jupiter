@@ -24,7 +24,6 @@ const create_workspace = async (data) => {
   });
 
   const responseData = await response.json();
-  console.log(responseData);
 
   if (responseData.statusCode) {
     switch (responseData.statusCode) {

@@ -5,8 +5,6 @@ async function initLoading() {
   img.setAttribute("src", "/public/assets/jupiter_logo.png");
   loading.appendChild(img);
   document.body.appendChild(loading);
-
-  console.log("Loading");
 }
 
 async function stopLoading() {

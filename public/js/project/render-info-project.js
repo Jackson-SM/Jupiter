@@ -5,7 +5,7 @@ let currentTask;
 
 async function renderInfoProject() {
   if (!idParam) {
-    return (window.location.href = "/home");
+    return (window.location.href = "/");
   }
 
   const project = await getProject(idParam);
@@ -74,16 +74,21 @@ async function renderInfoProject() {
 
     members.appendChild(member);
 
-    const dropdown_participants = document.querySelector('.dropdown_participants')
-    const button_participant = document.createElement('button')
-    button_participant.classList.add('btn_add_participant', 'button_options_task')
+    const dropdown_participants = document.querySelector(
+      ".dropdown_participants"
+    );
+    const button_participant = document.createElement("button");
+    button_participant.classList.add(
+      "btn_add_participant",
+      "button_options_task"
+    );
     button_participant.textContent = participant.firstName;
-    
+
     dropdown_participants.appendChild(button_participant);
 
-    button_participant.addEventListener('click', (event) => {
-      add_responsibles_task({taskId: currentTask, userId: participant.id})
-    })
+    button_participant.addEventListener("click", (event) => {
+      add_responsibles_task({ taskId: currentTask, userId: participant.id });
+    });
   });
 
   const insert_projectid_in_input =
@@ -160,7 +165,6 @@ async function renderInfoProject() {
 
     btn_dropdown_group.addEventListener("click", (event) => {
       const dropdown_group = document.querySelectorAll(".dropdown_group");
-      console.log(group.id);
       // const input_edit_group = document.querySelector('.input_groupid');
       // input_edit_group.setAttribute('value', group.id)
 
@@ -180,6 +184,17 @@ async function renderInfoProject() {
     groupsElement.appendChild(groupCard);
     groupCard.appendChild(taskElement);
 
+    const groups_move_to = document.querySelector(".groups_move_to");
+
+    const button_group_move = document.createElement("button");
+    button_group_move.classList.add("button_group_move");
+    button_group_move.textContent = group.name;
+
+    groups_move_to.appendChild(button_group_move);
+
+    button_group_move.addEventListener("click", (event) => {
+      move_task({ groupId: group.id }, currentTask);
+    });
 
     group.tasks.map((task) => {
       const taskCard = document.createElement("button");
@@ -189,150 +204,194 @@ async function renderInfoProject() {
       title_task_card.classList.add("title");
       title_task_card.textContent = task.title;
 
-      const container_title_task = document.querySelector('.container_title_task')
-      const title_task = document.querySelector('.container_title_task .title_task')
-      const input_task = document.querySelector('.container_title_task input')
-      const description_task = document.querySelector('.description_task')
-      const textarea_task = document.querySelector('.content_task_info textarea')
-      const description_task_textarea = document.querySelector('.content_task_info textarea')
-      const button_delete_task = document.querySelector('.delete_task');
+      const container_title_task = document.querySelector(
+        ".container_title_task"
+      );
+      const title_task = document.querySelector(
+        ".container_title_task .title_task"
+      );
+      const input_task = document.querySelector(".container_title_task input");
+      const description_task = document.querySelector(".description_task");
+      const textarea_task = document.querySelector(
+        ".content_task_info textarea"
+      );
+      const description_task_textarea = document.querySelector(
+        ".content_task_info textarea"
+      );
+      const button_delete_task = document.querySelector(".delete_task");
 
-      
-      const save_task = document.querySelector('.save_task');
-      input_task.addEventListener('input', (event) => {
-        title_task.textContent = event.target.value
-        if(event.target.value !== task.title || textarea_task.value !== task.description) {
-          save_task.removeAttribute('disabled');
-        }else {
-          save_task.setAttribute('disabled', true);
+      const save_task = document.querySelector(".save_task");
+      input_task.addEventListener("input", (event) => {
+        title_task.textContent = event.target.value;
+        if (
+          event.target.value !== task.title ||
+          textarea_task.value !== task.description
+        ) {
+          save_task.removeAttribute("disabled");
+        } else {
+          save_task.setAttribute("disabled", true);
         }
-      })
-      textarea_task.addEventListener('input', (event) => {
+      });
+      textarea_task.addEventListener("input", (event) => {
         description_task.textContent = event.target.value;
-        if(event.target.value !== task.description || input_task.value !== task.title) {
-          save_task.removeAttribute('disabled');
-        }else {
-          save_task.setAttribute('disabled', true);
+        if (
+          event.target.value !== task.description ||
+          input_task.value !== task.title
+        ) {
+          save_task.removeAttribute("disabled");
+        } else {
+          save_task.setAttribute("disabled", true);
         }
-      })
+      });
 
-      button_delete_task.addEventListener('click', (event) => {
-        delete_task(task.id)
-      })
+      button_delete_task.addEventListener("click", (event) => {
+        delete_task(task.id);
+      });
 
-      const isDone = document.createElement('div');
-      isDone.classList.add('is_done');
+      const isDone = document.createElement("div");
+      isDone.classList.add("is_done");
       const button_done_task = document.querySelector(".done_task");
 
-      if(task.doneDate !== null) {
+      button_done_task.addEventListener("click", (event) => {
+        done_task(task.id);
+      });
+
+      if (task.doneDate !== null) {
         taskCard.append(isDone);
-        button_done_task.setAttribute("disabled", true)
-      } 
+        button_done_task.setAttribute("disabled", true);
+      }
 
       taskCard.addEventListener("click", async (event) => {
+        if (task.doneDate !== null) {
+          button_done_task.setAttribute("disabled", true);
+        } else {
+          button_done_task.removeAttribute("disabled");
+        }
+
+        const content_comments = document.querySelector(".content_comments");
+        content_comments.innerHTML = "";
+        const responsibles = document.querySelector(".responsibles");
+        responsibles.innerHTML = "";
+
         const task_info = document.querySelector(".task_info");
         task_info.classList.add("open");
 
         currentTask = task.id;
-        console.log(currentTask)
 
         title_task.textContent = task.title;
         container_title_task.appendChild(input_task);
-        input_task.setAttribute('value', task.title);
-        description_task.textContent = task.description
-        description_task_textarea.textContent = task.description
+        input_task.setAttribute("value", task.title);
+        description_task.textContent = task.description;
+        description_task_textarea.textContent = task.description;
 
         const data = await find_all_responsibles(task.id);
 
-        const count_members = document.querySelector('.options_task .count_members');
-        const dropdown_members = document.querySelector('.options_task .count_members .dropdown_members');
-        const members = document.querySelector('.options_task .count_members .members');
-        const item_member = document.createElement('li')
-        const count_participants = document.createTextNode(data.length)
-        count_members.appendChild(count_participants)
+        const count_responsibles_task = document.querySelector(
+          ".options_task .count_responsibles_task"
+        );
+        const dropdown_responsibles_task = document.querySelector(
+          ".options_task .count_responsibles_task .dropdown_responsibles_task"
+        );
+        const responsiblesElement = document.querySelector(
+          ".options_task .count_responsibles_task .responsibles"
+        );
+        const item_member = document.createElement("li");
+        const count_participants = document.querySelector(
+          ".count_responsibles_task .count_span"
+        );
+        count_participants.textContent = data.length;
 
-        count_members.addEventListener('click', (event) => {
-          dropdown_members.classList.toggle('open')
-        })
-      
+        data.map((responsible) => {
+          const button_member = document.createElement("button");
+          button_member.classList.add("member");
+          button_member.innerHTML = `<i class="gg-user"></i>${responsible.firstName}`;
 
-        data.map(responsible => {
-          const button_member = document.createElement('button')
-          button_member.classList.add('member')
-          button_member.innerHTML = `<i class="gg-user"></i>${responsible.firstName}`
+          const delete_responsible_element = document.createElement("button");
+          delete_responsible_element.classList.add("delete_responsible");
+          delete_responsible_element.textContent = "X";
 
+          delete_responsible_element.addEventListener("click", (event) => {
+            delete_responsible({ userId: responsible.id }, task.id);
+          });
+
+          button_member.appendChild(delete_responsible_element);
           item_member.appendChild(button_member);
-          members.appendChild(item_member)
-        })
+          responsiblesElement.appendChild(item_member);
+        });
 
-      const commentsData = await find_all_comments(task.id)
+        const commentsData = await find_all_comments(task.id);
 
+        commentsData.map(async (commentsInfo) => {
+          const user = await find_user_by_id(commentsInfo.userId);
 
-      commentsData.map(async (commentsInfo) => {
-        const user = await find_user_by_id(commentsInfo.userId)
+          const comments = document.querySelector(".comments");
+          const comment = document.createElement("div");
+          comment.classList.add("comment");
+          const top_comment = document.createElement("div");
+          top_comment.classList.add("top_comment");
+          const content_comment = document.createElement("div");
+          content_comment.classList.add("content_comment");
+          const username = document.createElement("span");
 
-        console.log(commentsInfo)
-        console.log(user)
+          const date_post_format = new Date(commentsInfo.createdAt);
+          const day = date_post_format.getDate() + 1;
+          const month = date_post_format.getMonth() + 1;
+          const year = date_post_format.getFullYear();
+          const date_post = document.createElement("div");
 
-        const comments = document.querySelector('.comments');
-        const comment = document.createElement('div');
-        comment.classList.add('comment')
-        const top_comment = document.createElement('div');
-        top_comment.classList.add("top_comment")
-        const content_comment = document.createElement('div')
-        content_comment.classList.add('content_comment')
-        const username = document.createElement('span');
+          date_post.classList.add("date_post");
+          date_post.textContent = `Criado em: ${day < 10 ? "0" + day : day}/${
+            month < 10 ? "0" + month : month
+          }/${year}`;
 
-        const date_post_format = new Date(commentsInfo.createdAt)
-        const day = date_post_format.getDate() + 1
-        const month = date_post_format.getMonth() + 1
-        const year = date_post_format.getFullYear()
-        const date_post = document.createElement('div')
-        
-        date_post.classList.add('date_post')
-        date_post.textContent = `Criado em: ${day < 10 ? "0" + day : day}/${month < 10 ? "0" + month : month}/${year}`
+          username.classList.add("user_name");
+          username.innerHTML = `<i class="gg-user"></i>${user.firstName}`;
+          const usermessage = document.createElement("p");
+          usermessage.classList.add("user_message");
+          usermessage.textContent = commentsInfo.content;
 
-        username.classList.add('user_name')
-        username.innerHTML = `<i class="gg-user"></i>${user.firstName}`
-        const usermessage = document.createElement('p');
-        usermessage.classList.add('user_message')
-        usermessage.textContent = commentsInfo.content
+          top_comment.appendChild(username);
+          top_comment.appendChild(date_post);
+          content_comment.appendChild(usermessage);
 
-        top_comment.appendChild(username)
-        top_comment.appendChild(date_post)
-        content_comment.appendChild(usermessage)
+          comment.appendChild(top_comment);
+          comment.appendChild(content_comment);
 
-        comment.appendChild(top_comment)
-        comment.appendChild(content_comment)
-        
-        comments.appendChild(comment)
-        })
+          content_comments.appendChild(comment);
+        });
+
+        const input_comment = document.querySelector(".input_comment");
+        const post_comment = document.querySelector(".post_comment");
+
+        input_comment.addEventListener("input", (event) => {
+          if (event.target.value.length < 1) {
+            post_comment.setAttribute("disabled", false);
+          } else {
+            post_comment.removeAttribute("disabled");
+          }
+        });
+
+        post_comment.addEventListener("click", async (event) => {
+          const data = {
+            content: input_comment.value,
+            userId: user.id,
+            taskId: task.id,
+          };
+          await create_comment(data);
+        });
       });
 
       taskCard.append(title_task_card);
       taskElement.appendChild(taskCard);
 
-      save_task.addEventListener('click', (event) => {
+      save_task.addEventListener("click", (event) => {
         const data = {
           title: input_task.value,
-          description: textarea_task.value
-        }
-        edit_task(data, task.id)
-      })
+          description: textarea_task.value,
+        };
+        edit_task(data, task.id);
+      });
     });
-
-    const groups_move_to = document.querySelector('.groups_move_to');
-
-      const button_group_move = document.createElement('button')
-      button_group_move.classList.add('button_group_move')
-      button_group_move.textContent = group.name
-
-      groups_move_to.appendChild(button_group_move);
-
-      button_group_move.addEventListener('click', (event) => {
-        move_task({groupId: group.id}, task.id)
-      })
-    
 
     const footer_group = document.createElement("div");
     footer_group.classList.add("footer_group");

@@ -5,7 +5,6 @@ async function handleSubmit(event) {
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries()); // Transformando o FormData em Objeto
-  console.log(formObject);
 
   if (formObject.password !== formObject.confirmPassword) {
     return createNotification(
@@ -44,7 +43,7 @@ const login = async (data) => {
 
   setCookie("token", responseData.token, 2);
   sessionStorage.setItem("user", JSON.stringify(responseData.user));
-  window.location.href = "/home";
+  window.location.href = "/";
 
   return responseData.user;
 };

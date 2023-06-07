@@ -81,11 +81,11 @@
             </div>
           </button>
           <button class="button_options_task save_task" disabled>Salvar<i class="gg-check"></i></button>
-          <button class="count_members">
+          <button class="count_responsibles_task">
             <i class="gg-user"></i>
-            <div class="dropdown_members">
-              <ul class="members">
-              </ul>
+            <span class="count_span"></span>
+            <div class="dropdown_responsibles_task">
+              <ul class="responsibles"></ul>
             </div>
           </button>
         </div>
@@ -93,11 +93,13 @@
       <div class="container_comments">
         <div class="add_comment">
           <input type="text" name="content" class="input_comment" />
-          <button class="button post_comment">Comentar</button>
+          <button class="button post_comment" disabled>Comentar</button>
         </div>
         <div class="comments">
           <h3>Comentários</h3>
           <hr>
+          <div class="content_comments">
+          </div>
         </div>
       </div>
     </div>
@@ -170,7 +172,9 @@
   <script src="../../public/js/auth/verify-authenticate.js"></script>
   <script src="../../public/js/api/getProject.js"></script>
   <script src="../../public/js/api/delete_member_in_project.js"></script>
+  <script src="../../public/js/api/delete_responsible.js"></script>
   <script src="../../public/js/api/get_groups_and_tasks.js"></script>
+  <script src="../../public/js/api/create_comment.js"></script>
   <script src="../../public/js/api/delete_task.js"></script>
   <script src="../../public/js/api/find-user-by-id.js"></script>
   <script src="../../public/js/api/find-all-comments-task.js"></script>
@@ -183,7 +187,6 @@
   <script src="../../public/js/project/render-task-info.js"></script>
   <script src="../../public/js/project/render-info-project.js"></script>
   <script src="../../public/js/conditional-rendering/user-options-conditional.js"></script>
-  <script src="../../public/js/project/render-forms-project.js"></script>
   <script src="../../public/js/api/create_group.js"></script>
   <script src="../../public/js/api/add_member_in_project.js"></script>
   <script src="../../public/js/api/edit_name_group.js"></script>

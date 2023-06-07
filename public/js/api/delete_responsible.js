@@ -1,13 +1,14 @@
-const find_all_responsibles = async (taskId) => {
+const delete_responsible = async (data, taskId) => {
   const response = await fetch(
     API_BASE_URL + `/v1/tasks/${taskId}/responsibles/`,
     {
-      method: "GET",
+      method: "DELETE",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(data),
     }
   );
 
@@ -16,8 +17,8 @@ const find_all_responsibles = async (taskId) => {
       return createNotification("Verifique os dados novamente.");
     case 401:
       return logout();
-    case 200:
-      return await response.json();
+    case 204:
+      return window.location.reload();
     default:
       return createNotification("Erro inesperado, tente novamente.");
   }
