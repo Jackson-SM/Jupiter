@@ -6,12 +6,6 @@ async function handleSubmit(event) {
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries()); // Transformando o FormData em Objeto
 
-  if (formObject.password !== formObject.confirmPassword) {
-    return createNotification(
-      "A senha de Confirmação deve ser igual ao campo de Senha!"
-    );
-  }
-
   const data = login({
     email: formObject.email,
     password: formObject.password,
