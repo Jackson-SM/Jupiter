@@ -27,7 +27,7 @@
 ```zsh
 yarn
 ```
-- Iniciar a aplicação.
+- Iniciar a aplicação em desenvolvimento.
 ```zsh
 yarn dev
 ```
