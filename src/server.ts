@@ -28,15 +28,10 @@ export async function start(): Promise<Hapi.Server> {
   server.auth.strategy("default", "bearer");
   server.auth.default("default");
   server.ext("onPreHandler", errorHandlingExtension);
-  await server.register([
-    users,
-    workspaces,
-    projects,
-    tasks,
-    comments,
-    groups,
-    auth,
-  ]);
+  await server.register(
+    [users, workspaces, projects, tasks, comments, groups, auth],
+    { routes: { prefix: "/api" } },
+  );
   await server.start();
   return server;
 }
