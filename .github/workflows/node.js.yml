@@ -27,6 +27,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - run: yarn
-    - run: yarn install typescript
+    - run: yarn add typescript
     - run: yarn run build
     - run: yarn test
