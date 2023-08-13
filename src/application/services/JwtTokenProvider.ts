@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 
 export class JwtTokenProvider implements TokenProviderRepository {
   async generateToken(payload: JwtPayload): Promise<string> {
-    const token = jwt.sign(payload, process.env.SECRET_KEY!, {
+    const token = jwt.sign(payload, process.env.SECRET_KEY! || 'secret', {
       expiresIn: 60 * 60 * 24, // 25 hours
     });
 
