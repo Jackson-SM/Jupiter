@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { NextThemesProvider } from '@/components/themes/NextThemesProvider';
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
-  title: "Jupiter",
-  description: "Jupiter Website",
+  title: 'Jupiter',
+  description: 'Jupiter Website',
 };
 
 export default function RootLayout({
@@ -16,11 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider defaultTheme="dark" attribute="class">
-          {children}
-        </ThemeProvider>
+    <html lang="pt" suppressHydrationWarning>
+      <body className={poppins.className}>
+        <NextThemesProvider>{children}</NextThemesProvider>
       </body>
     </html>
   );
