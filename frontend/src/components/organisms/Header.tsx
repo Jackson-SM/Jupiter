@@ -1,8 +1,7 @@
 import React from 'react';
+import { LinkNav } from '../atoms/LinkNav';
 import { Logo } from '../atoms/Logo';
-import { ToggleTheme } from '../atoms/ToogleTheme';
 import { NavLinks } from '../molecules/NavLinks';
-import { Button } from '../ui/Button';
 
 type HeaderProps = React.ComponentProps<'header'>;
 
@@ -14,14 +13,9 @@ export const Header = ({ children, ...props }: HeaderProps) => {
     >
       <Logo />
       <NavLinks />
-      <div className="flex gap-2">
-        <Button
-          variant="outline"
-          className="outline-none border-border bg-transparent"
-        >
-          Login
-        </Button>
-        <ToggleTheme />
+      <div className="flex items-center gap-2">
+        <LinkNav href="/login">Entrar</LinkNav>
+        <LinkNav href="/register">Registre-se</LinkNav>
       </div>
       {children}
     </header>
