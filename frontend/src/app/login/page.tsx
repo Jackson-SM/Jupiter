@@ -1,5 +1,5 @@
-import { SignupFormDemo } from '@/components/organisms/SignupForm';
+import { LoginForm } from '@/components/organisms/LoginForm';
 
 export default function Login() {
-  return <SignupFormDemo />;
+  return <LoginForm />;
 }
