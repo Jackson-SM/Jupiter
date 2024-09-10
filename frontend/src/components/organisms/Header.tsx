@@ -14,8 +14,8 @@ export const Header = ({ children, ...props }: HeaderProps) => {
       <Logo />
       <NavLinks />
       <div className="flex items-center gap-2">
-        <LinkNav href="/login">Entrar</LinkNav>
-        <LinkNav href="/register">Registre-se</LinkNav>
+        <LinkNav href="/auth/login">Entrar</LinkNav>
+        <LinkNav href="/auth/register">Registre-se</LinkNav>
       </div>
       {children}
     </header>

@@ -14,13 +14,12 @@ export function SignupForm() {
   };
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-[0_0_70px_15px_rgba(0,0,0,0.4)] bg-muted dark:bg-muted">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+      <h2 className="font-bold text-3xl text-neutral-800 dark:text-neutral-200">
         Bem-Vindo ao Jupiter
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        Entre com a sua conta no Jupiter se você possuir uma. Caso contrário,
-        registre-se{' '}
-        <LinkNav href="register" className="text-primary">
+        Registre sua conta. Caso já possua uma conta, entre{' '}
+        <LinkNav href="login" className="text-primary-foreground">
           aqui
         </LinkNav>
         .
