@@ -5,7 +5,10 @@ import { NavLinks } from '../molecules/NavLinks';
 
 type HeaderProps = React.ComponentProps<'header'>;
 
-export const Header = ({ children, ...props }: HeaderProps) => {
+export const Header = ({
+  children,
+  ...props
+}: HeaderProps) => {
   return (
     <header
       className="bg-popover flex gap-2 justify-between items-center py-4 px-2"

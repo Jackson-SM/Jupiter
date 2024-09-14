@@ -14,7 +14,9 @@ import { Input } from '../ui/Input';
 import { Label } from '../ui/Label';
 
 export function LoginForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
     console.log('Form submitted');
   };
@@ -31,23 +33,37 @@ export function LoginForm() {
           Bem-Vindo ao Jupiter
         </h2>
         <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-          Entre com a sua conta no Jupiter se você possuir uma. Caso contrário,
-          registre-se{' '}
-          <LinkNav href="register" className="text-primary-foreground">
+          Entre com a sua conta no Jupiter se você possuir
+          uma. Caso contrário, registre-se{' '}
+          <LinkNav
+            href="register"
+            className="text-primary-foreground"
+          >
             aqui
           </LinkNav>
           .
         </p>
       </div>
 
-      <form className="my-8 flex flex-col gap-2" onSubmit={handleSubmit}>
+      <form
+        className="my-8 flex flex-col gap-2"
+        onSubmit={handleSubmit}
+      >
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="name@domain.com" type="email" />
+          <Input
+            id="email"
+            placeholder="name@domain.com"
+            type="email"
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Input
+            id="password"
+            placeholder="••••••••"
+            type="password"
+          />
         </LabelInputContainer>
 
         <Button

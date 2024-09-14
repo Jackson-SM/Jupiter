@@ -6,7 +6,9 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-type LabelProps = React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>;
+type LabelProps = React.ComponentPropsWithoutRef<
+  typeof LabelPrimitive.Root
+>;
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,

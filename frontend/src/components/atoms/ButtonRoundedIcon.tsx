@@ -1,8 +1,9 @@
 import { cn } from '@/lib/utils';
 
-type ButtonRoundedIconProps = React.ComponentProps<'button'> & {
-  icon: React.ReactNode;
-};
+type ButtonRoundedIconProps =
+  React.ComponentProps<'button'> & {
+    icon: React.ReactNode;
+  };
 
 export const ButtonRoundedIcon = ({
   icon,

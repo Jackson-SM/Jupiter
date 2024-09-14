@@ -3,7 +3,11 @@ import Link from 'next/link';
 
 type LinkNavProps = React.ComponentProps<typeof Link>;
 
-export const LinkNav = ({ children, className, ...props }: LinkNavProps) => {
+export const LinkNav = ({
+  children,
+  className,
+  ...props
+}: LinkNavProps) => {
   return (
     <Link
       className={cn(

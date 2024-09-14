@@ -8,7 +8,13 @@ export const LabelInputContainer = ({
   ...props
 }: LabelInputContainerProps) => {
   return (
-    <div className={cn('flex flex-col space-y-2 w-full', className)} {...props}>
+    <div
+      className={cn(
+        'flex flex-col space-y-2 w-full',
+        className,
+      )}
+      {...props}
+    >
       {children}
     </div>
   );
