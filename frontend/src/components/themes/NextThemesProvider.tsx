@@ -15,6 +15,7 @@ export const NextThemesProvider = ({
     <ThemeProvider
       attribute="class"
       defaultTheme="dark"
+      enableSystem={false}
       {...props}
     >
       {children}

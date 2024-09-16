@@ -130,20 +130,25 @@ export const MobileSidebar = ({
 
 export const SidebarLink = ({
   link,
+  active,
   className,
   ...props
 }: {
   link: Links;
   className?: string;
   props?: LinkProps;
+  active?: boolean;
 }) => {
   const { open, animate } = useSidebar();
   return (
     <Link
       href={link.href}
       className={cn(
-        'flex items-center justify-start gap-2  group/sidebar py-2',
+        'text-foreground flex items-center justify-start group/sidebar py-2 hover:text-accent-foreground dark:hover:text-accent-foreground',
         className,
+        active &&
+          'text-primary-foreground dark:text-primary-foreground before:content-[" "] before:w-2 before:h-2 before:rounded-full before:bg-primary before:absolute before:left-2 hover:before:bg-accent dark:hover:before:bg-accent',
+        !open && 'before:opacity-0 before:transition-all',
       )}
       {...props}
     >
@@ -158,7 +163,11 @@ export const SidebarLink = ({
             : 'inline-block',
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className={cn(
+          'text-foreground dark:text-foreground text-sm group-hover/sidebar:translate-x-1 group-hover/sidebar:text-accent-foreground dark:group-hover/sidebar:text-accent-foreground transition duration-150 whitespace-pre inline-block pl-2',
+          active &&
+            'text-primary-foreground dark:text-primary-foreground',
+        )}
       >
         {link.label}
       </motion.span>

@@ -1,18 +1,23 @@
 'use client';
+
 import {
   Sidebar,
   SidebarBody,
   SidebarLink,
 } from '@/components/ui/Sidebar';
+import { useSidebar } from '@/hooks/useSidebar';
+import { cn } from '@/lib/utils';
 import {
   IconBrandHipchat,
   IconCalendar,
   IconLayoutDashboard,
+  IconLogout,
 } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Logo, LogoIcon } from '../atoms/Logo';
+import { ToggleTheme } from '../atoms/ToggleTheme';
 
 type ContainersType = {
   name: string;
@@ -41,33 +46,33 @@ export function SidebarDemo() {
     links: [
       {
         label: 'Dashboard',
-        href: '#dashboard',
+        href: '/dashboard',
         icon: (
-          <IconLayoutDashboard className="text-muted-foreground dark:text-muted-foreground h-5 w-5 flex-shrink-0" />
+          <IconLayoutDashboard className="h-5 w-5 flex-shrink-0" />
         ),
       },
       {
-        label: 'Calendar',
-        href: '#calendar',
+        label: 'Projects',
+        href: '/dashboard/projects',
         icon: (
-          <IconCalendar className="text-muted-foreground dark:text-muted-foreground h-5 w-5 flex-shrink-0" />
+          <IconCalendar className="h-5 w-5 flex-shrink-0" />
         ),
       },
       {
-        label: 'Chat',
-        href: '#chat',
+        label: 'Messages',
+        href: '/dashboard/messages',
         icon: (
-          <IconBrandHipchat className="text-muted-foreground dark:text-muted-foreground h-5 w-5 flex-shrink-0" />
+          <IconBrandHipchat className="h-5 w-5 flex-shrink-0" />
         ),
       },
     ],
   };
   const [open, setOpen] = useState(false);
   return (
-    <Sidebar open={open} setOpen={setOpen}>
+    <Sidebar open={open} setOpen={setOpen} animate={true}>
       <SidebarBody className="justify-between gap-10">
         <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-          {open ? <Logo /> : <LogoIcon />}
+          {open ? <Logo>Jupiter</Logo> : <LogoIcon />}
           <div className="mt-8 flex flex-col gap-2">
             <ContainerSidebar
               container={containerMainMenu}
@@ -80,54 +85,21 @@ export function SidebarDemo() {
             ))}
           </div>
         </div>
-        <div>
+        <div className="relative">
+          <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
           <SidebarLink
             link={{
-              label: 'Manu Arora',
+              label: 'Log-out',
               href: '#',
-              icon: (
-                <Image
-                  src="https://assets.aceternity.com/manu.png"
-                  className="h-7 w-7 flex-shrink-0 rounded-full"
-                  width={50}
-                  height={50}
-                  alt="Avatar"
-                />
-              ),
+              icon: <IconLogout />,
             }}
           />
+          <ToggleTheme />
         </div>
       </SidebarBody>
     </Sidebar>
   );
 }
-export const Logo = () => {
-  return (
-    <Link
-      href="#"
-      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
-    >
-      <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="font-medium text-black dark:text-white whitespace-pre"
-      >
-        Jupiter Labs
-      </motion.span>
-    </Link>
-  );
-};
-export const LogoIcon = () => {
-  return (
-    <Link
-      href="#"
-      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
-    >
-      <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
-    </Link>
-  );
-};
 
 type ContainerSidebarProps = React.ComponentProps<'div'> & {
   container: ContainersType;
@@ -136,13 +108,30 @@ type ContainerSidebarProps = React.ComponentProps<'div'> & {
 const ContainerSidebar = ({
   container,
 }: ContainerSidebarProps) => {
+  const { open, animate } = useSidebar();
+  const pathname = usePathname();
+
   return (
     <div className="flex flex-col gap-2">
-      <div className="text-neutral-500 dark:text-neutral-400 text-xs font-semibold uppercase">
-        {container.name}
+      <div className="text-accent-foreground dark:text-accent-foreground text-xs font-semibold uppercase mb-2 mt-1">
+        <motion.span
+          animate={{
+            opacity: animate ? (open ? 1 : 0) : 1,
+          }}
+        >
+          {container.name}
+        </motion.span>
       </div>
       {container.links?.map((link, idx) => (
-        <SidebarLink key={idx} link={link} />
+        <SidebarLink
+          key={idx}
+          link={link}
+          active={pathname === link.href}
+          className={cn(
+            'transition-all duration-150 pl-2',
+            !open && 'pl-0',
+          )}
+        />
       ))}
     </div>
   );

@@ -14,7 +14,7 @@ export const Header = ({
       className="bg-popover flex gap-2 justify-between items-center py-4 px-2"
       {...props}
     >
-      <Logo />
+      <Logo>Jupiter</Logo>
       <NavLinks />
       <div className="flex items-center gap-2">
         <LinkNav href="/auth/login">Entrar</LinkNav>
