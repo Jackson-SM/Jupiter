@@ -17,7 +17,6 @@ import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Logo, LogoIcon } from '../atoms/Logo';
-import { ToggleTheme } from '../atoms/ToggleTheme';
 
 type ContainersType = {
   name: string;
@@ -94,7 +93,6 @@ export function SidebarDemo() {
               icon: <IconLogout />,
             }}
           />
-          <ToggleTheme />
         </div>
       </SidebarBody>
     </Sidebar>
