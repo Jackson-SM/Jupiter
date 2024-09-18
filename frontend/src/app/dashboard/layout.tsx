@@ -1,4 +1,5 @@
 import { DashboardContent } from '@/components/organisms/DashboardContent';
+import { DashboardHeader } from '@/components/organisms/DashboardHeader';
 import { SidebarDemo } from '@/components/organisms/SidebarDemo';
 import { cn } from '@/lib/utils';
 
@@ -15,7 +16,10 @@ export default function DashboardLayout({
       )}
     >
       <SidebarDemo />
-      <DashboardContent>{children}</DashboardContent>
+      <DashboardContent>
+        <DashboardHeader />
+        {children}
+      </DashboardContent>
     </div>
   );
 }

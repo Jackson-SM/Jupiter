@@ -1,4 +1,5 @@
 import { IconMailFilled } from '@tabler/icons-react';
+import { Message } from '../atoms/Message';
 import { Button } from '../ui/Button';
 import {
   Popover,
@@ -6,7 +7,7 @@ import {
   PopoverTrigger,
 } from '../ui/Popover';
 
-export const Messages = () => {
+export const MessageDropdown = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -18,7 +19,7 @@ export const Messages = () => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="ml-2 mr-2">
-        <div className="p-4">Mails</div>
+        <Message />
       </PopoverContent>
     </Popover>
   );

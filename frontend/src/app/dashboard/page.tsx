@@ -1,9 +1,7 @@
-import { DashboardHeader } from '@/components/organisms/DashboardHeader';
-
 export default function Page() {
   return (
     <>
-      <DashboardHeader />
+      <h1>Dashboard</h1>
     </>
   );
 }
