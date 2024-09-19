@@ -66,15 +66,31 @@ export const NotificationDropdown = () => {
           <IconBellFilled className="text-muted-foreground" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="ml-2 mr-2 flex flex-col gap-2 max-h-96 overflow-y-auto">
-        {notifications.map((notification, idx) => {
-          return (
-            <Notification
-              notificationData={notification}
-              key={idx + notification.title}
-            />
-          );
-        })}
+      <PopoverContent className="flex flex-col gap-5 max-h-96 overflow-y-auto">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-lg font-semibold">
+            Notifications
+          </h3>
+          <span className="text-xs">
+            You have{' '}
+            {
+              notifications.filter(
+                (ntf) => ntf.unread === true,
+              ).length
+            }{' '}
+            unread notifications
+          </span>
+        </div>
+        <div className="ml-2 mr-2 flex flex-col gap-2">
+          {notifications.map((notification, idx) => {
+            return (
+              <Notification
+                notificationData={notification}
+                key={idx + notification.title}
+              />
+            );
+          })}
+        </div>
       </PopoverContent>
     </Popover>
   );
