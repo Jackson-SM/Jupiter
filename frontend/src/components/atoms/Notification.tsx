@@ -1,4 +1,11 @@
+'use client';
+
 import { cn } from '@/lib/utils';
+import {
+  HTMLMotionProps,
+  motion,
+  Variants,
+} from 'framer-motion';
 import { CirclePing } from './CirclePing';
 
 export type NotificationDataType = {
@@ -7,7 +14,7 @@ export type NotificationDataType = {
   unread: boolean;
 };
 
-type NotificationProps = React.ComponentProps<'div'> & {
+type NotificationProps = HTMLMotionProps<'li'> & {
   notificationData: NotificationDataType;
 };
 
@@ -16,12 +23,18 @@ export const Notification = ({
   className,
   ...props
 }: NotificationProps) => {
+  const itemVariant: Variants = {
+    hidden: { opacity: 0, x: -10 },
+    show: { opacity: 1, x: 0 },
+  };
+
   return (
-    <div
+    <motion.li
       className={cn(
-        'bg-accent p-4 text-sm flex flex-col gap-2 rounded-lg hover:bg-muted-above border border-border/25 relative cursor-pointer transition-color duration-100',
+        'p-5 text-sm flex flex-col gap-2 rounded-lg border border-border/50 relative cursor-pointer transition-color duration-100',
         className,
       )}
+      variants={itemVariant}
       {...props}
     >
       {notificationData.unread && (
@@ -33,6 +46,6 @@ export const Notification = ({
           {notificationData.time}
         </span>
       </div>
-    </div>
+    </motion.li>
   );
 };

@@ -8,10 +8,10 @@ import {
 import { useSidebar } from '@/hooks/useSidebar';
 import { cn } from '@/lib/utils';
 import {
-  IconBrandHipchat,
-  IconCalendar,
-  IconLayoutDashboard,
+  IconBriefcaseFilled,
+  IconLayoutDashboardFilled,
   IconLogout,
+  IconMessageCircle2Filled,
 } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
@@ -47,21 +47,21 @@ export function SidebarDemo() {
         label: 'Dashboard',
         href: '/dashboard',
         icon: (
-          <IconLayoutDashboard className="h-5 w-5 flex-shrink-0" />
+          <IconLayoutDashboardFilled className="h-5 w-5 flex-shrink-0" />
         ),
       },
       {
-        label: 'Projects',
-        href: '/dashboard/projects',
+        label: 'Workspaces',
+        href: '/dashboard/workspaces',
         icon: (
-          <IconCalendar className="h-5 w-5 flex-shrink-0" />
+          <IconBriefcaseFilled className="h-5 w-5 flex-shrink-0" />
         ),
       },
       {
         label: 'Messages',
         href: '/dashboard/messages',
         icon: (
-          <IconBrandHipchat className="h-5 w-5 flex-shrink-0" />
+          <IconMessageCircle2Filled className="h-5 w-5 flex-shrink-0" />
         ),
       },
     ],
