@@ -86,8 +86,8 @@ export class InMemoryProjectRepository implements ProjectRepository {
       .filter((project) => project.projectId === projectId)
       .map((project) => project.userId);
 
-    const filterUsersParticipants = userIdsParticipantingProject.map((userId) =>
-      this.userRepository?.findById(userId),
+    const filterUsersParticipants = userIdsParticipantingProject.map(
+      (userId) => this.userRepository?.findById(userId),
     );
 
     const users = await Promise.all(filterUsersParticipants);

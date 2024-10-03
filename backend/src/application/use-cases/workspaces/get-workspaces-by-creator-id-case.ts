@@ -16,9 +16,8 @@ export class GetAllWorkspacesByCreatorIdCase {
     request: GetAllWorkspacesByCreatorIdCaseRequest,
   ): Promise<GetAllWorkspacesByCreatorIdCaseResponse> {
     const { creatorId } = request;
-    const workspaces = await this.workspaceRepository.getAllByCreatorId(
-      creatorId,
-    );
+    const workspaces =
+      await this.workspaceRepository.getAllByCreatorId(creatorId);
 
     return {
       workspaces,

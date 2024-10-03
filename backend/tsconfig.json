@@ -22,9 +22,7 @@
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
     "paths": {
-      "~/*": [
-        "*"
-      ],
+      "~/*": ["*"]
     }
   }
 }

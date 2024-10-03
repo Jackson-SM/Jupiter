@@ -22,14 +22,8 @@
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
     "paths": {
-      "~/*": [
-        "src/*"
-      ]
+      "~/*": ["src/*"]
     }
   },
-  "exclude": [
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "tests"
-  ]
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "tests"]
 }

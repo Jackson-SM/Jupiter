@@ -1,10 +1,9 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
+import { JwtTokenProvider } from "~/application/services/JwtTokenProvider";
 import { CreateUserCase } from "../../../../application/use-cases/users/create-user-case";
-import bcrypt from "bcrypt";
 import { Password } from "../../../../domain/entities/User/Password";
 import { CreateUserBody } from "../../dtos/create-user-body";
 import { UserViewModel } from "../../view-models/user-view-model";
-import { JwtTokenProvider } from "~/application/services/JwtTokenProvider";
 
 export class CreateUserController {
   constructor(

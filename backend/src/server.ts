@@ -1,19 +1,19 @@
 import Hapi from "@hapi/hapi";
-import {
-  users,
-  workspaces,
-  projects,
-  tasks,
-  comments,
-  auth,
-  groups,
-} from "./infra/http/routes/routes";
 import prisma from "./infra/database/prisma/client/prisma";
 import { authMiddleware } from "./infra/http/middlewares/authMiddleware";
 import { errorHandlingExtension } from "./infra/http/middlewares/errorHandlingExtension";
+import {
+  auth,
+  comments,
+  groups,
+  projects,
+  tasks,
+  users,
+  workspaces,
+} from "./infra/http/routes/routes";
 
 export const server: Hapi.Server = Hapi.server({
-  port: 3000,
+  port: 3334,
   host: "0.0.0.0",
   routes: {
     cors: {
@@ -39,6 +39,7 @@ export async function start(): Promise<Hapi.Server> {
 process.on("unhandledRejection", (err) => {
   prisma.$disconnect();
   console.log(err);
+  server.stop();
   process.exit(1);
 });
 

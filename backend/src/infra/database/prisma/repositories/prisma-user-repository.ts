@@ -1,8 +1,8 @@
+import Boom from "@hapi/boom";
 import { UserRepository } from "~/domain/repositories/UserRepository";
-import { PrismaUserMapper } from "../mappers/prisma-user-mapper";
 import { User } from "../../../../domain/entities/User/User";
 import prisma from "../client/prisma";
-import Boom from "@hapi/boom";
+import { PrismaUserMapper } from "../mappers/prisma-user-mapper";
 
 export class PrismaUserRepository implements UserRepository {
   async findById(id: string): Promise<User | null> {

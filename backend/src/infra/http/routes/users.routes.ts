@@ -1,16 +1,16 @@
 import Hapi from "@hapi/hapi";
-import createUserPayload from "../payloads/createUserPayload";
-import {
-  createUserController,
-  findUserByIdController,
-} from "../controllers/User";
+import { findAllCommentsByUserIdController } from "../controllers/Comment";
 import {
   findAllProjectParticipantingByUserController,
   findProjectByLeadIdController,
 } from "../controllers/Project";
-import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
 import { findTaskByResponsibleIdController } from "../controllers/Task";
-import { findAllCommentsByUserIdController } from "../controllers/Comment";
+import {
+  createUserController,
+  findUserByIdController,
+} from "../controllers/User";
+import { getAllWorkspacecByCretorIdController } from "../controllers/Workspace";
+import createUserPayload from "../payloads/createUserPayload";
 import payloadParamsId from "../payloads/payloadParamsId";
 
 const usersRoutes = {
