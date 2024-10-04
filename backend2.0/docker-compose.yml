@@ -1,22 +1,19 @@
-version: "3.1"
+version: "3.9"
 
 services:
-  mongo:
-    image: mongo
+  jupiter_db:
+    image: postgres
     restart: always
+    container_name: jupiter_db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: root
+      POSTGRES_DB: Jupiter
     ports:
-      - 27017:27017
+      - 5432:5432
 
-  mongo-express:
-    image: mongo-express
+  adminer:
+    image: adminer
     restart: always
     ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
-      ME_CONFIG_BASICAUTH: false
+      - 8080:8080

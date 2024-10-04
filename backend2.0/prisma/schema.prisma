@@ -9,21 +9,22 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(uuid()) @map("_id")
+  id        String   @id @default(uuid())
   email     String   @unique
   firstName String   @map("first_name")
   lastName  String   @map("last_name")
+  password  String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 }
 
 model Workspace {
-  id        String    @id @default(uuid()) @map("_id")
+  id        String    @id @default(uuid())
   title     String
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
@@ -31,7 +32,7 @@ model Workspace {
 }
 
 model Project {
-  id          String    @id @default(uuid()) @map("_id")
+  id          String    @id @default(uuid())
   title       String
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
   workspaceId String    @map("workspace_id")
