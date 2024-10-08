@@ -6,6 +6,7 @@ export interface UserProps {
   lastName: string;
   email: string;
   password: string;
+  disabled: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -15,7 +16,10 @@ export class User {
   private props: UserProps;
 
   constructor(
-    props: Replace<UserProps, { createdAt?: Date; updatedAt?: Date }>,
+    props: Replace<
+      UserProps,
+      { createdAt?: Date; updatedAt?: Date; disabled?: boolean }
+    >,
     id?: string,
   ) {
     this._id = id ?? randomUUID();
@@ -23,6 +27,7 @@ export class User {
       ...props,
       createdAt: props.createdAt ?? new Date(),
       updatedAt: props.updatedAt ?? new Date(),
+      disabled: props.disabled ?? false,
     };
   }
 
@@ -56,6 +61,13 @@ export class User {
   }
   set password(password: string) {
     this.props.password = password;
+  }
+
+  get disabled(): boolean {
+    return this.props.disabled;
+  }
+  set disabled(disabled: boolean) {
+    this.props.disabled = disabled;
   }
 
   get createdAt(): Date {

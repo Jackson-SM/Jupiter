@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '@src/domain/entities/user';
 import { UserRepository } from '@src/domain/repositories/user-repository';
+import * as bcrypt from 'bcrypt';
 
 interface CreateUserRequest {
   firstName: string;
@@ -18,8 +19,14 @@ export class CreateUser {
 
   async execute(request: CreateUserRequest): Promise<CreateUserResponse> {
     const { email, firstName, lastName, password } = request;
+    const passwordHash = await bcrypt.hash(password, 10);
 
-    const user = new User({ email, firstName, lastName, password });
+    const user = new User({
+      email,
+      firstName,
+      lastName,
+      password: passwordHash,
+    });
 
     const userCreated = await this.userRepository.save(user);
 

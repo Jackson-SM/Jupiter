@@ -9,6 +9,7 @@ export class PrismaUserMapper {
         password: user.password,
         firstName: user.firstName,
         lastName: user.lastName,
+        disabled: user.disabled,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },
@@ -22,6 +23,7 @@ export class PrismaUserMapper {
       password: user.password,
       firstName: user.firstName,
       lastName: user.lastName,
+      disabled: user.disabled,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };

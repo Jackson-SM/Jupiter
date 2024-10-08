@@ -19,23 +19,45 @@ model User {
   firstName String   @map("first_name")
   lastName  String   @map("last_name")
   password  String
+  disabled  Boolean  @default(false)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  UserProject UserProject[]
 }
 
 model Workspace {
-  id        String    @id @default(uuid())
+  id        String   @id @default(uuid())
   title     String
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @updatedAt @map("updated_at")
-  Project   Project[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  Project Project[]
 }
 
 model Project {
-  id          String    @id @default(uuid())
-  title       String
+  id        String   @id @default(uuid())
+  title     String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
   workspaceId String    @map("workspace_id")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  UserProject UserProject[]
+}
+
+model UserProject {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId String  @map("project_id")
+
+  level Int
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@id([userId, projectId])
 }
