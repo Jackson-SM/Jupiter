@@ -3,21 +3,21 @@ import { User } from '@src/domain/entities/user';
 import { UserRepository } from '@src/domain/repositories/user-repository';
 import * as bcrypt from 'bcrypt';
 
-interface CreateUserRequest {
+interface SignUpUserRequest {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
 }
-interface CreateUserResponse {
+interface SignUpUserResponse {
   user: User;
 }
 
 @Injectable()
-export class CreateUser {
+export class SignUpUser {
   constructor(private userRepository: UserRepository) {}
 
-  async execute(request: CreateUserRequest): Promise<CreateUserResponse> {
+  async execute(request: SignUpUserRequest): Promise<SignUpUserResponse> {
     const { email, firstName, lastName, password } = request;
     const passwordHash = await bcrypt.hash(password, 10);
 

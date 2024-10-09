@@ -3,6 +3,7 @@ import { AuthService } from '@src/application/security/auth.service';
 import { JwtService } from '@src/application/security/jwt.service';
 import { LoginUseCase } from '@src/application/use-cases/auth/login-use-case';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
+import { ServiceTokenRepository } from '@src/domain/repositories/service-token-repository';
 import { DatabaseModule } from '@src/infra/database/database.module';
 import { AuthController } from './auth.controller';
 
@@ -12,7 +13,7 @@ import { AuthController } from './auth.controller';
   providers: [
     LoginUseCase,
     { provide: AuthenticationRepository, useClass: AuthService },
-    JwtService,
+    { provide: ServiceTokenRepository, useClass: JwtService },
   ],
 })
 export class AuthModule {}

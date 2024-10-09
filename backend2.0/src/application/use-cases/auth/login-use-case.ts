@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { User } from '@src/domain/entities/User';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
 
 export interface LoginUseCaseRequest {
@@ -8,6 +9,7 @@ export interface LoginUseCaseRequest {
 
 export interface LoginUseCaseResponse {
   token: string;
+  user: User;
 }
 
 @Injectable()
@@ -17,8 +19,11 @@ export class LoginUseCase {
   async execute(request: LoginUseCaseRequest): Promise<LoginUseCaseResponse> {
     const { email, password } = request;
 
-    const token = await this.authenticationRepository.signIn(email, password);
+    const { user, token } = await this.authenticationRepository.signIn(
+      email,
+      password,
+    );
 
-    return { token };
+    return { user, token };
   }
 }

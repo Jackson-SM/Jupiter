@@ -3,6 +3,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
+import { User } from '@src/domain/entities/User';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
 import { UserRepository } from '@src/domain/repositories/user-repository';
 import * as bcrypt from 'bcrypt';
@@ -33,7 +34,9 @@ export class AuthService implements AuthenticationRepository {
       '7d',
     );
 
-    return token;
+    const userEntity = new User(user);
+
+    return { user: userEntity, token };
   }
 
   async login(email: string, password: string) {
@@ -54,6 +57,8 @@ export class AuthService implements AuthenticationRepository {
       '7d',
     );
 
-    return token;
+    const userEntity = new User(user);
+
+    return { user: userEntity, token };
   }
 }

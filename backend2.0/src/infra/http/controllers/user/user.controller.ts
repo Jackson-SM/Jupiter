@@ -7,24 +7,24 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { CreateUser } from '@src/application/use-cases/user/create-user';
 import { FindByEmail } from '@src/application/use-cases/user/find-by-email';
-import { CreateUserDTO } from '../../dtos/users/create-user-dto';
+import { SignUpUser } from '@src/application/use-cases/user/signup-user';
+import { SignUpUserDTO } from '../../dtos/users/create-user-dto';
 import { UserViewModel } from '../../view-models/user-view-model';
 
 @Controller('/users')
 export class UserController {
   constructor(
-    private createUser: CreateUser,
+    private signupUser: SignUpUser,
     private findByEmail: FindByEmail,
   ) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() body: CreateUserDTO) {
+  async signUp(@Body() body: SignUpUserDTO) {
     const { email, firstName, lastName, password } = body;
 
-    await this.createUser.execute({
+    await this.signupUser.execute({
       email,
       firstName,
       lastName,

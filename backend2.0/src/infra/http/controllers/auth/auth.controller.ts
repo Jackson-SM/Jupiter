@@ -2,6 +2,7 @@ import { Body, Controller, Post, Res } from '@nestjs/common';
 import { LoginUseCase } from '@src/application/use-cases/auth/login-use-case';
 import { Response } from 'express';
 import { AuthenticationUserDTO } from '../../dtos/auth/authentication-user-dto';
+import { UserViewModel } from '../../view-models/user-view-model';
 
 @Controller('auth')
 export class AuthController {
@@ -14,15 +15,20 @@ export class AuthController {
   ) {
     const { email, password } = body;
 
-    const token = await this.loginUseCase.execute({ email, password });
+    const { user, token } = await this.loginUseCase.execute({
+      email,
+      password,
+    });
 
-    response.cookie('token', token, {
+    response.cookie('acess_token', token, {
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), // 7 days
       httpOnly: true,
       secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
 
-    return { token };
+    const userViewModel = UserViewModel.toHTTP(user);
+
+    return { ...userViewModel, token };
   }
 }
