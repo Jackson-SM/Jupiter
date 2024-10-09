@@ -5,8 +5,4 @@ export abstract class AuthenticationRepository {
     email: string,
     password: string,
   ): Promise<AuthRepositoryTokenReturn>;
-  abstract login(
-    email: string,
-    password: string,
-  ): Promise<AuthRepositoryTokenReturn>;
 }

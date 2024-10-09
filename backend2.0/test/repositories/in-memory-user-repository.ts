@@ -1,5 +1,6 @@
 import { User } from '@src/domain/entities/user';
 import { UserRepository } from '@src/domain/repositories/user-repository';
+import * as bcrypt from 'bcrypt';
 
 export class InMemoryUserRepository implements UserRepository {
   public users: User[] = [];
@@ -11,9 +12,20 @@ export class InMemoryUserRepository implements UserRepository {
       throw new Error('User already exists');
     }
 
-    this.users.push(user);
+    const passwordHash = await bcrypt.hash(user.password, 10);
+    const newUser = new User({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: passwordHash,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+      disabled: user.disabled,
+    });
 
-    return user;
+    this.users.push(newUser);
+
+    return newUser;
   }
 
   async findByEmail(email: string): Promise<User> {
