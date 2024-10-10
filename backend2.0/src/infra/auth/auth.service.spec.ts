@@ -1,16 +1,16 @@
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
-import { ServiceTokenRepository } from '@src/domain/repositories/service-token-repository';
+import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import { UserRepository } from '@src/domain/repositories/user-repository';
 import { makeUser } from '@test/factory/user-factory';
 import { InMemoryUserRepository } from '@test/repositories/in-memory-user-repository';
+import { JwtService } from '../token/jwt.service';
 import { AuthService } from './auth.service';
-import { JwtService } from './jwt.service';
 
 describe('AuhService', () => {
   let authService: AuthenticationRepository;
   let userRepository: UserRepository;
-  let serviceToken: ServiceTokenRepository;
+  let serviceToken: TokenProviderRepository;
 
   beforeEach(() => {
     userRepository = new InMemoryUserRepository();

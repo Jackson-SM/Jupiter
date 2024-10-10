@@ -1,10 +1,10 @@
-import { ServiceTokenRepository } from '@src/domain/repositories/service-token-repository';
+import { Payload } from '@src/application/types/Payload';
+import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import { makeUser } from '@test/factory/user-factory';
-import { Payload } from '../types/Payload';
 import { JwtService } from './jwt.service';
 
 describe('JwtService', () => {
-  let tokenService: ServiceTokenRepository;
+  let tokenService: TokenProviderRepository;
 
   beforeEach(() => {
     tokenService = new JwtService();

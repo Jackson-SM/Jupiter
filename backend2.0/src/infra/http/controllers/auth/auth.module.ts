@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from '@src/application/security/auth.service';
 import { JwtService } from '@src/application/security/jwt.service';
-import { LoginUseCase } from '@src/application/use-cases/auth/login-use-case';
+import { SignIn } from '@src/application/use-cases/auth/sign-in';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
-import { ServiceTokenRepository } from '@src/domain/repositories/service-token-repository';
+import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import { DatabaseModule } from '@src/infra/database/database.module';
 import { AuthController } from './auth.controller';
 
@@ -11,9 +11,9 @@ import { AuthController } from './auth.controller';
   imports: [DatabaseModule],
   controllers: [AuthController],
   providers: [
-    LoginUseCase,
+    SignIn,
     { provide: AuthenticationRepository, useClass: AuthService },
-    { provide: ServiceTokenRepository, useClass: JwtService },
+    { provide: TokenProviderRepository, useClass: JwtService },
   ],
 })
 export class AuthModule {}

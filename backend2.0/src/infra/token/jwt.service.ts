@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { ServiceTokenRepository } from '@src/domain/repositories/service-token-repository';
+import { Payload } from '@src/application/types/Payload';
+import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import * as jwt from 'jsonwebtoken';
-import { Payload } from '../types/Payload';
 
 @Injectable()
-export class JwtService implements ServiceTokenRepository {
+export class JwtService implements TokenProviderRepository {
   async sign(payload: Payload, expiresIn: string): Promise<string> {
     const token = jwt.sign(payload, `${process.env.JWT_KEY}`, {
       expiresIn: `${expiresIn}`,

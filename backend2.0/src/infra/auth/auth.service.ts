@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { User } from '@src/domain/entities/User';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
-import { ServiceTokenRepository } from '@src/domain/repositories/service-token-repository';
+import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import { UserRepository } from '@src/domain/repositories/user-repository';
 import * as bcrypt from 'bcrypt';
 
@@ -13,7 +13,7 @@ import * as bcrypt from 'bcrypt';
 export class AuthService implements AuthenticationRepository {
   constructor(
     private userRepository: UserRepository,
-    private serviceToken: ServiceTokenRepository,
+    private serviceToken: TokenProviderRepository,
   ) {}
 
   async signIn(email: string, password: string) {
@@ -31,7 +31,7 @@ export class AuthService implements AuthenticationRepository {
 
     const token = await this.serviceToken.sign(
       { email: user.email, id: user.id },
-      '7d',
+      `${process.env.JWT_EXPIRES_IN || '7d'}`,
     );
 
     const userEntity = new User(

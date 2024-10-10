@@ -8,8 +8,8 @@ import {
   Post,
   Res,
 } from '@nestjs/common';
-import { FindByEmail } from '@src/application/use-cases/user/find-by-email';
-import { SignUpUser } from '@src/application/use-cases/user/signup-user';
+import { FindByEmailUseCase } from '@src/application/use-cases/user/find-by-email-use-case';
+import { SignUpUseCase } from '@src/application/use-cases/user/signup-use-case';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
 import { Response } from 'express';
 import { SignUpUserDTO } from '../../dtos/users/sign-up-user-dto';
@@ -18,8 +18,8 @@ import { UserViewModel } from '../../view-models/user-view-model';
 @Controller('/users')
 export class UserController {
   constructor(
-    private signupUser: SignUpUser,
-    private findByEmail: FindByEmail,
+    private signupUser: SignUpUseCase,
+    private findByEmail: FindByEmailUseCase,
     private authService: AuthenticationRepository,
   ) {}
 

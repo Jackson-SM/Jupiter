@@ -1,28 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { User } from '@src/domain/entities/User';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
 
-export interface LoginUseCaseRequest {
+export interface SignInUseCaseRequest {
   email: string;
   password: string;
 }
 
-export interface LoginUseCaseResponse {
+export interface SignInUseCaseResponse {
   token: string;
   user: User;
 }
 
 @Injectable()
-export class LoginUseCase {
+export class SignInUseCase {
   constructor(private authenticationRepository: AuthenticationRepository) {}
 
-  async execute(request: LoginUseCaseRequest): Promise<LoginUseCaseResponse> {
+  async execute(request: SignInUseCaseRequest): Promise<SignInUseCaseResponse> {
     const { email, password } = request;
 
     const { user, token } = await this.authenticationRepository.signIn(
       email,
       password,
     );
+
+    if (user.disabled) {
+      throw new UnauthorizedException('User is disabled');
+    }
 
     return { user, token };
   }

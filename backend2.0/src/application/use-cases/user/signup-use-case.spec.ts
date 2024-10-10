@@ -1,15 +1,15 @@
 import { UserRepository } from '@src/domain/repositories/user-repository';
 import { makeUser } from '@test/factory/user-factory';
 import { InMemoryUserRepository } from '@test/repositories/in-memory-user-repository';
-import { SignUpUser } from './signup-user';
+import { SignUpUseCase } from './signup-use-case';
 
 describe('Create User Use Case', () => {
   let userRepository: UserRepository;
-  let signupUser: SignUpUser;
+  let signupUser: SignUpUseCase;
 
   beforeEach(() => {
     userRepository = new InMemoryUserRepository();
-    signupUser = new SignUpUser(userRepository);
+    signupUser = new SignUpUseCase(userRepository);
   });
 
   it('should be able to create a new user', async () => {

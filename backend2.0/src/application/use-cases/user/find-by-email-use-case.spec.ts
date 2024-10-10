@@ -1,16 +1,16 @@
 import { UserRepository } from '@src/domain/repositories/user-repository';
 import { makeUser } from '@test/factory/user-factory';
 import { InMemoryUserRepository } from '@test/repositories/in-memory-user-repository';
-import { FindByEmail } from './find-by-email';
+import { FindByEmailUseCase } from './find-by-email-use-case';
 
 describe('Find By Email Use Case', () => {
   let userRepository: UserRepository;
-  let findByEmail: FindByEmail;
+  let findByEmail: FindByEmailUseCase;
   let email: string;
 
   beforeEach(() => {
     userRepository = new InMemoryUserRepository();
-    findByEmail = new FindByEmail(userRepository);
+    findByEmail = new FindByEmailUseCase(userRepository);
     email = 'emailfind@mail.com';
   });
 
