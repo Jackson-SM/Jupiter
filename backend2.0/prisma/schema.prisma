@@ -24,32 +24,37 @@ model User {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   UserProject UserProject[]
+  Workspace   Workspace[]
 }
 
 model Workspace {
   id        String   @id @default(uuid())
   title     String
+  ownerId   String   @map("user_id")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  owner User @relation(fields: [ownerId], references: [id])
 
   Project Project[]
 }
 
 model Project {
-  id        String   @id @default(uuid())
-  title     String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  workspaceId String   @map("workspace_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
 
-  workspace   Workspace @relation(fields: [workspaceId], references: [id])
-  workspaceId String    @map("workspace_id")
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
 
   UserProject UserProject[]
 }
 
 model UserProject {
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @map("user_id")
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String @map("user_id")
 
   project   Project @relation(fields: [projectId], references: [id])
   projectId String  @map("project_id")
@@ -59,5 +64,5 @@ model UserProject {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@id([userId, projectId])
+  @@id([ownerId, projectId])
 }

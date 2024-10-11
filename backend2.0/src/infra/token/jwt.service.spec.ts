@@ -42,6 +42,6 @@ describe('JwtService', () => {
 
     await new Promise((resolve) => setTimeout(resolve, 1));
 
-    await expect(tokenService.verify(token)).rejects.toThrow();
+    expect(tokenService.verify(token)).rejects.toThrow();
   });
 });

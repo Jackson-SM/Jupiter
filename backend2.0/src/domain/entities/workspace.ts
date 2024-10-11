@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 
 export interface WorkspaceProps {
   title: string;
+  ownerId: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -33,6 +34,14 @@ export class Workspace {
 
   set title(title: string) {
     this.props.title = title;
+  }
+
+  get ownerId(): string {
+    return this.props.ownerId;
+  }
+
+  set ownerId(ownerId: string) {
+    this.props.ownerId = ownerId;
   }
 
   get createdAt(): Date {

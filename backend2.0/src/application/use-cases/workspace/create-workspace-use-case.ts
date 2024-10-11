@@ -1,21 +1,25 @@
+import { Injectable } from '@nestjs/common';
 import { Workspace } from '@src/domain/entities/workspace';
 import { WorkspaceRepository } from '@src/domain/repositories/workspace-repository';
 
-interface CreateWorkspaceRequest {
+interface CreateWorkspaceUseCaseRequest {
   title: string;
+  ownerId: string;
 }
-interface CreateWorkspaceResponse {
+interface CreateWorkspaceUseCaseResponse {
   workspace: Workspace;
 }
 
-export class CreateWorkspace {
+@Injectable()
+export class CreateWorkspaceUseCase {
   constructor(private workspaceRepository: WorkspaceRepository) {}
 
   async execute(
-    request: CreateWorkspaceRequest,
-  ): Promise<CreateWorkspaceResponse> {
+    request: CreateWorkspaceUseCaseRequest,
+  ): Promise<CreateWorkspaceUseCaseResponse> {
     const workspace = new Workspace({
       title: request.title,
+      ownerId: request.ownerId,
     });
 
     const savedWorkspace = await this.workspaceRepository.save(workspace);

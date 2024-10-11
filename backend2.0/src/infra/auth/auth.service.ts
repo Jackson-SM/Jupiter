@@ -3,7 +3,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { User } from '@src/domain/entities/User';
+import { UserFactory } from '@src/domain/factories/user-factory';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
 import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import { UserRepository } from '@src/domain/repositories/user-repository';
@@ -34,18 +34,7 @@ export class AuthService implements AuthenticationRepository {
       `${process.env.JWT_EXPIRES_IN || '7d'}`,
     );
 
-    const userEntity = new User(
-      {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        password: user.password,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-        disabled: user.disabled,
-      },
-      user.id,
-    );
+    const userEntity = UserFactory.create(user);
 
     return { user: userEntity, token };
   }

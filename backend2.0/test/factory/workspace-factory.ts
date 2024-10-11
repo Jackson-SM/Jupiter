@@ -5,6 +5,7 @@ type Override = Partial<WorkspaceProps>;
 export function makeWorkspace(override?: Override) {
   return new Workspace({
     title: 'Workspace test',
+    ownerId: '12345678',
     ...override,
   });
 }

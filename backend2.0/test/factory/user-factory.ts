@@ -8,6 +8,7 @@ export function makeUser(override?: Override) {
     lastName: 'Doe',
     email: 'test@testmail.com',
     password: '12345678',
+    disabled: false,
     ...override,
   });
 }

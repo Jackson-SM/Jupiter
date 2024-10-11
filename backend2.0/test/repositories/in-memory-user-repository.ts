@@ -18,9 +18,9 @@ export class InMemoryUserRepository implements UserRepository {
       lastName: user.lastName,
       email: user.email,
       password: passwordHash,
+      disabled: user.disabled,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
-      disabled: user.disabled,
     });
 
     this.users.push(newUser);
