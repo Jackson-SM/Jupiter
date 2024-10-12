@@ -8,7 +8,7 @@ export interface SignInUseCaseRequest {
 }
 
 export interface SignInUseCaseResponse {
-  token: string;
+  access_token: string;
   user: User;
 }
 
@@ -19,7 +19,7 @@ export class SignInUseCase {
   async execute(request: SignInUseCaseRequest): Promise<SignInUseCaseResponse> {
     const { email, password } = request;
 
-    const { user, token } = await this.authenticationRepository.signIn(
+    const { user, access_token } = await this.authenticationRepository.signIn(
       email,
       password,
     );
@@ -28,6 +28,6 @@ export class SignInUseCase {
       throw new UnauthorizedException('User is disabled');
     }
 
-    return { user, token };
+    return { user, access_token };
   }
 }

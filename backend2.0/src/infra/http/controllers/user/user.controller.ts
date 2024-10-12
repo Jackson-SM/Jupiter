@@ -38,9 +38,9 @@ export class UserController {
       password,
     });
 
-    const { token } = await this.authService.signIn(email, password);
+    const { access_token } = await this.authService.signIn(email, password);
 
-    response.cookie('access_token', token, {
+    response.cookie('access_token', access_token, {
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), // 7 days
       httpOnly: true,
       secure: true,

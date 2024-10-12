@@ -36,7 +36,7 @@ model Workspace {
 
   owner User @relation(fields: [ownerId], references: [id])
 
-  Project Project[]
+  Projects Project[]
 }
 
 model Project {

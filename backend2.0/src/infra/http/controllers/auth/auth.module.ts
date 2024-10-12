@@ -1,19 +1,31 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from '@src/application/security/auth.service';
-import { JwtService } from '@src/application/security/jwt.service';
-import { SignIn } from '@src/application/use-cases/auth/sign-in';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
+import { SignInUseCase } from '@src/application/use-cases/auth/sign-in-use-case';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
-import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import { DatabaseModule } from '@src/infra/database/database.module';
+import { AuthService } from '../../auth/auth.service';
+import { JwtStrategy } from '../../auth/jwt.strategy';
+import { UserModule } from '../user/user.module';
 import { AuthController } from './auth.controller';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [
+    DatabaseModule,
+    UserModule,
+    PassportModule,
+    JwtModule.register({
+      secret: process.env.JWT_KEY,
+      signOptions: { expiresIn: `${process.env.JWT_EXPIRES_IN || '7d'}` },
+    }),
+  ],
   controllers: [AuthController],
   providers: [
-    SignIn,
+    SignInUseCase,
+    JwtStrategy,
     { provide: AuthenticationRepository, useClass: AuthService },
-    { provide: TokenProviderRepository, useClass: JwtService },
+    AuthService,
   ],
+  exports: [AuthenticationRepository],
 })
 export class AuthModule {}

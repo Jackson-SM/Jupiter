@@ -1,10 +1,9 @@
 import { UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { User } from '@src/domain/entities/User';
 import { AuthenticationRepository } from '@src/domain/repositories/auth-repository';
-import { TokenProviderRepository } from '@src/domain/repositories/token-provider-repository';
 import { UserRepository } from '@src/domain/repositories/user-repository';
-import { AuthService } from '@src/infra/auth/auth.service';
-import { JwtService } from '@src/infra/token/jwt.service';
+import { AuthService } from '@src/infra/http/auth/auth.service';
 import { makeUser } from '@test/factory/user-factory';
 import { InMemoryUserRepository } from '@test/repositories/in-memory-user-repository';
 import { SignInUseCase } from './sign-in-use-case';
@@ -12,13 +11,13 @@ import { SignInUseCase } from './sign-in-use-case';
 describe('Sign In Use Case', () => {
   let signIn: SignInUseCase;
   let authenticationRepository: AuthenticationRepository;
-  let tokenService: TokenProviderRepository;
   let userRepository: UserRepository;
+  let jwtService: JwtService;
 
   beforeEach(() => {
-    tokenService = new JwtService();
+    jwtService = new JwtService({ secret: 'test' });
     userRepository = new InMemoryUserRepository();
-    authenticationRepository = new AuthService(userRepository, tokenService);
+    authenticationRepository = new AuthService(userRepository, jwtService);
     signIn = new SignInUseCase(authenticationRepository);
   });
 
@@ -27,12 +26,12 @@ describe('Sign In Use Case', () => {
 
     await userRepository.save(factory);
 
-    const { token, user } = await signIn.execute({
+    const { access_token, user } = await signIn.execute({
       email: factory.email,
       password: factory.password,
     });
 
-    expect(token).toBeDefined();
+    expect(access_token).toBeDefined();
     expect(user.email).toEqual(factory.email);
   });
 
